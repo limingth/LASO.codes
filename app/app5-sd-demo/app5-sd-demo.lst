@@ -1,0 +1,3509 @@
+
+app5-sd-demo.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+21000000 <_start>:
+21000000:	e92d4000 	push	{lr}
+21000004:	eb00014f 	bl	21000548 <mymain>
+21000008:	e8bd8000 	pop	{pc}
+
+2100000c <delay>:
+2100000c:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21000010:	e28db000 	add	fp, sp, #0
+21000014:	e24dd00c 	sub	sp, sp, #12
+21000018:	e3a03000 	mov	r3, #0
+2100001c:	e50b3008 	str	r3, [fp, #-8]
+21000020:	ea000002 	b	21000030 <delay+0x24>
+21000024:	e51b3008 	ldr	r3, [fp, #-8]
+21000028:	e2833001 	add	r3, r3, #1
+2100002c:	e50b3008 	str	r3, [fp, #-8]
+21000030:	e51b2008 	ldr	r2, [fp, #-8]
+21000034:	e59f3010 	ldr	r3, [pc, #16]	; 2100004c <delay+0x40>
+21000038:	e1520003 	cmp	r2, r3
+2100003c:	dafffff8 	ble	21000024 <delay+0x18>
+21000040:	e28bd000 	add	sp, fp, #0
+21000044:	e8bd0800 	pop	{fp}
+21000048:	e12fff1e 	bx	lr
+2100004c:	000fffff 	.word	0x000fffff
+
+21000050 <atoi>:
+21000050:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21000054:	e28db000 	add	fp, sp, #0
+21000058:	e24dd01c 	sub	sp, sp, #28
+2100005c:	e50b0018 	str	r0, [fp, #-24]
+21000060:	e3a03000 	mov	r3, #0
+21000064:	e50b3008 	str	r3, [fp, #-8]
+21000068:	e3a0300a 	mov	r3, #10
+2100006c:	e50b300c 	str	r3, [fp, #-12]
+21000070:	e3a03000 	mov	r3, #0
+21000074:	e50b3010 	str	r3, [fp, #-16]
+21000078:	e51b3018 	ldr	r3, [fp, #-24]
+2100007c:	e5d33000 	ldrb	r3, [r3]
+21000080:	e3530030 	cmp	r3, #48	; 0x30
+21000084:	1a00002c 	bne	2100013c <atoi+0xec>
+21000088:	e51b3018 	ldr	r3, [fp, #-24]
+2100008c:	e2833001 	add	r3, r3, #1
+21000090:	e5d33000 	ldrb	r3, [r3]
+21000094:	e3530078 	cmp	r3, #120	; 0x78
+21000098:	1a000029 	bne	21000144 <atoi+0xf4>
+2100009c:	e3a03010 	mov	r3, #16
+210000a0:	e50b300c 	str	r3, [fp, #-12]
+210000a4:	e3a03002 	mov	r3, #2
+210000a8:	e50b3010 	str	r3, [fp, #-16]
+210000ac:	ea000025 	b	21000148 <atoi+0xf8>
+210000b0:	e51b3010 	ldr	r3, [fp, #-16]
+210000b4:	e51b2018 	ldr	r2, [fp, #-24]
+210000b8:	e0823003 	add	r3, r2, r3
+210000bc:	e5d33000 	ldrb	r3, [r3]
+210000c0:	e3530039 	cmp	r3, #57	; 0x39
+210000c4:	8a00000c 	bhi	210000fc <atoi+0xac>
+210000c8:	e51b3010 	ldr	r3, [fp, #-16]
+210000cc:	e51b2018 	ldr	r2, [fp, #-24]
+210000d0:	e0823003 	add	r3, r2, r3
+210000d4:	e5d33000 	ldrb	r3, [r3]
+210000d8:	e353002f 	cmp	r3, #47	; 0x2f
+210000dc:	9a000006 	bls	210000fc <atoi+0xac>
+210000e0:	e51b3010 	ldr	r3, [fp, #-16]
+210000e4:	e51b2018 	ldr	r2, [fp, #-24]
+210000e8:	e0823003 	add	r3, r2, r3
+210000ec:	e5d33000 	ldrb	r3, [r3]
+210000f0:	e2433030 	sub	r3, r3, #48	; 0x30
+210000f4:	e50b3014 	str	r3, [fp, #-20]
+210000f8:	ea000005 	b	21000114 <atoi+0xc4>
+210000fc:	e51b3010 	ldr	r3, [fp, #-16]
+21000100:	e51b2018 	ldr	r2, [fp, #-24]
+21000104:	e0823003 	add	r3, r2, r3
+21000108:	e5d33000 	ldrb	r3, [r3]
+2100010c:	e2433057 	sub	r3, r3, #87	; 0x57
+21000110:	e50b3014 	str	r3, [fp, #-20]
+21000114:	e51b3008 	ldr	r3, [fp, #-8]
+21000118:	e51b200c 	ldr	r2, [fp, #-12]
+2100011c:	e0020392 	mul	r2, r2, r3
+21000120:	e51b3014 	ldr	r3, [fp, #-20]
+21000124:	e0823003 	add	r3, r2, r3
+21000128:	e50b3008 	str	r3, [fp, #-8]
+2100012c:	e51b3010 	ldr	r3, [fp, #-16]
+21000130:	e2833001 	add	r3, r3, #1
+21000134:	e50b3010 	str	r3, [fp, #-16]
+21000138:	ea000002 	b	21000148 <atoi+0xf8>
+2100013c:	e1a00000 	nop			; (mov r0, r0)
+21000140:	ea000000 	b	21000148 <atoi+0xf8>
+21000144:	e1a00000 	nop			; (mov r0, r0)
+21000148:	e51b3010 	ldr	r3, [fp, #-16]
+2100014c:	e51b2018 	ldr	r2, [fp, #-24]
+21000150:	e0823003 	add	r3, r2, r3
+21000154:	e5d33000 	ldrb	r3, [r3]
+21000158:	e3530000 	cmp	r3, #0
+2100015c:	1affffd3 	bne	210000b0 <atoi+0x60>
+21000160:	e51b3008 	ldr	r3, [fp, #-8]
+21000164:	e1a00003 	mov	r0, r3
+21000168:	e28bd000 	add	sp, fp, #0
+2100016c:	e8bd0800 	pop	{fp}
+21000170:	e12fff1e 	bx	lr
+
+21000174 <strcmp>:
+21000174:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21000178:	e28db000 	add	fp, sp, #0
+2100017c:	e24dd00c 	sub	sp, sp, #12
+21000180:	e50b0008 	str	r0, [fp, #-8]
+21000184:	e50b100c 	str	r1, [fp, #-12]
+21000188:	ea00000b 	b	210001bc <strcmp+0x48>
+2100018c:	e51b3008 	ldr	r3, [fp, #-8]
+21000190:	e5d33000 	ldrb	r3, [r3]
+21000194:	e3530000 	cmp	r3, #0
+21000198:	1a000001 	bne	210001a4 <strcmp+0x30>
+2100019c:	e3a03000 	mov	r3, #0
+210001a0:	ea000011 	b	210001ec <strcmp+0x78>
+210001a4:	e51b3008 	ldr	r3, [fp, #-8]
+210001a8:	e2833001 	add	r3, r3, #1
+210001ac:	e50b3008 	str	r3, [fp, #-8]
+210001b0:	e51b300c 	ldr	r3, [fp, #-12]
+210001b4:	e2833001 	add	r3, r3, #1
+210001b8:	e50b300c 	str	r3, [fp, #-12]
+210001bc:	e51b3008 	ldr	r3, [fp, #-8]
+210001c0:	e5d32000 	ldrb	r2, [r3]
+210001c4:	e51b300c 	ldr	r3, [fp, #-12]
+210001c8:	e5d33000 	ldrb	r3, [r3]
+210001cc:	e1520003 	cmp	r2, r3
+210001d0:	0affffed 	beq	2100018c <strcmp+0x18>
+210001d4:	e51b3008 	ldr	r3, [fp, #-8]
+210001d8:	e5d33000 	ldrb	r3, [r3]
+210001dc:	e1a02003 	mov	r2, r3
+210001e0:	e51b300c 	ldr	r3, [fp, #-12]
+210001e4:	e5d33000 	ldrb	r3, [r3]
+210001e8:	e0633002 	rsb	r3, r3, r2
+210001ec:	e1a00003 	mov	r0, r3
+210001f0:	e28bd000 	add	sp, fp, #0
+210001f4:	e8bd0800 	pop	{fp}
+210001f8:	e12fff1e 	bx	lr
+
+210001fc <strncmp>:
+210001fc:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21000200:	e28db000 	add	fp, sp, #0
+21000204:	e24dd014 	sub	sp, sp, #20
+21000208:	e50b0008 	str	r0, [fp, #-8]
+2100020c:	e50b100c 	str	r1, [fp, #-12]
+21000210:	e50b2010 	str	r2, [fp, #-16]
+21000214:	e51b3010 	ldr	r3, [fp, #-16]
+21000218:	e3530000 	cmp	r3, #0
+2100021c:	1a000007 	bne	21000240 <strncmp+0x44>
+21000220:	e3a03000 	mov	r3, #0
+21000224:	ea00001b 	b	21000298 <strncmp+0x9c>
+21000228:	e51b3008 	ldr	r3, [fp, #-8]
+2100022c:	e2833001 	add	r3, r3, #1
+21000230:	e50b3008 	str	r3, [fp, #-8]
+21000234:	e51b300c 	ldr	r3, [fp, #-12]
+21000238:	e2833001 	add	r3, r3, #1
+2100023c:	e50b300c 	str	r3, [fp, #-12]
+21000240:	e51b3010 	ldr	r3, [fp, #-16]
+21000244:	e2433001 	sub	r3, r3, #1
+21000248:	e50b3010 	str	r3, [fp, #-16]
+2100024c:	e51b3010 	ldr	r3, [fp, #-16]
+21000250:	e3530000 	cmp	r3, #0
+21000254:	0a000009 	beq	21000280 <strncmp+0x84>
+21000258:	e51b3008 	ldr	r3, [fp, #-8]
+2100025c:	e5d33000 	ldrb	r3, [r3]
+21000260:	e3530000 	cmp	r3, #0
+21000264:	0a000005 	beq	21000280 <strncmp+0x84>
+21000268:	e51b3008 	ldr	r3, [fp, #-8]
+2100026c:	e5d32000 	ldrb	r2, [r3]
+21000270:	e51b300c 	ldr	r3, [fp, #-12]
+21000274:	e5d33000 	ldrb	r3, [r3]
+21000278:	e1520003 	cmp	r2, r3
+2100027c:	0affffe9 	beq	21000228 <strncmp+0x2c>
+21000280:	e51b3008 	ldr	r3, [fp, #-8]
+21000284:	e5d33000 	ldrb	r3, [r3]
+21000288:	e1a02003 	mov	r2, r3
+2100028c:	e51b300c 	ldr	r3, [fp, #-12]
+21000290:	e5d33000 	ldrb	r3, [r3]
+21000294:	e0633002 	rsb	r3, r3, r2
+21000298:	e1a00003 	mov	r0, r3
+2100029c:	e28bd000 	add	sp, fp, #0
+210002a0:	e8bd0800 	pop	{fp}
+210002a4:	e12fff1e 	bx	lr
+
+210002a8 <strcpy>:
+210002a8:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+210002ac:	e28db000 	add	fp, sp, #0
+210002b0:	e24dd014 	sub	sp, sp, #20
+210002b4:	e50b0010 	str	r0, [fp, #-16]
+210002b8:	e50b1014 	str	r1, [fp, #-20]
+210002bc:	e51b3010 	ldr	r3, [fp, #-16]
+210002c0:	e50b3008 	str	r3, [fp, #-8]
+210002c4:	e1a00000 	nop			; (mov r0, r0)
+210002c8:	e51b3014 	ldr	r3, [fp, #-20]
+210002cc:	e5d32000 	ldrb	r2, [r3]
+210002d0:	e51b3008 	ldr	r3, [fp, #-8]
+210002d4:	e5c32000 	strb	r2, [r3]
+210002d8:	e51b3008 	ldr	r3, [fp, #-8]
+210002dc:	e5d33000 	ldrb	r3, [r3]
+210002e0:	e3530000 	cmp	r3, #0
+210002e4:	03a03000 	moveq	r3, #0
+210002e8:	13a03001 	movne	r3, #1
+210002ec:	e6ef3073 	uxtb	r3, r3
+210002f0:	e51b2008 	ldr	r2, [fp, #-8]
+210002f4:	e2822001 	add	r2, r2, #1
+210002f8:	e50b2008 	str	r2, [fp, #-8]
+210002fc:	e51b2014 	ldr	r2, [fp, #-20]
+21000300:	e2822001 	add	r2, r2, #1
+21000304:	e50b2014 	str	r2, [fp, #-20]
+21000308:	e3530000 	cmp	r3, #0
+2100030c:	1affffed 	bne	210002c8 <strcpy+0x20>
+21000310:	e51b3010 	ldr	r3, [fp, #-16]
+21000314:	e1a00003 	mov	r0, r3
+21000318:	e28bd000 	add	sp, fp, #0
+2100031c:	e8bd0800 	pop	{fp}
+21000320:	e12fff1e 	bx	lr
+
+21000324 <strncpy>:
+21000324:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21000328:	e28db000 	add	fp, sp, #0
+2100032c:	e24dd01c 	sub	sp, sp, #28
+21000330:	e50b0010 	str	r0, [fp, #-16]
+21000334:	e50b1014 	str	r1, [fp, #-20]
+21000338:	e50b2018 	str	r2, [fp, #-24]
+2100033c:	e51b3010 	ldr	r3, [fp, #-16]
+21000340:	e50b3008 	str	r3, [fp, #-8]
+21000344:	ea000002 	b	21000354 <strncpy+0x30>
+21000348:	e51b3018 	ldr	r3, [fp, #-24]
+2100034c:	e2433001 	sub	r3, r3, #1
+21000350:	e50b3018 	str	r3, [fp, #-24]
+21000354:	e51b3018 	ldr	r3, [fp, #-24]
+21000358:	e3530000 	cmp	r3, #0
+2100035c:	0a000011 	beq	210003a8 <strncpy+0x84>
+21000360:	e51b3014 	ldr	r3, [fp, #-20]
+21000364:	e5d32000 	ldrb	r2, [r3]
+21000368:	e51b3010 	ldr	r3, [fp, #-16]
+2100036c:	e5c32000 	strb	r2, [r3]
+21000370:	e51b3010 	ldr	r3, [fp, #-16]
+21000374:	e5d33000 	ldrb	r3, [r3]
+21000378:	e3530000 	cmp	r3, #0
+2100037c:	03a03000 	moveq	r3, #0
+21000380:	13a03001 	movne	r3, #1
+21000384:	e6ef3073 	uxtb	r3, r3
+21000388:	e51b2010 	ldr	r2, [fp, #-16]
+2100038c:	e2822001 	add	r2, r2, #1
+21000390:	e50b2010 	str	r2, [fp, #-16]
+21000394:	e51b2014 	ldr	r2, [fp, #-20]
+21000398:	e2822001 	add	r2, r2, #1
+2100039c:	e50b2014 	str	r2, [fp, #-20]
+210003a0:	e3530000 	cmp	r3, #0
+210003a4:	1affffe7 	bne	21000348 <strncpy+0x24>
+210003a8:	e51b3018 	ldr	r3, [fp, #-24]
+210003ac:	e3530000 	cmp	r3, #0
+210003b0:	0a00000c 	beq	210003e8 <strncpy+0xc4>
+210003b4:	ea000005 	b	210003d0 <strncpy+0xac>
+210003b8:	e51b3010 	ldr	r3, [fp, #-16]
+210003bc:	e3a02000 	mov	r2, #0
+210003c0:	e5c32000 	strb	r2, [r3]
+210003c4:	e51b3010 	ldr	r3, [fp, #-16]
+210003c8:	e2833001 	add	r3, r3, #1
+210003cc:	e50b3010 	str	r3, [fp, #-16]
+210003d0:	e51b3018 	ldr	r3, [fp, #-24]
+210003d4:	e2433001 	sub	r3, r3, #1
+210003d8:	e50b3018 	str	r3, [fp, #-24]
+210003dc:	e51b3018 	ldr	r3, [fp, #-24]
+210003e0:	e3530000 	cmp	r3, #0
+210003e4:	1afffff3 	bne	210003b8 <strncpy+0x94>
+210003e8:	e51b3008 	ldr	r3, [fp, #-8]
+210003ec:	e1a00003 	mov	r0, r3
+210003f0:	e28bd000 	add	sp, fp, #0
+210003f4:	e8bd0800 	pop	{fp}
+210003f8:	e12fff1e 	bx	lr
+
+210003fc <memcpy>:
+210003fc:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21000400:	e28db000 	add	fp, sp, #0
+21000404:	e24dd01c 	sub	sp, sp, #28
+21000408:	e50b0010 	str	r0, [fp, #-16]
+2100040c:	e50b1014 	str	r1, [fp, #-20]
+21000410:	e50b2018 	str	r2, [fp, #-24]
+21000414:	e51b3010 	ldr	r3, [fp, #-16]
+21000418:	e50b3008 	str	r3, [fp, #-8]
+2100041c:	e51b3014 	ldr	r3, [fp, #-20]
+21000420:	e50b300c 	str	r3, [fp, #-12]
+21000424:	ea000009 	b	21000450 <memcpy+0x54>
+21000428:	e51b300c 	ldr	r3, [fp, #-12]
+2100042c:	e5d32000 	ldrb	r2, [r3]
+21000430:	e51b3008 	ldr	r3, [fp, #-8]
+21000434:	e5c32000 	strb	r2, [r3]
+21000438:	e51b3008 	ldr	r3, [fp, #-8]
+2100043c:	e2833001 	add	r3, r3, #1
+21000440:	e50b3008 	str	r3, [fp, #-8]
+21000444:	e51b300c 	ldr	r3, [fp, #-12]
+21000448:	e2833001 	add	r3, r3, #1
+2100044c:	e50b300c 	str	r3, [fp, #-12]
+21000450:	e51b3018 	ldr	r3, [fp, #-24]
+21000454:	e3530000 	cmp	r3, #0
+21000458:	03a03000 	moveq	r3, #0
+2100045c:	13a03001 	movne	r3, #1
+21000460:	e6ef3073 	uxtb	r3, r3
+21000464:	e51b2018 	ldr	r2, [fp, #-24]
+21000468:	e2422001 	sub	r2, r2, #1
+2100046c:	e50b2018 	str	r2, [fp, #-24]
+21000470:	e3530000 	cmp	r3, #0
+21000474:	1affffeb 	bne	21000428 <memcpy+0x2c>
+21000478:	e51b3010 	ldr	r3, [fp, #-16]
+2100047c:	e1a00003 	mov	r0, r3
+21000480:	e28bd000 	add	sp, fp, #0
+21000484:	e8bd0800 	pop	{fp}
+21000488:	e12fff1e 	bx	lr
+
+2100048c <printbuf>:
+2100048c:	e92d4800 	push	{fp, lr}
+21000490:	e28db004 	add	fp, sp, #4
+21000494:	e24dd010 	sub	sp, sp, #16
+21000498:	e50b0010 	str	r0, [fp, #-16]
+2100049c:	e50b1014 	str	r1, [fp, #-20]
+210004a0:	e3a0000a 	mov	r0, #10
+210004a4:	eb000b41 	bl	210031b0 <putchar>
+210004a8:	e51b3010 	ldr	r3, [fp, #-16]
+210004ac:	e50b300c 	str	r3, [fp, #-12]
+210004b0:	e3a03000 	mov	r3, #0
+210004b4:	e50b3008 	str	r3, [fp, #-8]
+210004b8:	ea000014 	b	21000510 <printbuf+0x84>
+210004bc:	e51b3008 	ldr	r3, [fp, #-8]
+210004c0:	e1a03103 	lsl	r3, r3, #2
+210004c4:	e51b200c 	ldr	r2, [fp, #-12]
+210004c8:	e0823003 	add	r3, r2, r3
+210004cc:	e5933000 	ldr	r3, [r3]
+210004d0:	e59f006c 	ldr	r0, [pc, #108]	; 21000544 <printbuf+0xb8>
+210004d4:	e1a01003 	mov	r1, r3
+210004d8:	eb0000dd 	bl	21000854 <printf>
+210004dc:	e51b2008 	ldr	r2, [fp, #-8]
+210004e0:	e1a03fc2 	asr	r3, r2, #31
+210004e4:	e1a03f23 	lsr	r3, r3, #30
+210004e8:	e0822003 	add	r2, r2, r3
+210004ec:	e2022003 	and	r2, r2, #3
+210004f0:	e0633002 	rsb	r3, r3, r2
+210004f4:	e3530003 	cmp	r3, #3
+210004f8:	1a000001 	bne	21000504 <printbuf+0x78>
+210004fc:	e3a0000a 	mov	r0, #10
+21000500:	eb000b2a 	bl	210031b0 <putchar>
+21000504:	e51b3008 	ldr	r3, [fp, #-8]
+21000508:	e2833001 	add	r3, r3, #1
+2100050c:	e50b3008 	str	r3, [fp, #-8]
+21000510:	e51b3014 	ldr	r3, [fp, #-20]
+21000514:	e2832003 	add	r2, r3, #3
+21000518:	e3530000 	cmp	r3, #0
+2100051c:	b1a03002 	movlt	r3, r2
+21000520:	e1a03143 	asr	r3, r3, #2
+21000524:	e1a02003 	mov	r2, r3
+21000528:	e51b3008 	ldr	r3, [fp, #-8]
+2100052c:	e1520003 	cmp	r2, r3
+21000530:	caffffe1 	bgt	210004bc <printbuf+0x30>
+21000534:	e3a0000a 	mov	r0, #10
+21000538:	eb000b1c 	bl	210031b0 <putchar>
+2100053c:	e24bd004 	sub	sp, fp, #4
+21000540:	e8bd8800 	pop	{fp, pc}
+21000544:	210033b8 	.word	0x210033b8
+
+21000548 <mymain>:
+21000548:	e92d4800 	push	{fp, lr}
+2100054c:	e28db004 	add	fp, sp, #4
+21000550:	e24ddc02 	sub	sp, sp, #512	; 0x200
+21000554:	e59f0064 	ldr	r0, [pc, #100]	; 210005c0 <mymain+0x78>
+21000558:	eb000b36 	bl	21003238 <puts>
+2100055c:	eb00036f 	bl	21001320 <SDHC_Init>
+21000560:	e59f005c 	ldr	r0, [pc, #92]	; 210005c4 <mymain+0x7c>
+21000564:	eb000b33 	bl	21003238 <puts>
+21000568:	e24b3f81 	sub	r3, fp, #516	; 0x204
+2100056c:	e3a00001 	mov	r0, #1
+21000570:	e3a01001 	mov	r1, #1
+21000574:	e1a02003 	mov	r2, r3
+21000578:	eb00061e 	bl	21001df8 <SDHC_ReadBlocks>
+2100057c:	e24b3f81 	sub	r3, fp, #516	; 0x204
+21000580:	e1a00003 	mov	r0, r3
+21000584:	e3a01c02 	mov	r1, #512	; 0x200
+21000588:	ebffffbf 	bl	2100048c <printbuf>
+2100058c:	e24b3f81 	sub	r3, fp, #516	; 0x204
+21000590:	e3a00977 	mov	r0, #1949696	; 0x1dc000
+21000594:	e3a01001 	mov	r1, #1
+21000598:	e1a02003 	mov	r2, r3
+2100059c:	eb000615 	bl	21001df8 <SDHC_ReadBlocks>
+210005a0:	e24b3f81 	sub	r3, fp, #516	; 0x204
+210005a4:	e1a00003 	mov	r0, r3
+210005a8:	e3a01c02 	mov	r1, #512	; 0x200
+210005ac:	ebffffb6 	bl	2100048c <printbuf>
+210005b0:	e3a03000 	mov	r3, #0
+210005b4:	e1a00003 	mov	r0, r3
+210005b8:	e24bd004 	sub	sp, fp, #4
+210005bc:	e8bd8800 	pop	{fp, pc}
+210005c0:	210033bc 	.word	0x210033bc
+210005c4:	210033cc 	.word	0x210033cc
+
+210005c8 <putchar_hex>:
+210005c8:	e92d4800 	push	{fp, lr}
+210005cc:	e28db004 	add	fp, sp, #4
+210005d0:	e24dd010 	sub	sp, sp, #16
+210005d4:	e1a03000 	mov	r3, r0
+210005d8:	e54b300d 	strb	r3, [fp, #-13]
+210005dc:	e59f3044 	ldr	r3, [pc, #68]	; 21000628 <putchar_hex+0x60>
+210005e0:	e50b3008 	str	r3, [fp, #-8]
+210005e4:	e55b300d 	ldrb	r3, [fp, #-13]
+210005e8:	e1a03223 	lsr	r3, r3, #4
+210005ec:	e6ef3073 	uxtb	r3, r3
+210005f0:	e51b2008 	ldr	r2, [fp, #-8]
+210005f4:	e0823003 	add	r3, r2, r3
+210005f8:	e5d33000 	ldrb	r3, [r3]
+210005fc:	e1a00003 	mov	r0, r3
+21000600:	eb000aea 	bl	210031b0 <putchar>
+21000604:	e55b300d 	ldrb	r3, [fp, #-13]
+21000608:	e203300f 	and	r3, r3, #15
+2100060c:	e51b2008 	ldr	r2, [fp, #-8]
+21000610:	e0823003 	add	r3, r2, r3
+21000614:	e5d33000 	ldrb	r3, [r3]
+21000618:	e1a00003 	mov	r0, r3
+2100061c:	eb000ae3 	bl	210031b0 <putchar>
+21000620:	e24bd004 	sub	sp, fp, #4
+21000624:	e8bd8800 	pop	{fp, pc}
+21000628:	210033dc 	.word	0x210033dc
+
+2100062c <putint_hex>:
+2100062c:	e92d4800 	push	{fp, lr}
+21000630:	e28db004 	add	fp, sp, #4
+21000634:	e24dd008 	sub	sp, sp, #8
+21000638:	e50b0008 	str	r0, [fp, #-8]
+2100063c:	e51b3008 	ldr	r3, [fp, #-8]
+21000640:	e1a03c23 	lsr	r3, r3, #24
+21000644:	e6ef3073 	uxtb	r3, r3
+21000648:	e1a00003 	mov	r0, r3
+2100064c:	ebffffdd 	bl	210005c8 <putchar_hex>
+21000650:	e51b3008 	ldr	r3, [fp, #-8]
+21000654:	e1a03843 	asr	r3, r3, #16
+21000658:	e6ef3073 	uxtb	r3, r3
+2100065c:	e1a00003 	mov	r0, r3
+21000660:	ebffffd8 	bl	210005c8 <putchar_hex>
+21000664:	e51b3008 	ldr	r3, [fp, #-8]
+21000668:	e1a03443 	asr	r3, r3, #8
+2100066c:	e6ef3073 	uxtb	r3, r3
+21000670:	e1a00003 	mov	r0, r3
+21000674:	ebffffd3 	bl	210005c8 <putchar_hex>
+21000678:	e51b3008 	ldr	r3, [fp, #-8]
+2100067c:	e6ef3073 	uxtb	r3, r3
+21000680:	e1a00003 	mov	r0, r3
+21000684:	ebffffcf 	bl	210005c8 <putchar_hex>
+21000688:	e24bd004 	sub	sp, fp, #4
+2100068c:	e8bd8800 	pop	{fp, pc}
+
+21000690 <itoa>:
+21000690:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21000694:	e28db000 	add	fp, sp, #0
+21000698:	e24dd01c 	sub	sp, sp, #28
+2100069c:	e50b0018 	str	r0, [fp, #-24]
+210006a0:	e50b101c 	str	r1, [fp, #-28]
+210006a4:	e51b3018 	ldr	r3, [fp, #-24]
+210006a8:	e50b3008 	str	r3, [fp, #-8]
+210006ac:	e3a03000 	mov	r3, #0
+210006b0:	e50b300c 	str	r3, [fp, #-12]
+210006b4:	e3a03000 	mov	r3, #0
+210006b8:	e50b3010 	str	r3, [fp, #-16]
+210006bc:	e51b300c 	ldr	r3, [fp, #-12]
+210006c0:	e51b201c 	ldr	r2, [fp, #-28]
+210006c4:	e0820003 	add	r0, r2, r3
+210006c8:	e51b1008 	ldr	r1, [fp, #-8]
+210006cc:	e59f312c 	ldr	r3, [pc, #300]	; 21000800 <itoa+0x170>
+210006d0:	e0c32193 	smull	r2, r3, r3, r1
+210006d4:	e1a02143 	asr	r2, r3, #2
+210006d8:	e1a03fc1 	asr	r3, r1, #31
+210006dc:	e0632002 	rsb	r2, r3, r2
+210006e0:	e1a03002 	mov	r3, r2
+210006e4:	e1a03103 	lsl	r3, r3, #2
+210006e8:	e0833002 	add	r3, r3, r2
+210006ec:	e1a03083 	lsl	r3, r3, #1
+210006f0:	e0632001 	rsb	r2, r3, r1
+210006f4:	e6ef3072 	uxtb	r3, r2
+210006f8:	e2833030 	add	r3, r3, #48	; 0x30
+210006fc:	e6ef3073 	uxtb	r3, r3
+21000700:	e5c03000 	strb	r3, [r0]
+21000704:	e51b300c 	ldr	r3, [fp, #-12]
+21000708:	e2833001 	add	r3, r3, #1
+2100070c:	e50b300c 	str	r3, [fp, #-12]
+21000710:	e51b3008 	ldr	r3, [fp, #-8]
+21000714:	e59f20e4 	ldr	r2, [pc, #228]	; 21000800 <itoa+0x170>
+21000718:	e0c21392 	smull	r1, r2, r2, r3
+2100071c:	e1a02142 	asr	r2, r2, #2
+21000720:	e1a03fc3 	asr	r3, r3, #31
+21000724:	e0633002 	rsb	r3, r3, r2
+21000728:	e50b3008 	str	r3, [fp, #-8]
+2100072c:	e51b3008 	ldr	r3, [fp, #-8]
+21000730:	e3530000 	cmp	r3, #0
+21000734:	1affffe0 	bne	210006bc <itoa+0x2c>
+21000738:	e51b300c 	ldr	r3, [fp, #-12]
+2100073c:	e51b201c 	ldr	r2, [fp, #-28]
+21000740:	e0823003 	add	r3, r2, r3
+21000744:	e3a02000 	mov	r2, #0
+21000748:	e5c32000 	strb	r2, [r3]
+2100074c:	e51b300c 	ldr	r3, [fp, #-12]
+21000750:	e50b3010 	str	r3, [fp, #-16]
+21000754:	e3a03000 	mov	r3, #0
+21000758:	e50b300c 	str	r3, [fp, #-12]
+2100075c:	ea00001a 	b	210007cc <itoa+0x13c>
+21000760:	e51b300c 	ldr	r3, [fp, #-12]
+21000764:	e51b201c 	ldr	r2, [fp, #-28]
+21000768:	e0823003 	add	r3, r2, r3
+2100076c:	e5d33000 	ldrb	r3, [r3]
+21000770:	e54b3011 	strb	r3, [fp, #-17]
+21000774:	e51b300c 	ldr	r3, [fp, #-12]
+21000778:	e51b201c 	ldr	r2, [fp, #-28]
+2100077c:	e0823003 	add	r3, r2, r3
+21000780:	e51b1010 	ldr	r1, [fp, #-16]
+21000784:	e51b200c 	ldr	r2, [fp, #-12]
+21000788:	e0622001 	rsb	r2, r2, r1
+2100078c:	e2422001 	sub	r2, r2, #1
+21000790:	e51b101c 	ldr	r1, [fp, #-28]
+21000794:	e0812002 	add	r2, r1, r2
+21000798:	e5d22000 	ldrb	r2, [r2]
+2100079c:	e5c32000 	strb	r2, [r3]
+210007a0:	e51b2010 	ldr	r2, [fp, #-16]
+210007a4:	e51b300c 	ldr	r3, [fp, #-12]
+210007a8:	e0633002 	rsb	r3, r3, r2
+210007ac:	e2433001 	sub	r3, r3, #1
+210007b0:	e51b201c 	ldr	r2, [fp, #-28]
+210007b4:	e0823003 	add	r3, r2, r3
+210007b8:	e55b2011 	ldrb	r2, [fp, #-17]
+210007bc:	e5c32000 	strb	r2, [r3]
+210007c0:	e51b300c 	ldr	r3, [fp, #-12]
+210007c4:	e2833001 	add	r3, r3, #1
+210007c8:	e50b300c 	str	r3, [fp, #-12]
+210007cc:	e51b3010 	ldr	r3, [fp, #-16]
+210007d0:	e1a02fa3 	lsr	r2, r3, #31
+210007d4:	e0823003 	add	r3, r2, r3
+210007d8:	e1a030c3 	asr	r3, r3, #1
+210007dc:	e1a02003 	mov	r2, r3
+210007e0:	e51b300c 	ldr	r3, [fp, #-12]
+210007e4:	e1520003 	cmp	r2, r3
+210007e8:	caffffdc 	bgt	21000760 <itoa+0xd0>
+210007ec:	e51b301c 	ldr	r3, [fp, #-28]
+210007f0:	e1a00003 	mov	r0, r3
+210007f4:	e28bd000 	add	sp, fp, #0
+210007f8:	e8bd0800 	pop	{fp}
+210007fc:	e12fff1e 	bx	lr
+21000800:	66666667 	.word	0x66666667
+
+21000804 <_puts>:
+21000804:	e92d4800 	push	{fp, lr}
+21000808:	e28db004 	add	fp, sp, #4
+2100080c:	e24dd008 	sub	sp, sp, #8
+21000810:	e50b0008 	str	r0, [fp, #-8]
+21000814:	ea000006 	b	21000834 <_puts+0x30>
+21000818:	e51b3008 	ldr	r3, [fp, #-8]
+2100081c:	e5d33000 	ldrb	r3, [r3]
+21000820:	e51b2008 	ldr	r2, [fp, #-8]
+21000824:	e2822001 	add	r2, r2, #1
+21000828:	e50b2008 	str	r2, [fp, #-8]
+2100082c:	e1a00003 	mov	r0, r3
+21000830:	eb000a5e 	bl	210031b0 <putchar>
+21000834:	e51b3008 	ldr	r3, [fp, #-8]
+21000838:	e5d33000 	ldrb	r3, [r3]
+2100083c:	e3530000 	cmp	r3, #0
+21000840:	1afffff4 	bne	21000818 <_puts+0x14>
+21000844:	e3a03000 	mov	r3, #0
+21000848:	e1a00003 	mov	r0, r3
+2100084c:	e24bd004 	sub	sp, fp, #4
+21000850:	e8bd8800 	pop	{fp, pc}
+
+21000854 <printf>:
+21000854:	e92d000f 	push	{r0, r1, r2, r3}
+21000858:	e92d4800 	push	{fp, lr}
+2100085c:	e28db004 	add	fp, sp, #4
+21000860:	e24dd078 	sub	sp, sp, #120	; 0x78
+21000864:	e28b3004 	add	r3, fp, #4
+21000868:	e2833004 	add	r3, r3, #4
+2100086c:	e50b3008 	str	r3, [fp, #-8]
+21000870:	ea000052 	b	210009c0 <printf+0x16c>
+21000874:	e55b3009 	ldrb	r3, [fp, #-9]
+21000878:	e3530025 	cmp	r3, #37	; 0x25
+2100087c:	1a00004b 	bne	210009b0 <printf+0x15c>
+21000880:	e59b3004 	ldr	r3, [fp, #4]
+21000884:	e5d32000 	ldrb	r2, [r3]
+21000888:	e54b2009 	strb	r2, [fp, #-9]
+2100088c:	e2833001 	add	r3, r3, #1
+21000890:	e58b3004 	str	r3, [fp, #4]
+21000894:	e55b3009 	ldrb	r3, [fp, #-9]
+21000898:	e2433063 	sub	r3, r3, #99	; 0x63
+2100089c:	e3530015 	cmp	r3, #21
+210008a0:	979ff103 	ldrls	pc, [pc, r3, lsl #2]
+210008a4:	ea00003f 	b	210009a8 <printf+0x154>
+210008a8:	21000900 	.word	0x21000900
+210008ac:	21000970 	.word	0x21000970
+210008b0:	210009a8 	.word	0x210009a8
+210008b4:	210009a8 	.word	0x210009a8
+210008b8:	210009a8 	.word	0x210009a8
+210008bc:	210009a8 	.word	0x210009a8
+210008c0:	210009a8 	.word	0x210009a8
+210008c4:	210009a8 	.word	0x210009a8
+210008c8:	210009a8 	.word	0x210009a8
+210008cc:	210009a8 	.word	0x210009a8
+210008d0:	210009a8 	.word	0x210009a8
+210008d4:	210009a8 	.word	0x210009a8
+210008d8:	210009a8 	.word	0x210009a8
+210008dc:	210009a8 	.word	0x210009a8
+210008e0:	210009a8 	.word	0x210009a8
+210008e4:	210009a8 	.word	0x210009a8
+210008e8:	21000928 	.word	0x21000928
+210008ec:	210009a8 	.word	0x210009a8
+210008f0:	210009a8 	.word	0x210009a8
+210008f4:	210009a8 	.word	0x210009a8
+210008f8:	210009a8 	.word	0x210009a8
+210008fc:	2100094c 	.word	0x2100094c
+21000900:	e51b3008 	ldr	r3, [fp, #-8]
+21000904:	e5933000 	ldr	r3, [r3]
+21000908:	e54b300a 	strb	r3, [fp, #-10]
+2100090c:	e51b3008 	ldr	r3, [fp, #-8]
+21000910:	e2833004 	add	r3, r3, #4
+21000914:	e50b3008 	str	r3, [fp, #-8]
+21000918:	e55b300a 	ldrb	r3, [fp, #-10]
+2100091c:	e1a00003 	mov	r0, r3
+21000920:	eb000a22 	bl	210031b0 <putchar>
+21000924:	ea000020 	b	210009ac <printf+0x158>
+21000928:	e51b3008 	ldr	r3, [fp, #-8]
+2100092c:	e5933000 	ldr	r3, [r3]
+21000930:	e50b3010 	str	r3, [fp, #-16]
+21000934:	e51b3008 	ldr	r3, [fp, #-8]
+21000938:	e2833004 	add	r3, r3, #4
+2100093c:	e50b3008 	str	r3, [fp, #-8]
+21000940:	e51b0010 	ldr	r0, [fp, #-16]
+21000944:	ebffffae 	bl	21000804 <_puts>
+21000948:	ea000017 	b	210009ac <printf+0x158>
+2100094c:	e51b3008 	ldr	r3, [fp, #-8]
+21000950:	e5933000 	ldr	r3, [r3]
+21000954:	e50b3014 	str	r3, [fp, #-20]
+21000958:	e51b3008 	ldr	r3, [fp, #-8]
+2100095c:	e2833004 	add	r3, r3, #4
+21000960:	e50b3008 	str	r3, [fp, #-8]
+21000964:	e51b0014 	ldr	r0, [fp, #-20]
+21000968:	ebffff2f 	bl	2100062c <putint_hex>
+2100096c:	ea00000e 	b	210009ac <printf+0x158>
+21000970:	e51b3008 	ldr	r3, [fp, #-8]
+21000974:	e5933000 	ldr	r3, [r3]
+21000978:	e50b3014 	str	r3, [fp, #-20]
+2100097c:	e51b3008 	ldr	r3, [fp, #-8]
+21000980:	e2833004 	add	r3, r3, #4
+21000984:	e50b3008 	str	r3, [fp, #-8]
+21000988:	e24b3078 	sub	r3, fp, #120	; 0x78
+2100098c:	e51b0014 	ldr	r0, [fp, #-20]
+21000990:	e1a01003 	mov	r1, r3
+21000994:	ebffff3d 	bl	21000690 <itoa>
+21000998:	e24b3078 	sub	r3, fp, #120	; 0x78
+2100099c:	e1a00003 	mov	r0, r3
+210009a0:	ebffff97 	bl	21000804 <_puts>
+210009a4:	ea000000 	b	210009ac <printf+0x158>
+210009a8:	e1a00000 	nop			; (mov r0, r0)
+210009ac:	ea000003 	b	210009c0 <printf+0x16c>
+210009b0:	e55b3009 	ldrb	r3, [fp, #-9]
+210009b4:	e1a00003 	mov	r0, r3
+210009b8:	eb0009fc 	bl	210031b0 <putchar>
+210009bc:	e1a00000 	nop			; (mov r0, r0)
+210009c0:	e59b3004 	ldr	r3, [fp, #4]
+210009c4:	e5d32000 	ldrb	r2, [r3]
+210009c8:	e54b2009 	strb	r2, [fp, #-9]
+210009cc:	e55b2009 	ldrb	r2, [fp, #-9]
+210009d0:	e3520000 	cmp	r2, #0
+210009d4:	03a02000 	moveq	r2, #0
+210009d8:	13a02001 	movne	r2, #1
+210009dc:	e6ef2072 	uxtb	r2, r2
+210009e0:	e2833001 	add	r3, r3, #1
+210009e4:	e58b3004 	str	r3, [fp, #4]
+210009e8:	e3520000 	cmp	r2, #0
+210009ec:	1affffa0 	bne	21000874 <printf+0x20>
+210009f0:	e3a03000 	mov	r3, #0
+210009f4:	e1a00003 	mov	r0, r3
+210009f8:	e24bd004 	sub	sp, fp, #4
+210009fc:	e8bd4800 	pop	{fp, lr}
+21000a00:	e28dd010 	add	sp, sp, #16
+21000a04:	e12fff1e 	bx	lr
+
+21000a08 <SDHC_ISR0>:
+21000a08:	e92d4800 	push	{fp, lr}
+21000a0c:	e28db004 	add	fp, sp, #4
+21000a10:	e59f300c 	ldr	r3, [pc, #12]	; 21000a24 <SDHC_ISR0+0x1c>
+21000a14:	e5933000 	ldr	r3, [r3]
+21000a18:	e1a00003 	mov	r0, r3
+21000a1c:	eb0000e2 	bl	21000dac <SDHC_InterruptHandler>
+21000a20:	e8bd8800 	pop	{fp, pc}
+21000a24:	2100b664 	.word	0x2100b664
+
+21000a28 <SDHC_SetDriveStrength>:
+21000a28:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21000a2c:	e28db000 	add	fp, sp, #0
+21000a30:	e24dd00c 	sub	sp, sp, #12
+21000a34:	e50b0008 	str	r0, [fp, #-8]
+21000a38:	e1a03001 	mov	r3, r1
+21000a3c:	e54b3009 	strb	r3, [fp, #-9]
+21000a40:	e55b3009 	ldrb	r3, [fp, #-9]
+21000a44:	e3530003 	cmp	r3, #3
+21000a48:	9a000001 	bls	21000a54 <SDHC_SetDriveStrength+0x2c>
+21000a4c:	e3a03003 	mov	r3, #3
+21000a50:	e54b3009 	strb	r3, [fp, #-9]
+21000a54:	e51b3008 	ldr	r3, [fp, #-8]
+21000a58:	e5933010 	ldr	r3, [r3, #16]
+21000a5c:	e3530000 	cmp	r3, #0
+21000a60:	0a000003 	beq	21000a74 <SDHC_SetDriveStrength+0x4c>
+21000a64:	e51b3008 	ldr	r3, [fp, #-8]
+21000a68:	e5933010 	ldr	r3, [r3, #16]
+21000a6c:	e3530001 	cmp	r3, #1
+21000a70:	1a00000c 	bne	21000aa8 <SDHC_SetDriveStrength+0x80>
+21000a74:	e59f3038 	ldr	r3, [pc, #56]	; 21000ab4 <SDHC_SetDriveStrength+0x8c>
+21000a78:	e59f2034 	ldr	r2, [pc, #52]	; 21000ab4 <SDHC_SetDriveStrength+0x8c>
+21000a7c:	e5922000 	ldr	r2, [r2]
+21000a80:	e3c21303 	bic	r1, r2, #201326592	; 0xc000000
+21000a84:	e55b2009 	ldrb	r2, [fp, #-9]
+21000a88:	e1a02d02 	lsl	r2, r2, #26
+21000a8c:	e1812002 	orr	r2, r1, r2
+21000a90:	e5832000 	str	r2, [r3]
+21000a94:	e51b3008 	ldr	r3, [fp, #-8]
+21000a98:	e5933000 	ldr	r3, [r3]
+21000a9c:	e283308c 	add	r3, r3, #140	; 0x8c
+21000aa0:	e3a02803 	mov	r2, #196608	; 0x30000
+21000aa4:	e5832000 	str	r2, [r3]
+21000aa8:	e28bd000 	add	sp, fp, #0
+21000aac:	e8bd0800 	pop	{fp}
+21000ab0:	e12fff1e 	bx	lr
+21000ab4:	7f0081a0 	.word	0x7f0081a0
+
+21000ab8 <SDHC_ErrorInterruptHandler>:
+21000ab8:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21000abc:	e28db000 	add	fp, sp, #0
+21000ac0:	e24dd014 	sub	sp, sp, #20
+21000ac4:	e50b0010 	str	r0, [fp, #-16]
+21000ac8:	e51b3010 	ldr	r3, [fp, #-16]
+21000acc:	e5933000 	ldr	r3, [r3]
+21000ad0:	e2833032 	add	r3, r3, #50	; 0x32
+21000ad4:	e1d330b0 	ldrh	r3, [r3]
+21000ad8:	e6ff2073 	uxth	r2, r3
+21000adc:	e51b3010 	ldr	r3, [fp, #-16]
+21000ae0:	e1c323bc 	strh	r2, [r3, #60]	; 0x3c
+21000ae4:	e51b3010 	ldr	r3, [fp, #-16]
+21000ae8:	e1d333bc 	ldrh	r3, [r3, #60]	; 0x3c
+21000aec:	e14b30b6 	strh	r3, [fp, #-6]
+21000af0:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000af4:	e2033c02 	and	r3, r3, #512	; 0x200
+21000af8:	e3530000 	cmp	r3, #0
+21000afc:	0a00000c 	beq	21000b34 <SDHC_ErrorInterruptHandler+0x7c>
+21000b00:	e51b3010 	ldr	r3, [fp, #-16]
+21000b04:	e5933000 	ldr	r3, [r3]
+21000b08:	e2833032 	add	r3, r3, #50	; 0x32
+21000b0c:	e3a02c02 	mov	r2, #512	; 0x200
+21000b10:	e1c320b0 	strh	r2, [r3]
+21000b14:	e51b3010 	ldr	r3, [fp, #-16]
+21000b18:	e5933000 	ldr	r3, [r3]
+21000b1c:	e2833032 	add	r3, r3, #50	; 0x32
+21000b20:	e1d330b0 	ldrh	r3, [r3]
+21000b24:	e6ff3073 	uxth	r3, r3
+21000b28:	e2033c02 	and	r3, r3, #512	; 0x200
+21000b2c:	e3530000 	cmp	r3, #0
+21000b30:	1afffff7 	bne	21000b14 <SDHC_ErrorInterruptHandler+0x5c>
+21000b34:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000b38:	e2033c01 	and	r3, r3, #256	; 0x100
+21000b3c:	e3530000 	cmp	r3, #0
+21000b40:	0a00000c 	beq	21000b78 <SDHC_ErrorInterruptHandler+0xc0>
+21000b44:	e51b3010 	ldr	r3, [fp, #-16]
+21000b48:	e5933000 	ldr	r3, [r3]
+21000b4c:	e2833032 	add	r3, r3, #50	; 0x32
+21000b50:	e3a02c01 	mov	r2, #256	; 0x100
+21000b54:	e1c320b0 	strh	r2, [r3]
+21000b58:	e51b3010 	ldr	r3, [fp, #-16]
+21000b5c:	e5933000 	ldr	r3, [r3]
+21000b60:	e2833032 	add	r3, r3, #50	; 0x32
+21000b64:	e1d330b0 	ldrh	r3, [r3]
+21000b68:	e6ff3073 	uxth	r3, r3
+21000b6c:	e2033c01 	and	r3, r3, #256	; 0x100
+21000b70:	e3530000 	cmp	r3, #0
+21000b74:	1afffff7 	bne	21000b58 <SDHC_ErrorInterruptHandler+0xa0>
+21000b78:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000b7c:	e2033080 	and	r3, r3, #128	; 0x80
+21000b80:	e3530000 	cmp	r3, #0
+21000b84:	0a00000c 	beq	21000bbc <SDHC_ErrorInterruptHandler+0x104>
+21000b88:	e51b3010 	ldr	r3, [fp, #-16]
+21000b8c:	e5933000 	ldr	r3, [r3]
+21000b90:	e2833032 	add	r3, r3, #50	; 0x32
+21000b94:	e3a02080 	mov	r2, #128	; 0x80
+21000b98:	e1c320b0 	strh	r2, [r3]
+21000b9c:	e51b3010 	ldr	r3, [fp, #-16]
+21000ba0:	e5933000 	ldr	r3, [r3]
+21000ba4:	e2833032 	add	r3, r3, #50	; 0x32
+21000ba8:	e1d330b0 	ldrh	r3, [r3]
+21000bac:	e6ff3073 	uxth	r3, r3
+21000bb0:	e2033080 	and	r3, r3, #128	; 0x80
+21000bb4:	e3530000 	cmp	r3, #0
+21000bb8:	1afffff7 	bne	21000b9c <SDHC_ErrorInterruptHandler+0xe4>
+21000bbc:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000bc0:	e2033040 	and	r3, r3, #64	; 0x40
+21000bc4:	e3530000 	cmp	r3, #0
+21000bc8:	0a00000c 	beq	21000c00 <SDHC_ErrorInterruptHandler+0x148>
+21000bcc:	e51b3010 	ldr	r3, [fp, #-16]
+21000bd0:	e5933000 	ldr	r3, [r3]
+21000bd4:	e2833032 	add	r3, r3, #50	; 0x32
+21000bd8:	e3a02040 	mov	r2, #64	; 0x40
+21000bdc:	e1c320b0 	strh	r2, [r3]
+21000be0:	e51b3010 	ldr	r3, [fp, #-16]
+21000be4:	e5933000 	ldr	r3, [r3]
+21000be8:	e2833032 	add	r3, r3, #50	; 0x32
+21000bec:	e1d330b0 	ldrh	r3, [r3]
+21000bf0:	e6ff3073 	uxth	r3, r3
+21000bf4:	e2033040 	and	r3, r3, #64	; 0x40
+21000bf8:	e3530000 	cmp	r3, #0
+21000bfc:	1afffff7 	bne	21000be0 <SDHC_ErrorInterruptHandler+0x128>
+21000c00:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000c04:	e2033020 	and	r3, r3, #32
+21000c08:	e3530000 	cmp	r3, #0
+21000c0c:	0a00000c 	beq	21000c44 <SDHC_ErrorInterruptHandler+0x18c>
+21000c10:	e51b3010 	ldr	r3, [fp, #-16]
+21000c14:	e5933000 	ldr	r3, [r3]
+21000c18:	e2833032 	add	r3, r3, #50	; 0x32
+21000c1c:	e3a02020 	mov	r2, #32
+21000c20:	e1c320b0 	strh	r2, [r3]
+21000c24:	e51b3010 	ldr	r3, [fp, #-16]
+21000c28:	e5933000 	ldr	r3, [r3]
+21000c2c:	e2833032 	add	r3, r3, #50	; 0x32
+21000c30:	e1d330b0 	ldrh	r3, [r3]
+21000c34:	e6ff3073 	uxth	r3, r3
+21000c38:	e2033020 	and	r3, r3, #32
+21000c3c:	e3530000 	cmp	r3, #0
+21000c40:	1afffff7 	bne	21000c24 <SDHC_ErrorInterruptHandler+0x16c>
+21000c44:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000c48:	e2033010 	and	r3, r3, #16
+21000c4c:	e3530000 	cmp	r3, #0
+21000c50:	0a00000c 	beq	21000c88 <SDHC_ErrorInterruptHandler+0x1d0>
+21000c54:	e51b3010 	ldr	r3, [fp, #-16]
+21000c58:	e5933000 	ldr	r3, [r3]
+21000c5c:	e2833032 	add	r3, r3, #50	; 0x32
+21000c60:	e3a02010 	mov	r2, #16
+21000c64:	e1c320b0 	strh	r2, [r3]
+21000c68:	e51b3010 	ldr	r3, [fp, #-16]
+21000c6c:	e5933000 	ldr	r3, [r3]
+21000c70:	e2833032 	add	r3, r3, #50	; 0x32
+21000c74:	e1d330b0 	ldrh	r3, [r3]
+21000c78:	e6ff3073 	uxth	r3, r3
+21000c7c:	e2033010 	and	r3, r3, #16
+21000c80:	e3530000 	cmp	r3, #0
+21000c84:	1afffff7 	bne	21000c68 <SDHC_ErrorInterruptHandler+0x1b0>
+21000c88:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000c8c:	e2033008 	and	r3, r3, #8
+21000c90:	e3530000 	cmp	r3, #0
+21000c94:	0a00000c 	beq	21000ccc <SDHC_ErrorInterruptHandler+0x214>
+21000c98:	e51b3010 	ldr	r3, [fp, #-16]
+21000c9c:	e5933000 	ldr	r3, [r3]
+21000ca0:	e2833032 	add	r3, r3, #50	; 0x32
+21000ca4:	e3a02008 	mov	r2, #8
+21000ca8:	e1c320b0 	strh	r2, [r3]
+21000cac:	e51b3010 	ldr	r3, [fp, #-16]
+21000cb0:	e5933000 	ldr	r3, [r3]
+21000cb4:	e2833032 	add	r3, r3, #50	; 0x32
+21000cb8:	e1d330b0 	ldrh	r3, [r3]
+21000cbc:	e6ff3073 	uxth	r3, r3
+21000cc0:	e2033008 	and	r3, r3, #8
+21000cc4:	e3530000 	cmp	r3, #0
+21000cc8:	1afffff7 	bne	21000cac <SDHC_ErrorInterruptHandler+0x1f4>
+21000ccc:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000cd0:	e2033004 	and	r3, r3, #4
+21000cd4:	e3530000 	cmp	r3, #0
+21000cd8:	0a00000c 	beq	21000d10 <SDHC_ErrorInterruptHandler+0x258>
+21000cdc:	e51b3010 	ldr	r3, [fp, #-16]
+21000ce0:	e5933000 	ldr	r3, [r3]
+21000ce4:	e2833032 	add	r3, r3, #50	; 0x32
+21000ce8:	e3a02004 	mov	r2, #4
+21000cec:	e1c320b0 	strh	r2, [r3]
+21000cf0:	e51b3010 	ldr	r3, [fp, #-16]
+21000cf4:	e5933000 	ldr	r3, [r3]
+21000cf8:	e2833032 	add	r3, r3, #50	; 0x32
+21000cfc:	e1d330b0 	ldrh	r3, [r3]
+21000d00:	e6ff3073 	uxth	r3, r3
+21000d04:	e2033004 	and	r3, r3, #4
+21000d08:	e3530000 	cmp	r3, #0
+21000d0c:	1afffff7 	bne	21000cf0 <SDHC_ErrorInterruptHandler+0x238>
+21000d10:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000d14:	e2033002 	and	r3, r3, #2
+21000d18:	e3530000 	cmp	r3, #0
+21000d1c:	0a00000c 	beq	21000d54 <SDHC_ErrorInterruptHandler+0x29c>
+21000d20:	e51b3010 	ldr	r3, [fp, #-16]
+21000d24:	e5933000 	ldr	r3, [r3]
+21000d28:	e2833032 	add	r3, r3, #50	; 0x32
+21000d2c:	e3a02002 	mov	r2, #2
+21000d30:	e1c320b0 	strh	r2, [r3]
+21000d34:	e51b3010 	ldr	r3, [fp, #-16]
+21000d38:	e5933000 	ldr	r3, [r3]
+21000d3c:	e2833032 	add	r3, r3, #50	; 0x32
+21000d40:	e1d330b0 	ldrh	r3, [r3]
+21000d44:	e6ff3073 	uxth	r3, r3
+21000d48:	e2033002 	and	r3, r3, #2
+21000d4c:	e3530000 	cmp	r3, #0
+21000d50:	1afffff7 	bne	21000d34 <SDHC_ErrorInterruptHandler+0x27c>
+21000d54:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000d58:	e2033001 	and	r3, r3, #1
+21000d5c:	e6ef3073 	uxtb	r3, r3
+21000d60:	e3530000 	cmp	r3, #0
+21000d64:	0a00000d 	beq	21000da0 <SDHC_ErrorInterruptHandler+0x2e8>
+21000d68:	e51b3010 	ldr	r3, [fp, #-16]
+21000d6c:	e5933000 	ldr	r3, [r3]
+21000d70:	e2833032 	add	r3, r3, #50	; 0x32
+21000d74:	e3a02001 	mov	r2, #1
+21000d78:	e1c320b0 	strh	r2, [r3]
+21000d7c:	e51b3010 	ldr	r3, [fp, #-16]
+21000d80:	e5933000 	ldr	r3, [r3]
+21000d84:	e2833032 	add	r3, r3, #50	; 0x32
+21000d88:	e1d330b0 	ldrh	r3, [r3]
+21000d8c:	e6ff3073 	uxth	r3, r3
+21000d90:	e2033001 	and	r3, r3, #1
+21000d94:	e6ef3073 	uxtb	r3, r3
+21000d98:	e3530000 	cmp	r3, #0
+21000d9c:	1afffff6 	bne	21000d7c <SDHC_ErrorInterruptHandler+0x2c4>
+21000da0:	e28bd000 	add	sp, fp, #0
+21000da4:	e8bd0800 	pop	{fp}
+21000da8:	e12fff1e 	bx	lr
+
+21000dac <SDHC_InterruptHandler>:
+21000dac:	e92d4800 	push	{fp, lr}
+21000db0:	e28db004 	add	fp, sp, #4
+21000db4:	e24dd010 	sub	sp, sp, #16
+21000db8:	e50b0010 	str	r0, [fp, #-16]
+21000dbc:	e51b3010 	ldr	r3, [fp, #-16]
+21000dc0:	e1d323ba 	ldrh	r2, [r3, #58]	; 0x3a
+21000dc4:	e51b3010 	ldr	r3, [fp, #-16]
+21000dc8:	e5933000 	ldr	r3, [r3]
+21000dcc:	e2833030 	add	r3, r3, #48	; 0x30
+21000dd0:	e1d330b0 	ldrh	r3, [r3]
+21000dd4:	e14b30b6 	strh	r3, [fp, #-6]
+21000dd8:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000ddc:	e1823003 	orr	r3, r2, r3
+21000de0:	e6ff2073 	uxth	r2, r3
+21000de4:	e51b3010 	ldr	r3, [fp, #-16]
+21000de8:	e1c323ba 	strh	r2, [r3, #58]	; 0x3a
+21000dec:	e59f04ac 	ldr	r0, [pc, #1196]	; 210012a0 <SDHC_InterruptHandler+0x4f4>
+21000df0:	eb000910 	bl	21003238 <puts>
+21000df4:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000df8:	e6bf3073 	sxth	r3, r3
+21000dfc:	e3530000 	cmp	r3, #0
+21000e00:	aa00000f 	bge	21000e44 <SDHC_InterruptHandler+0x98>
+21000e04:	e51b0010 	ldr	r0, [fp, #-16]
+21000e08:	ebffff2a 	bl	21000ab8 <SDHC_ErrorInterruptHandler>
+21000e0c:	e51b3010 	ldr	r3, [fp, #-16]
+21000e10:	e5933000 	ldr	r3, [r3]
+21000e14:	e2833030 	add	r3, r3, #48	; 0x30
+21000e18:	e3a02902 	mov	r2, #32768	; 0x8000
+21000e1c:	e1c320b0 	strh	r2, [r3]
+21000e20:	e51b3010 	ldr	r3, [fp, #-16]
+21000e24:	e5933000 	ldr	r3, [r3]
+21000e28:	e2833030 	add	r3, r3, #48	; 0x30
+21000e2c:	e1d330b0 	ldrh	r3, [r3]
+21000e30:	e6ff3073 	uxth	r3, r3
+21000e34:	e6ff3073 	uxth	r3, r3
+21000e38:	e6bf3073 	sxth	r3, r3
+21000e3c:	e3530000 	cmp	r3, #0
+21000e40:	bafffff6 	blt	21000e20 <SDHC_InterruptHandler+0x74>
+21000e44:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000e48:	e2033901 	and	r3, r3, #16384	; 0x4000
+21000e4c:	e3530000 	cmp	r3, #0
+21000e50:	0a00000c 	beq	21000e88 <SDHC_InterruptHandler+0xdc>
+21000e54:	e51b3010 	ldr	r3, [fp, #-16]
+21000e58:	e5933000 	ldr	r3, [r3]
+21000e5c:	e2833030 	add	r3, r3, #48	; 0x30
+21000e60:	e3a02901 	mov	r2, #16384	; 0x4000
+21000e64:	e1c320b0 	strh	r2, [r3]
+21000e68:	e51b3010 	ldr	r3, [fp, #-16]
+21000e6c:	e5933000 	ldr	r3, [r3]
+21000e70:	e2833030 	add	r3, r3, #48	; 0x30
+21000e74:	e1d330b0 	ldrh	r3, [r3]
+21000e78:	e6ff3073 	uxth	r3, r3
+21000e7c:	e2033901 	and	r3, r3, #16384	; 0x4000
+21000e80:	e3530000 	cmp	r3, #0
+21000e84:	1afffff7 	bne	21000e68 <SDHC_InterruptHandler+0xbc>
+21000e88:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000e8c:	e2033a02 	and	r3, r3, #8192	; 0x2000
+21000e90:	e3530000 	cmp	r3, #0
+21000e94:	0a00000c 	beq	21000ecc <SDHC_InterruptHandler+0x120>
+21000e98:	e51b3010 	ldr	r3, [fp, #-16]
+21000e9c:	e5933000 	ldr	r3, [r3]
+21000ea0:	e2833030 	add	r3, r3, #48	; 0x30
+21000ea4:	e3a02a02 	mov	r2, #8192	; 0x2000
+21000ea8:	e1c320b0 	strh	r2, [r3]
+21000eac:	e51b3010 	ldr	r3, [fp, #-16]
+21000eb0:	e5933000 	ldr	r3, [r3]
+21000eb4:	e2833030 	add	r3, r3, #48	; 0x30
+21000eb8:	e1d330b0 	ldrh	r3, [r3]
+21000ebc:	e6ff3073 	uxth	r3, r3
+21000ec0:	e2033a02 	and	r3, r3, #8192	; 0x2000
+21000ec4:	e3530000 	cmp	r3, #0
+21000ec8:	1afffff7 	bne	21000eac <SDHC_InterruptHandler+0x100>
+21000ecc:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000ed0:	e2033a01 	and	r3, r3, #4096	; 0x1000
+21000ed4:	e3530000 	cmp	r3, #0
+21000ed8:	0a00000c 	beq	21000f10 <SDHC_InterruptHandler+0x164>
+21000edc:	e51b3010 	ldr	r3, [fp, #-16]
+21000ee0:	e5933000 	ldr	r3, [r3]
+21000ee4:	e2833030 	add	r3, r3, #48	; 0x30
+21000ee8:	e3a02a01 	mov	r2, #4096	; 0x1000
+21000eec:	e1c320b0 	strh	r2, [r3]
+21000ef0:	e51b3010 	ldr	r3, [fp, #-16]
+21000ef4:	e5933000 	ldr	r3, [r3]
+21000ef8:	e2833030 	add	r3, r3, #48	; 0x30
+21000efc:	e1d330b0 	ldrh	r3, [r3]
+21000f00:	e6ff3073 	uxth	r3, r3
+21000f04:	e2033a01 	and	r3, r3, #4096	; 0x1000
+21000f08:	e3530000 	cmp	r3, #0
+21000f0c:	1afffff7 	bne	21000ef0 <SDHC_InterruptHandler+0x144>
+21000f10:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000f14:	e2033b02 	and	r3, r3, #2048	; 0x800
+21000f18:	e3530000 	cmp	r3, #0
+21000f1c:	0a00000c 	beq	21000f54 <SDHC_InterruptHandler+0x1a8>
+21000f20:	e51b3010 	ldr	r3, [fp, #-16]
+21000f24:	e5933000 	ldr	r3, [r3]
+21000f28:	e2833030 	add	r3, r3, #48	; 0x30
+21000f2c:	e3a02b02 	mov	r2, #2048	; 0x800
+21000f30:	e1c320b0 	strh	r2, [r3]
+21000f34:	e51b3010 	ldr	r3, [fp, #-16]
+21000f38:	e5933000 	ldr	r3, [r3]
+21000f3c:	e2833030 	add	r3, r3, #48	; 0x30
+21000f40:	e1d330b0 	ldrh	r3, [r3]
+21000f44:	e6ff3073 	uxth	r3, r3
+21000f48:	e2033b02 	and	r3, r3, #2048	; 0x800
+21000f4c:	e3530000 	cmp	r3, #0
+21000f50:	1afffff7 	bne	21000f34 <SDHC_InterruptHandler+0x188>
+21000f54:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000f58:	e2033b01 	and	r3, r3, #1024	; 0x400
+21000f5c:	e3530000 	cmp	r3, #0
+21000f60:	0a00000c 	beq	21000f98 <SDHC_InterruptHandler+0x1ec>
+21000f64:	e51b3010 	ldr	r3, [fp, #-16]
+21000f68:	e5933000 	ldr	r3, [r3]
+21000f6c:	e2833030 	add	r3, r3, #48	; 0x30
+21000f70:	e3a02b01 	mov	r2, #1024	; 0x400
+21000f74:	e1c320b0 	strh	r2, [r3]
+21000f78:	e51b3010 	ldr	r3, [fp, #-16]
+21000f7c:	e5933000 	ldr	r3, [r3]
+21000f80:	e2833030 	add	r3, r3, #48	; 0x30
+21000f84:	e1d330b0 	ldrh	r3, [r3]
+21000f88:	e6ff3073 	uxth	r3, r3
+21000f8c:	e2033b01 	and	r3, r3, #1024	; 0x400
+21000f90:	e3530000 	cmp	r3, #0
+21000f94:	1afffff7 	bne	21000f78 <SDHC_InterruptHandler+0x1cc>
+21000f98:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000f9c:	e2033c02 	and	r3, r3, #512	; 0x200
+21000fa0:	e3530000 	cmp	r3, #0
+21000fa4:	0a00000f 	beq	21000fe8 <SDHC_InterruptHandler+0x23c>
+21000fa8:	e51b3010 	ldr	r3, [fp, #-16]
+21000fac:	e5933000 	ldr	r3, [r3]
+21000fb0:	e2833030 	add	r3, r3, #48	; 0x30
+21000fb4:	e3a02c02 	mov	r2, #512	; 0x200
+21000fb8:	e1c320b0 	strh	r2, [r3]
+21000fbc:	e51b3010 	ldr	r3, [fp, #-16]
+21000fc0:	e5933000 	ldr	r3, [r3]
+21000fc4:	e2833030 	add	r3, r3, #48	; 0x30
+21000fc8:	e1d330b0 	ldrh	r3, [r3]
+21000fcc:	e6ff3073 	uxth	r3, r3
+21000fd0:	e2033c02 	and	r3, r3, #512	; 0x200
+21000fd4:	e3530000 	cmp	r3, #0
+21000fd8:	1afffff7 	bne	21000fbc <SDHC_InterruptHandler+0x210>
+21000fdc:	e51b3010 	ldr	r3, [fp, #-16]
+21000fe0:	e3a02000 	mov	r2, #0
+21000fe4:	e5c32024 	strb	r2, [r3, #36]	; 0x24
+21000fe8:	e15b30b6 	ldrh	r3, [fp, #-6]
+21000fec:	e2033c01 	and	r3, r3, #256	; 0x100
+21000ff0:	e3530000 	cmp	r3, #0
+21000ff4:	0a00000c 	beq	2100102c <SDHC_InterruptHandler+0x280>
+21000ff8:	e51b3010 	ldr	r3, [fp, #-16]
+21000ffc:	e5933000 	ldr	r3, [r3]
+21001000:	e2833030 	add	r3, r3, #48	; 0x30
+21001004:	e3a02c01 	mov	r2, #256	; 0x100
+21001008:	e1c320b0 	strh	r2, [r3]
+2100100c:	e51b3010 	ldr	r3, [fp, #-16]
+21001010:	e5933000 	ldr	r3, [r3]
+21001014:	e2833030 	add	r3, r3, #48	; 0x30
+21001018:	e1d330b0 	ldrh	r3, [r3]
+2100101c:	e6ff3073 	uxth	r3, r3
+21001020:	e2033c01 	and	r3, r3, #256	; 0x100
+21001024:	e3530000 	cmp	r3, #0
+21001028:	1afffff7 	bne	2100100c <SDHC_InterruptHandler+0x260>
+2100102c:	e15b30b6 	ldrh	r3, [fp, #-6]
+21001030:	e2033080 	and	r3, r3, #128	; 0x80
+21001034:	e3530000 	cmp	r3, #0
+21001038:	0a00000c 	beq	21001070 <SDHC_InterruptHandler+0x2c4>
+2100103c:	e51b3010 	ldr	r3, [fp, #-16]
+21001040:	e5933000 	ldr	r3, [r3]
+21001044:	e2833030 	add	r3, r3, #48	; 0x30
+21001048:	e3a02080 	mov	r2, #128	; 0x80
+2100104c:	e1c320b0 	strh	r2, [r3]
+21001050:	e51b3010 	ldr	r3, [fp, #-16]
+21001054:	e5933000 	ldr	r3, [r3]
+21001058:	e2833030 	add	r3, r3, #48	; 0x30
+2100105c:	e1d330b0 	ldrh	r3, [r3]
+21001060:	e6ff3073 	uxth	r3, r3
+21001064:	e2033080 	and	r3, r3, #128	; 0x80
+21001068:	e3530000 	cmp	r3, #0
+2100106c:	1afffff7 	bne	21001050 <SDHC_InterruptHandler+0x2a4>
+21001070:	e15b30b6 	ldrh	r3, [fp, #-6]
+21001074:	e2033040 	and	r3, r3, #64	; 0x40
+21001078:	e3530000 	cmp	r3, #0
+2100107c:	0a00000c 	beq	210010b4 <SDHC_InterruptHandler+0x308>
+21001080:	e51b3010 	ldr	r3, [fp, #-16]
+21001084:	e5933000 	ldr	r3, [r3]
+21001088:	e2833030 	add	r3, r3, #48	; 0x30
+2100108c:	e3a02040 	mov	r2, #64	; 0x40
+21001090:	e1c320b0 	strh	r2, [r3]
+21001094:	e51b3010 	ldr	r3, [fp, #-16]
+21001098:	e5933000 	ldr	r3, [r3]
+2100109c:	e2833030 	add	r3, r3, #48	; 0x30
+210010a0:	e1d330b0 	ldrh	r3, [r3]
+210010a4:	e6ff3073 	uxth	r3, r3
+210010a8:	e2033040 	and	r3, r3, #64	; 0x40
+210010ac:	e3530000 	cmp	r3, #0
+210010b0:	1afffff7 	bne	21001094 <SDHC_InterruptHandler+0x2e8>
+210010b4:	e15b30b6 	ldrh	r3, [fp, #-6]
+210010b8:	e2033020 	and	r3, r3, #32
+210010bc:	e3530000 	cmp	r3, #0
+210010c0:	0a000010 	beq	21001108 <SDHC_InterruptHandler+0x35c>
+210010c4:	e51b3010 	ldr	r3, [fp, #-16]
+210010c8:	e5933000 	ldr	r3, [r3]
+210010cc:	e2833030 	add	r3, r3, #48	; 0x30
+210010d0:	e3a02020 	mov	r2, #32
+210010d4:	e1c320b0 	strh	r2, [r3]
+210010d8:	e51b3010 	ldr	r3, [fp, #-16]
+210010dc:	e5933000 	ldr	r3, [r3]
+210010e0:	e2833030 	add	r3, r3, #48	; 0x30
+210010e4:	e1d330b0 	ldrh	r3, [r3]
+210010e8:	e6ff3073 	uxth	r3, r3
+210010ec:	e2033020 	and	r3, r3, #32
+210010f0:	e3530000 	cmp	r3, #0
+210010f4:	1afffff7 	bne	210010d8 <SDHC_InterruptHandler+0x32c>
+210010f8:	e51b3010 	ldr	r3, [fp, #-16]
+210010fc:	e5933028 	ldr	r3, [r3, #40]	; 0x28
+21001100:	e1a00003 	mov	r0, r3
+21001104:	eb000739 	bl	21002df0 <SDHC_ReadOneBlock>
+21001108:	e15b30b6 	ldrh	r3, [fp, #-6]
+2100110c:	e2033010 	and	r3, r3, #16
+21001110:	e3530000 	cmp	r3, #0
+21001114:	0a000010 	beq	2100115c <SDHC_InterruptHandler+0x3b0>
+21001118:	e51b3010 	ldr	r3, [fp, #-16]
+2100111c:	e5933000 	ldr	r3, [r3]
+21001120:	e2833030 	add	r3, r3, #48	; 0x30
+21001124:	e3a02010 	mov	r2, #16
+21001128:	e1c320b0 	strh	r2, [r3]
+2100112c:	e51b3010 	ldr	r3, [fp, #-16]
+21001130:	e5933000 	ldr	r3, [r3]
+21001134:	e2833030 	add	r3, r3, #48	; 0x30
+21001138:	e1d330b0 	ldrh	r3, [r3]
+2100113c:	e6ff3073 	uxth	r3, r3
+21001140:	e2033010 	and	r3, r3, #16
+21001144:	e3530000 	cmp	r3, #0
+21001148:	1afffff7 	bne	2100112c <SDHC_InterruptHandler+0x380>
+2100114c:	e51b3010 	ldr	r3, [fp, #-16]
+21001150:	e5933028 	ldr	r3, [r3, #40]	; 0x28
+21001154:	e1a00003 	mov	r0, r3
+21001158:	eb0002d5 	bl	21001cb4 <SDHC_WriteOneBlock>
+2100115c:	e15b30b6 	ldrh	r3, [fp, #-6]
+21001160:	e2033008 	and	r3, r3, #8
+21001164:	e3530000 	cmp	r3, #0
+21001168:	0a000012 	beq	210011b8 <SDHC_InterruptHandler+0x40c>
+2100116c:	e51b3010 	ldr	r3, [fp, #-16]
+21001170:	e5933000 	ldr	r3, [r3]
+21001174:	e2833030 	add	r3, r3, #48	; 0x30
+21001178:	e3a02008 	mov	r2, #8
+2100117c:	e1c320b0 	strh	r2, [r3]
+21001180:	e51b3010 	ldr	r3, [fp, #-16]
+21001184:	e5933000 	ldr	r3, [r3]
+21001188:	e2833030 	add	r3, r3, #48	; 0x30
+2100118c:	e1d330b0 	ldrh	r3, [r3]
+21001190:	e6ff3073 	uxth	r3, r3
+21001194:	e2033008 	and	r3, r3, #8
+21001198:	e3530000 	cmp	r3, #0
+2100119c:	1afffff7 	bne	21001180 <SDHC_InterruptHandler+0x3d4>
+210011a0:	e51b3010 	ldr	r3, [fp, #-16]
+210011a4:	e5933000 	ldr	r3, [r3]
+210011a8:	e51b2010 	ldr	r2, [fp, #-16]
+210011ac:	e5922000 	ldr	r2, [r2]
+210011b0:	e5922000 	ldr	r2, [r2]
+210011b4:	e5832000 	str	r2, [r3]
+210011b8:	e15b30b6 	ldrh	r3, [fp, #-6]
+210011bc:	e2033004 	and	r3, r3, #4
+210011c0:	e3530000 	cmp	r3, #0
+210011c4:	0a00000c 	beq	210011fc <SDHC_InterruptHandler+0x450>
+210011c8:	e51b3010 	ldr	r3, [fp, #-16]
+210011cc:	e5933000 	ldr	r3, [r3]
+210011d0:	e2833030 	add	r3, r3, #48	; 0x30
+210011d4:	e3a02004 	mov	r2, #4
+210011d8:	e1c320b0 	strh	r2, [r3]
+210011dc:	e51b3010 	ldr	r3, [fp, #-16]
+210011e0:	e5933000 	ldr	r3, [r3]
+210011e4:	e2833030 	add	r3, r3, #48	; 0x30
+210011e8:	e1d330b0 	ldrh	r3, [r3]
+210011ec:	e6ff3073 	uxth	r3, r3
+210011f0:	e2033004 	and	r3, r3, #4
+210011f4:	e3530000 	cmp	r3, #0
+210011f8:	1afffff7 	bne	210011dc <SDHC_InterruptHandler+0x430>
+210011fc:	e15b30b6 	ldrh	r3, [fp, #-6]
+21001200:	e2033002 	and	r3, r3, #2
+21001204:	e3530000 	cmp	r3, #0
+21001208:	0a00000f 	beq	2100124c <SDHC_InterruptHandler+0x4a0>
+2100120c:	e51b3010 	ldr	r3, [fp, #-16]
+21001210:	e3a02000 	mov	r2, #0
+21001214:	e1c322b2 	strh	r2, [r3, #34]	; 0x22
+21001218:	e51b3010 	ldr	r3, [fp, #-16]
+2100121c:	e5933000 	ldr	r3, [r3]
+21001220:	e2833030 	add	r3, r3, #48	; 0x30
+21001224:	e3a02002 	mov	r2, #2
+21001228:	e1c320b0 	strh	r2, [r3]
+2100122c:	e51b3010 	ldr	r3, [fp, #-16]
+21001230:	e5933000 	ldr	r3, [r3]
+21001234:	e2833030 	add	r3, r3, #48	; 0x30
+21001238:	e1d330b0 	ldrh	r3, [r3]
+2100123c:	e6ff3073 	uxth	r3, r3
+21001240:	e2033002 	and	r3, r3, #2
+21001244:	e3530000 	cmp	r3, #0
+21001248:	1afffff7 	bne	2100122c <SDHC_InterruptHandler+0x480>
+2100124c:	e15b30b6 	ldrh	r3, [fp, #-6]
+21001250:	e2033001 	and	r3, r3, #1
+21001254:	e6ef3073 	uxtb	r3, r3
+21001258:	e3530000 	cmp	r3, #0
+2100125c:	0a00000d 	beq	21001298 <SDHC_InterruptHandler+0x4ec>
+21001260:	e51b3010 	ldr	r3, [fp, #-16]
+21001264:	e5933000 	ldr	r3, [r3]
+21001268:	e2833030 	add	r3, r3, #48	; 0x30
+2100126c:	e3a02001 	mov	r2, #1
+21001270:	e1c320b0 	strh	r2, [r3]
+21001274:	e51b3010 	ldr	r3, [fp, #-16]
+21001278:	e5933000 	ldr	r3, [r3]
+2100127c:	e2833030 	add	r3, r3, #48	; 0x30
+21001280:	e1d330b0 	ldrh	r3, [r3]
+21001284:	e6ff3073 	uxth	r3, r3
+21001288:	e2033001 	and	r3, r3, #1
+2100128c:	e6ef3073 	uxtb	r3, r3
+21001290:	e3530000 	cmp	r3, #0
+21001294:	1afffff6 	bne	21001274 <SDHC_InterruptHandler+0x4c8>
+21001298:	e24bd004 	sub	sp, fp, #4
+2100129c:	e8bd8800 	pop	{fp, pc}
+210012a0:	210033fc 	.word	0x210033fc
+
+210012a4 <SDHC_SetSdhcInterruptEnable>:
+210012a4:	e92d4800 	push	{fp, lr}
+210012a8:	e28db004 	add	fp, sp, #4
+210012ac:	e24dd008 	sub	sp, sp, #8
+210012b0:	e14b00b6 	strh	r0, [fp, #-6]
+210012b4:	e14b10b8 	strh	r1, [fp, #-8]
+210012b8:	e14b20ba 	strh	r2, [fp, #-10]
+210012bc:	e14b30bc 	strh	r3, [fp, #-12]
+210012c0:	e59b0004 	ldr	r0, [fp, #4]
+210012c4:	eb0001dd 	bl	21001a40 <SDHC_ClearErrInterruptStatus>
+210012c8:	e59b3004 	ldr	r3, [fp, #4]
+210012cc:	e5933000 	ldr	r3, [r3]
+210012d0:	e2833034 	add	r3, r3, #52	; 0x34
+210012d4:	e15b20b6 	ldrh	r2, [fp, #-6]
+210012d8:	e1c320b0 	strh	r2, [r3]
+210012dc:	e59b3004 	ldr	r3, [fp, #4]
+210012e0:	e5933000 	ldr	r3, [r3]
+210012e4:	e2833036 	add	r3, r3, #54	; 0x36
+210012e8:	e15b20b8 	ldrh	r2, [fp, #-8]
+210012ec:	e1c320b0 	strh	r2, [r3]
+210012f0:	e59b3004 	ldr	r3, [fp, #4]
+210012f4:	e5933000 	ldr	r3, [r3]
+210012f8:	e2833038 	add	r3, r3, #56	; 0x38
+210012fc:	e15b20ba 	ldrh	r2, [fp, #-10]
+21001300:	e1c320b0 	strh	r2, [r3]
+21001304:	e59b3004 	ldr	r3, [fp, #4]
+21001308:	e5933000 	ldr	r3, [r3]
+2100130c:	e283303a 	add	r3, r3, #58	; 0x3a
+21001310:	e15b20bc 	ldrh	r2, [fp, #-12]
+21001314:	e1c320b0 	strh	r2, [r3]
+21001318:	e24bd004 	sub	sp, fp, #4
+2100131c:	e8bd8800 	pop	{fp, pc}
+
+21001320 <SDHC_Init>:
+21001320:	e92d4800 	push	{fp, lr}
+21001324:	e28db004 	add	fp, sp, #4
+21001328:	e24dd018 	sub	sp, sp, #24
+2100132c:	e3a03000 	mov	r3, #0
+21001330:	e50b300c 	str	r3, [fp, #-12]
+21001334:	e3a03000 	mov	r3, #0
+21001338:	e50b3008 	str	r3, [fp, #-8]
+2100133c:	e59f32d8 	ldr	r3, [pc, #728]	; 2100161c <SDHC_Init+0x2fc>
+21001340:	e50b3010 	str	r3, [fp, #-16]
+21001344:	e51b3010 	ldr	r3, [fp, #-16]
+21001348:	e3a02000 	mov	r2, #0
+2100134c:	e5832010 	str	r2, [r3, #16]
+21001350:	e51b3010 	ldr	r3, [fp, #-16]
+21001354:	e3a02001 	mov	r2, #1
+21001358:	e5832014 	str	r2, [r3, #20]
+2100135c:	e51b3010 	ldr	r3, [fp, #-16]
+21001360:	e3a02000 	mov	r2, #0
+21001364:	e5832004 	str	r2, [r3, #4]
+21001368:	e51b3010 	ldr	r3, [fp, #-16]
+2100136c:	e3a02ffa 	mov	r2, #1000	; 0x3e8
+21001370:	e583202c 	str	r2, [r3, #44]	; 0x2c
+21001374:	e51b3010 	ldr	r3, [fp, #-16]
+21001378:	e3a02004 	mov	r2, #4
+2100137c:	e5c32027 	strb	r2, [r3, #39]	; 0x27
+21001380:	e51b3010 	ldr	r3, [fp, #-16]
+21001384:	e3a02002 	mov	r2, #2
+21001388:	e5832018 	str	r2, [r3, #24]
+2100138c:	e51b3010 	ldr	r3, [fp, #-16]
+21001390:	e3a02b02 	mov	r2, #2048	; 0x800
+21001394:	e1c323b0 	strh	r2, [r3, #48]	; 0x30
+21001398:	e51b3010 	ldr	r3, [fp, #-16]
+2100139c:	e3a02000 	mov	r2, #0
+210013a0:	e5c32026 	strb	r2, [r3, #38]	; 0x26
+210013a4:	e51b3010 	ldr	r3, [fp, #-16]
+210013a8:	e3a02000 	mov	r2, #0
+210013ac:	e1c322b0 	strh	r2, [r3, #32]
+210013b0:	e51b3010 	ldr	r3, [fp, #-16]
+210013b4:	e3a02004 	mov	r2, #4
+210013b8:	e5c32027 	strb	r2, [r3, #39]	; 0x27
+210013bc:	e51b3010 	ldr	r3, [fp, #-16]
+210013c0:	e5932010 	ldr	r2, [r3, #16]
+210013c4:	e59f3254 	ldr	r3, [pc, #596]	; 21001620 <SDHC_Init+0x300>
+210013c8:	e51b1010 	ldr	r1, [fp, #-16]
+210013cc:	e7831102 	str	r1, [r3, r2, lsl #2]
+210013d0:	e51b3010 	ldr	r3, [fp, #-16]
+210013d4:	e3a024eb 	mov	r2, #-352321536	; 0xeb000000
+210013d8:	e5832000 	str	r2, [r3]
+210013dc:	e51b3010 	ldr	r3, [fp, #-16]
+210013e0:	e59f223c 	ldr	r2, [pc, #572]	; 21001624 <SDHC_Init+0x304>
+210013e4:	e5832040 	str	r2, [r3, #64]	; 0x40
+210013e8:	e51b3010 	ldr	r3, [fp, #-16]
+210013ec:	e3a02038 	mov	r2, #56	; 0x38
+210013f0:	e5c3203e 	strb	r2, [r3, #62]	; 0x3e
+210013f4:	e59f322c 	ldr	r3, [pc, #556]	; 21001628 <SDHC_Init+0x308>
+210013f8:	e59f2228 	ldr	r2, [pc, #552]	; 21001628 <SDHC_Init+0x308>
+210013fc:	e5922000 	ldr	r2, [r2]
+21001400:	e202220f 	and	r2, r2, #-268435456	; 0xf0000000
+21001404:	e5832000 	str	r2, [r3]
+21001408:	e59f2218 	ldr	r2, [pc, #536]	; 21001628 <SDHC_Init+0x308>
+2100140c:	e59f3214 	ldr	r3, [pc, #532]	; 21001628 <SDHC_Init+0x308>
+21001410:	e5931000 	ldr	r1, [r3]
+21001414:	e59f3210 	ldr	r3, [pc, #528]	; 2100162c <SDHC_Init+0x30c>
+21001418:	e1813003 	orr	r3, r1, r3
+2100141c:	e5823000 	str	r3, [r2]
+21001420:	e59f2208 	ldr	r2, [pc, #520]	; 21001630 <SDHC_Init+0x310>
+21001424:	e59f3204 	ldr	r3, [pc, #516]	; 21001630 <SDHC_Init+0x310>
+21001428:	e5933000 	ldr	r3, [r3]
+2100142c:	e3c33eff 	bic	r3, r3, #4080	; 0xff0
+21001430:	e3c3300f 	bic	r3, r3, #15
+21001434:	e5823000 	str	r3, [r2]
+21001438:	e51b0010 	ldr	r0, [fp, #-16]
+2100143c:	eb000156 	bl	2100199c <SDHC_ResetController>
+21001440:	e59f01ec 	ldr	r0, [pc, #492]	; 21001634 <SDHC_Init+0x314>
+21001444:	eb00077b 	bl	21003238 <puts>
+21001448:	ea000007 	b	2100146c <SDHC_Init+0x14c>
+2100144c:	e51b3008 	ldr	r3, [fp, #-8]
+21001450:	e2833001 	add	r3, r3, #1
+21001454:	e50b3008 	str	r3, [fp, #-8]
+21001458:	e51b3008 	ldr	r3, [fp, #-8]
+2100145c:	e3530004 	cmp	r3, #4
+21001460:	9a000001 	bls	2100146c <SDHC_Init+0x14c>
+21001464:	e3a03000 	mov	r3, #0
+21001468:	ea000068 	b	21001610 <SDHC_Init+0x2f0>
+2100146c:	e51b0010 	ldr	r0, [fp, #-16]
+21001470:	eb0003d8 	bl	210023d8 <SDHC_IdentifyCard>
+21001474:	e1a03000 	mov	r3, r0
+21001478:	e3530000 	cmp	r3, #0
+2100147c:	0afffff2 	beq	2100144c <SDHC_Init+0x12c>
+21001480:	e59f01b0 	ldr	r0, [pc, #432]	; 21001638 <SDHC_Init+0x318>
+21001484:	eb00076b 	bl	21003238 <puts>
+21001488:	e51b3010 	ldr	r3, [fp, #-16]
+2100148c:	e1d331bc 	ldrh	r3, [r3, #28]
+21001490:	e1a03803 	lsl	r3, r3, #16
+21001494:	e3a02002 	mov	r2, #2
+21001498:	e58d2000 	str	r2, [sp]
+2100149c:	e51b0010 	ldr	r0, [fp, #-16]
+210014a0:	e3a01007 	mov	r1, #7
+210014a4:	e1a02003 	mov	r2, r3
+210014a8:	e3a03002 	mov	r3, #2
+210014ac:	eb000183 	bl	21001ac0 <SDHC_IssueCommand>
+210014b0:	e1a03000 	mov	r3, r0
+210014b4:	e3530000 	cmp	r3, #0
+210014b8:	1a000001 	bne	210014c4 <SDHC_Init+0x1a4>
+210014bc:	e3a03000 	mov	r3, #0
+210014c0:	ea000052 	b	21001610 <SDHC_Init+0x2f0>
+210014c4:	e51b3010 	ldr	r3, [fp, #-16]
+210014c8:	e5933008 	ldr	r3, [r3, #8]
+210014cc:	e3530000 	cmp	r3, #0
+210014d0:	1a00001a 	bne	21001540 <SDHC_Init+0x220>
+210014d4:	e51b0010 	ldr	r0, [fp, #-16]
+210014d8:	eb0000a7 	bl	2100177c <SDHC_GetSdScr>
+210014dc:	e51b3010 	ldr	r3, [fp, #-16]
+210014e0:	e5d33025 	ldrb	r3, [r3, #37]	; 0x25
+210014e4:	e3530001 	cmp	r3, #1
+210014e8:	0a000003 	beq	210014fc <SDHC_Init+0x1dc>
+210014ec:	e51b3010 	ldr	r3, [fp, #-16]
+210014f0:	e5d33025 	ldrb	r3, [r3, #37]	; 0x25
+210014f4:	e3530002 	cmp	r3, #2
+210014f8:	1a00000f 	bne	2100153c <SDHC_Init+0x21c>
+210014fc:	e51b200c 	ldr	r2, [fp, #-12]
+21001500:	e59f3134 	ldr	r3, [pc, #308]	; 2100163c <SDHC_Init+0x31c>
+21001504:	e1520003 	cmp	r2, r3
+21001508:	93a03000 	movls	r3, #0
+2100150c:	83a03001 	movhi	r3, #1
+21001510:	e50b3014 	str	r3, [fp, #-20]
+21001514:	e51b0014 	ldr	r0, [fp, #-20]
+21001518:	e51b1010 	ldr	r1, [fp, #-16]
+2100151c:	eb000439 	bl	21002608 <SDHC_SetSdCardSpeedMode>
+21001520:	e1a03000 	mov	r3, r0
+21001524:	e3530000 	cmp	r3, #0
+21001528:	1a000004 	bne	21001540 <SDHC_Init+0x220>
+2100152c:	e59f010c 	ldr	r0, [pc, #268]	; 21001640 <SDHC_Init+0x320>
+21001530:	eb000740 	bl	21003238 <puts>
+21001534:	e3a03000 	mov	r3, #0
+21001538:	ea000034 	b	21001610 <SDHC_Init+0x2f0>
+2100153c:	eafffffe 	b	2100153c <SDHC_Init+0x21c>
+21001540:	e51b200c 	ldr	r2, [fp, #-12]
+21001544:	e59f30f8 	ldr	r3, [pc, #248]	; 21001644 <SDHC_Init+0x324>
+21001548:	e1520003 	cmp	r2, r3
+2100154c:	93a03000 	movls	r3, #0
+21001550:	83a03001 	movhi	r3, #1
+21001554:	e50b3014 	str	r3, [fp, #-20]
+21001558:	e51b0014 	ldr	r0, [fp, #-20]
+2100155c:	e51b1010 	ldr	r1, [fp, #-16]
+21001560:	eb00049d 	bl	210027dc <SDHC_SetHostCtrlSpeedMode>
+21001564:	e3a00000 	mov	r0, #0
+21001568:	e51b1010 	ldr	r1, [fp, #-16]
+2100156c:	eb0004d9 	bl	210028d8 <SDHC_SetSdClockOnOff>
+21001570:	e51b0010 	ldr	r0, [fp, #-16]
+21001574:	e51b1014 	ldr	r1, [fp, #-20]
+21001578:	eb000502 	bl	21002988 <SDHC_SetSdClock>
+2100157c:	e51b0010 	ldr	r0, [fp, #-16]
+21001580:	eb000560 	bl	21002b08 <SDHC_SetDataTransferWidth>
+21001584:	e1a03000 	mov	r3, r0
+21001588:	e3530000 	cmp	r3, #0
+2100158c:	1a000001 	bne	21001598 <SDHC_Init+0x278>
+21001590:	e3a03000 	mov	r3, #0
+21001594:	ea00001d 	b	21001610 <SDHC_Init+0x2f0>
+21001598:	e51b0010 	ldr	r0, [fp, #-16]
+2100159c:	eb0005be 	bl	21002c9c <SDHC_WaitForCard2TransferState>
+210015a0:	e1a03000 	mov	r3, r0
+210015a4:	e3530000 	cmp	r3, #0
+210015a8:	1a000001 	bne	210015b4 <SDHC_Init+0x294>
+210015ac:	e3a03000 	mov	r3, #0
+210015b0:	ea000016 	b	21001610 <SDHC_Init+0x2f0>
+210015b4:	e3a03001 	mov	r3, #1
+210015b8:	e58d3000 	str	r3, [sp]
+210015bc:	e51b0010 	ldr	r0, [fp, #-16]
+210015c0:	e3a01010 	mov	r1, #16
+210015c4:	e3a02c02 	mov	r2, #512	; 0x200
+210015c8:	e3a03002 	mov	r3, #2
+210015cc:	eb00013b 	bl	21001ac0 <SDHC_IssueCommand>
+210015d0:	e1a03000 	mov	r3, r0
+210015d4:	e3530000 	cmp	r3, #0
+210015d8:	1a000001 	bne	210015e4 <SDHC_Init+0x2c4>
+210015dc:	e3a03000 	mov	r3, #0
+210015e0:	ea00000a 	b	21001610 <SDHC_Init+0x2f0>
+210015e4:	e51b3010 	ldr	r3, [fp, #-16]
+210015e8:	e5933000 	ldr	r3, [r3]
+210015ec:	e2832080 	add	r2, r3, #128	; 0x80
+210015f0:	e51b3010 	ldr	r3, [fp, #-16]
+210015f4:	e5933000 	ldr	r3, [r3]
+210015f8:	e2833080 	add	r3, r3, #128	; 0x80
+210015fc:	e5933000 	ldr	r3, [r3]
+21001600:	e3833201 	orr	r3, r3, #268435456	; 0x10000000
+21001604:	e3833c05 	orr	r3, r3, #1280	; 0x500
+21001608:	e5823000 	str	r3, [r2]
+2100160c:	e3a03001 	mov	r3, #1
+21001610:	e1a00003 	mov	r0, r3
+21001614:	e24bd004 	sub	sp, fp, #4
+21001618:	e8bd8800 	pop	{fp, pc}
+2100161c:	2100b620 	.word	0x2100b620
+21001620:	2100b664 	.word	0x2100b664
+21001624:	21000a08 	.word	0x21000a08
+21001628:	e02001a0 	.word	0xe02001a0
+2100162c:	02222222 	.word	0x02222222
+21001630:	e02001a8 	.word	0xe02001a8
+21001634:	21003414 	.word	0x21003414
+21001638:	21003430 	.word	0x21003430
+2100163c:	017d7840 	.word	0x017d7840
+21001640:	21003448 	.word	0x21003448
+21001644:	01312d00 	.word	0x01312d00
+
+21001648 <SDHC_SetSDOCR>:
+21001648:	e92d4800 	push	{fp, lr}
+2100164c:	e28db004 	add	fp, sp, #4
+21001650:	e24dd018 	sub	sp, sp, #24
+21001654:	e50b0010 	str	r0, [fp, #-16]
+21001658:	e3a03000 	mov	r3, #0
+2100165c:	e58d3000 	str	r3, [sp]
+21001660:	e51b0010 	ldr	r0, [fp, #-16]
+21001664:	e3a01000 	mov	r1, #0
+21001668:	e3a02000 	mov	r2, #0
+2100166c:	e3a03000 	mov	r3, #0
+21001670:	eb000112 	bl	21001ac0 <SDHC_IssueCommand>
+21001674:	e1a03000 	mov	r3, r0
+21001678:	e3530000 	cmp	r3, #0
+2100167c:	1a000001 	bne	21001688 <SDHC_SetSDOCR+0x40>
+21001680:	e3a03000 	mov	r3, #0
+21001684:	ea000037 	b	21001768 <SDHC_SetSDOCR+0x120>
+21001688:	e3a03000 	mov	r3, #0
+2100168c:	e50b3008 	str	r3, [fp, #-8]
+21001690:	ea00002d 	b	2100174c <SDHC_SetSDOCR+0x104>
+21001694:	e3a03001 	mov	r3, #1
+21001698:	e58d3000 	str	r3, [sp]
+2100169c:	e51b0010 	ldr	r0, [fp, #-16]
+210016a0:	e3a01037 	mov	r1, #55	; 0x37
+210016a4:	e3a02000 	mov	r2, #0
+210016a8:	e3a03002 	mov	r3, #2
+210016ac:	eb000103 	bl	21001ac0 <SDHC_IssueCommand>
+210016b0:	e3a03004 	mov	r3, #4
+210016b4:	e58d3000 	str	r3, [sp]
+210016b8:	e51b0010 	ldr	r0, [fp, #-16]
+210016bc:	e3a01029 	mov	r1, #41	; 0x29
+210016c0:	e59f20ac 	ldr	r2, [pc, #172]	; 21001774 <SDHC_SetSDOCR+0x12c>
+210016c4:	e3a03001 	mov	r3, #1
+210016c8:	eb0000fc 	bl	21001ac0 <SDHC_IssueCommand>
+210016cc:	e51b3010 	ldr	r3, [fp, #-16]
+210016d0:	e5933000 	ldr	r3, [r3]
+210016d4:	e2833010 	add	r3, r3, #16
+210016d8:	e5933000 	ldr	r3, [r3]
+210016dc:	e3530000 	cmp	r3, #0
+210016e0:	aa000016 	bge	21001740 <SDHC_SetSDOCR+0xf8>
+210016e4:	e51b3010 	ldr	r3, [fp, #-16]
+210016e8:	e5933000 	ldr	r3, [r3]
+210016ec:	e2833010 	add	r3, r3, #16
+210016f0:	e5933000 	ldr	r3, [r3]
+210016f4:	e50b300c 	str	r3, [fp, #-12]
+210016f8:	e51b300c 	ldr	r3, [fp, #-12]
+210016fc:	e2033101 	and	r3, r3, #1073741824	; 0x40000000
+21001700:	e3530000 	cmp	r3, #0
+21001704:	0a000003 	beq	21001718 <SDHC_SetSDOCR+0xd0>
+21001708:	e51b3010 	ldr	r3, [fp, #-16]
+2100170c:	e3a02001 	mov	r2, #1
+21001710:	e583200c 	str	r2, [r3, #12]
+21001714:	ea000002 	b	21001724 <SDHC_SetSDOCR+0xdc>
+21001718:	e51b3010 	ldr	r3, [fp, #-16]
+2100171c:	e3a02000 	mov	r2, #0
+21001720:	e583200c 	str	r2, [r3, #12]
+21001724:	e51b0010 	ldr	r0, [fp, #-16]
+21001728:	eb0000c4 	bl	21001a40 <SDHC_ClearErrInterruptStatus>
+2100172c:	e51b3010 	ldr	r3, [fp, #-16]
+21001730:	e3a02000 	mov	r2, #0
+21001734:	e5832008 	str	r2, [r3, #8]
+21001738:	e3a03001 	mov	r3, #1
+2100173c:	ea000009 	b	21001768 <SDHC_SetSDOCR+0x120>
+21001740:	e51b3008 	ldr	r3, [fp, #-8]
+21001744:	e2833001 	add	r3, r3, #1
+21001748:	e50b3008 	str	r3, [fp, #-8]
+2100174c:	e51b2008 	ldr	r2, [fp, #-8]
+21001750:	e59f3020 	ldr	r3, [pc, #32]	; 21001778 <SDHC_SetSDOCR+0x130>
+21001754:	e1520003 	cmp	r2, r3
+21001758:	9affffcd 	bls	21001694 <SDHC_SetSDOCR+0x4c>
+2100175c:	e51b0010 	ldr	r0, [fp, #-16]
+21001760:	eb0000b6 	bl	21001a40 <SDHC_ClearErrInterruptStatus>
+21001764:	e3a03000 	mov	r3, #0
+21001768:	e1a00003 	mov	r0, r3
+2100176c:	e24bd004 	sub	sp, fp, #4
+21001770:	e8bd8800 	pop	{fp, pc}
+21001774:	40ff8000 	.word	0x40ff8000
+21001778:	000001f3 	.word	0x000001f3
+
+2100177c <SDHC_GetSdScr>:
+2100177c:	e92d4800 	push	{fp, lr}
+21001780:	e28db004 	add	fp, sp, #4
+21001784:	e24dd020 	sub	sp, sp, #32
+21001788:	e50b0018 	str	r0, [fp, #-24]
+2100178c:	e3a03000 	mov	r3, #0
+21001790:	e50b3008 	str	r3, [fp, #-8]
+21001794:	e3a03001 	mov	r3, #1
+21001798:	e58d3000 	str	r3, [sp]
+2100179c:	e51b0018 	ldr	r0, [fp, #-24]
+210017a0:	e3a01010 	mov	r1, #16
+210017a4:	e3a02008 	mov	r2, #8
+210017a8:	e3a03002 	mov	r3, #2
+210017ac:	eb0000c3 	bl	21001ac0 <SDHC_IssueCommand>
+210017b0:	e1a03000 	mov	r3, r0
+210017b4:	e3530000 	cmp	r3, #0
+210017b8:	1a000001 	bne	210017c4 <SDHC_GetSdScr+0x48>
+210017bc:	e3a03000 	mov	r3, #0
+210017c0:	ea000071 	b	2100198c <SDHC_GetSdScr+0x210>
+210017c4:	e51b3018 	ldr	r3, [fp, #-24]
+210017c8:	e5933000 	ldr	r3, [r3]
+210017cc:	e2833004 	add	r3, r3, #4
+210017d0:	e59f21c0 	ldr	r2, [pc, #448]	; 21001998 <SDHC_GetSdScr+0x21c>
+210017d4:	e1c320b0 	strh	r2, [r3]
+210017d8:	e51b3018 	ldr	r3, [fp, #-24]
+210017dc:	e5933000 	ldr	r3, [r3]
+210017e0:	e2833006 	add	r3, r3, #6
+210017e4:	e3a02001 	mov	r2, #1
+210017e8:	e1c320b0 	strh	r2, [r3]
+210017ec:	e3a03000 	mov	r3, #0
+210017f0:	e58d3000 	str	r3, [sp]
+210017f4:	e51b3018 	ldr	r3, [fp, #-24]
+210017f8:	e58d3004 	str	r3, [sp, #4]
+210017fc:	e3a00000 	mov	r0, #0
+21001800:	e3a01001 	mov	r1, #1
+21001804:	e3a02000 	mov	r2, #0
+21001808:	e3a03000 	mov	r3, #0
+2100180c:	eb000405 	bl	21002828 <SDHC_SetTransferModeReg>
+21001810:	e51b3018 	ldr	r3, [fp, #-24]
+21001814:	e3a02001 	mov	r2, #1
+21001818:	e1c322b2 	strh	r2, [r3, #34]	; 0x22
+2100181c:	e51b3018 	ldr	r3, [fp, #-24]
+21001820:	e24b2010 	sub	r2, fp, #16
+21001824:	e5832028 	str	r2, [r3, #40]	; 0x28
+21001828:	e51b3018 	ldr	r3, [fp, #-24]
+2100182c:	e1d331bc 	ldrh	r3, [r3, #28]
+21001830:	e1a03803 	lsl	r3, r3, #16
+21001834:	e3a02001 	mov	r2, #1
+21001838:	e58d2000 	str	r2, [sp]
+2100183c:	e51b0018 	ldr	r0, [fp, #-24]
+21001840:	e3a01037 	mov	r1, #55	; 0x37
+21001844:	e1a02003 	mov	r2, r3
+21001848:	e3a03002 	mov	r3, #2
+2100184c:	eb00009b 	bl	21001ac0 <SDHC_IssueCommand>
+21001850:	e1a03000 	mov	r3, r0
+21001854:	e3530000 	cmp	r3, #0
+21001858:	1a000001 	bne	21001864 <SDHC_GetSdScr+0xe8>
+2100185c:	e3a03000 	mov	r3, #0
+21001860:	ea000049 	b	2100198c <SDHC_GetSdScr+0x210>
+21001864:	e3a03001 	mov	r3, #1
+21001868:	e58d3000 	str	r3, [sp]
+2100186c:	e51b0018 	ldr	r0, [fp, #-24]
+21001870:	e3a01033 	mov	r1, #51	; 0x33
+21001874:	e3a02000 	mov	r2, #0
+21001878:	e3a03003 	mov	r3, #3
+2100187c:	eb00008f 	bl	21001ac0 <SDHC_IssueCommand>
+21001880:	e1a03000 	mov	r3, r0
+21001884:	e3530000 	cmp	r3, #0
+21001888:	1a000001 	bne	21001894 <SDHC_GetSdScr+0x118>
+2100188c:	e3a03000 	mov	r3, #0
+21001890:	ea00003d 	b	2100198c <SDHC_GetSdScr+0x210>
+21001894:	e51b3018 	ldr	r3, [fp, #-24]
+21001898:	e5933028 	ldr	r3, [r3, #40]	; 0x28
+2100189c:	e1a00003 	mov	r0, r3
+210018a0:	eb000552 	bl	21002df0 <SDHC_ReadOneBlock>
+210018a4:	e3a0347f 	mov	r3, #2130706432	; 0x7f000000
+210018a8:	e50b3008 	str	r3, [fp, #-8]
+210018ac:	ea000005 	b	210018c8 <SDHC_GetSdScr+0x14c>
+210018b0:	e51b3008 	ldr	r3, [fp, #-8]
+210018b4:	e2433001 	sub	r3, r3, #1
+210018b8:	e50b3008 	str	r3, [fp, #-8]
+210018bc:	e51b3008 	ldr	r3, [fp, #-8]
+210018c0:	e3530000 	cmp	r3, #0
+210018c4:	0a000007 	beq	210018e8 <SDHC_GetSdScr+0x16c>
+210018c8:	e51b3018 	ldr	r3, [fp, #-24]
+210018cc:	e5933000 	ldr	r3, [r3]
+210018d0:	e2833030 	add	r3, r3, #48	; 0x30
+210018d4:	e1d330b0 	ldrh	r3, [r3]
+210018d8:	e6ff3073 	uxth	r3, r3
+210018dc:	e2033002 	and	r3, r3, #2
+210018e0:	e3530000 	cmp	r3, #0
+210018e4:	0afffff1 	beq	210018b0 <SDHC_GetSdScr+0x134>
+210018e8:	e51b3018 	ldr	r3, [fp, #-24]
+210018ec:	e5933000 	ldr	r3, [r3]
+210018f0:	e2833030 	add	r3, r3, #48	; 0x30
+210018f4:	e3a02002 	mov	r2, #2
+210018f8:	e1c320b0 	strh	r2, [r3]
+210018fc:	e51b3018 	ldr	r3, [fp, #-24]
+21001900:	e5933000 	ldr	r3, [r3]
+21001904:	e2833030 	add	r3, r3, #48	; 0x30
+21001908:	e1d330b0 	ldrh	r3, [r3]
+2100190c:	e6ff3073 	uxth	r3, r3
+21001910:	e2033002 	and	r3, r3, #2
+21001914:	e3530000 	cmp	r3, #0
+21001918:	1afffff2 	bne	210018e8 <SDHC_GetSdScr+0x16c>
+2100191c:	e51b3010 	ldr	r3, [fp, #-16]
+21001920:	e203300f 	and	r3, r3, #15
+21001924:	e3530000 	cmp	r3, #0
+21001928:	1a000003 	bne	2100193c <SDHC_GetSdScr+0x1c0>
+2100192c:	e51b3018 	ldr	r3, [fp, #-24]
+21001930:	e3a02000 	mov	r2, #0
+21001934:	e5c32025 	strb	r2, [r3, #37]	; 0x25
+21001938:	ea000012 	b	21001988 <SDHC_GetSdScr+0x20c>
+2100193c:	e51b3010 	ldr	r3, [fp, #-16]
+21001940:	e203300f 	and	r3, r3, #15
+21001944:	e3530001 	cmp	r3, #1
+21001948:	1a000003 	bne	2100195c <SDHC_GetSdScr+0x1e0>
+2100194c:	e51b3018 	ldr	r3, [fp, #-24]
+21001950:	e3a02001 	mov	r2, #1
+21001954:	e5c32025 	strb	r2, [r3, #37]	; 0x25
+21001958:	ea00000a 	b	21001988 <SDHC_GetSdScr+0x20c>
+2100195c:	e51b3010 	ldr	r3, [fp, #-16]
+21001960:	e203300f 	and	r3, r3, #15
+21001964:	e3530002 	cmp	r3, #2
+21001968:	1a000003 	bne	2100197c <SDHC_GetSdScr+0x200>
+2100196c:	e51b3018 	ldr	r3, [fp, #-24]
+21001970:	e3a02002 	mov	r2, #2
+21001974:	e5c32025 	strb	r2, [r3, #37]	; 0x25
+21001978:	ea000002 	b	21001988 <SDHC_GetSdScr+0x20c>
+2100197c:	e51b3018 	ldr	r3, [fp, #-24]
+21001980:	e3a02000 	mov	r2, #0
+21001984:	e5c32025 	strb	r2, [r3, #37]	; 0x25
+21001988:	e3a03001 	mov	r3, #1
+2100198c:	e1a00003 	mov	r0, r3
+21001990:	e24bd004 	sub	sp, fp, #4
+21001994:	e8bd8800 	pop	{fp, pc}
+21001998:	00007008 	.word	0x00007008
+
+2100199c <SDHC_ResetController>:
+2100199c:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+210019a0:	e28db000 	add	fp, sp, #0
+210019a4:	e24dd00c 	sub	sp, sp, #12
+210019a8:	e50b0008 	str	r0, [fp, #-8]
+210019ac:	e51b3008 	ldr	r3, [fp, #-8]
+210019b0:	e5933000 	ldr	r3, [r3]
+210019b4:	e283302f 	add	r3, r3, #47	; 0x2f
+210019b8:	e3a02003 	mov	r2, #3
+210019bc:	e5c32000 	strb	r2, [r3]
+210019c0:	e28bd000 	add	sp, fp, #0
+210019c4:	e8bd0800 	pop	{fp}
+210019c8:	e12fff1e 	bx	lr
+
+210019cc <SDHC_SetSdhcCardIntEnable>:
+210019cc:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+210019d0:	e28db000 	add	fp, sp, #0
+210019d4:	e24dd014 	sub	sp, sp, #20
+210019d8:	e1a03000 	mov	r3, r0
+210019dc:	e50b1014 	str	r1, [fp, #-20]
+210019e0:	e54b300d 	strb	r3, [fp, #-13]
+210019e4:	e51b3014 	ldr	r3, [fp, #-20]
+210019e8:	e5933000 	ldr	r3, [r3]
+210019ec:	e2833034 	add	r3, r3, #52	; 0x34
+210019f0:	e1d330b0 	ldrh	r3, [r3]
+210019f4:	e14b30b6 	strh	r3, [fp, #-6]
+210019f8:	e15b30b6 	ldrh	r3, [fp, #-6]
+210019fc:	e3c33c01 	bic	r3, r3, #256	; 0x100
+21001a00:	e14b30b6 	strh	r3, [fp, #-6]
+21001a04:	e55b300d 	ldrb	r3, [fp, #-13]
+21001a08:	e1a03403 	lsl	r3, r3, #8
+21001a0c:	e6ff2073 	uxth	r2, r3
+21001a10:	e15b30b6 	ldrh	r3, [fp, #-6]
+21001a14:	e1823003 	orr	r3, r2, r3
+21001a18:	e6ff3073 	uxth	r3, r3
+21001a1c:	e14b30b6 	strh	r3, [fp, #-6]
+21001a20:	e51b3014 	ldr	r3, [fp, #-20]
+21001a24:	e5933000 	ldr	r3, [r3]
+21001a28:	e2833034 	add	r3, r3, #52	; 0x34
+21001a2c:	e15b20b6 	ldrh	r2, [fp, #-6]
+21001a30:	e1c320b0 	strh	r2, [r3]
+21001a34:	e28bd000 	add	sp, fp, #0
+21001a38:	e8bd0800 	pop	{fp}
+21001a3c:	e12fff1e 	bx	lr
+
+21001a40 <SDHC_ClearErrInterruptStatus>:
+21001a40:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21001a44:	e28db000 	add	fp, sp, #0
+21001a48:	e24dd014 	sub	sp, sp, #20
+21001a4c:	e50b0010 	str	r0, [fp, #-16]
+21001a50:	e51b3010 	ldr	r3, [fp, #-16]
+21001a54:	e5933000 	ldr	r3, [r3]
+21001a58:	e2833030 	add	r3, r3, #48	; 0x30
+21001a5c:	e1d330b0 	ldrh	r3, [r3]
+21001a60:	e14b30b6 	strh	r3, [fp, #-6]
+21001a64:	ea00000e 	b	21001aa4 <SDHC_ClearErrInterruptStatus+0x64>
+21001a68:	e51b3010 	ldr	r3, [fp, #-16]
+21001a6c:	e5933000 	ldr	r3, [r3]
+21001a70:	e2833032 	add	r3, r3, #50	; 0x32
+21001a74:	e1d330b0 	ldrh	r3, [r3]
+21001a78:	e14b30b8 	strh	r3, [fp, #-8]
+21001a7c:	e51b3010 	ldr	r3, [fp, #-16]
+21001a80:	e5933000 	ldr	r3, [r3]
+21001a84:	e2833032 	add	r3, r3, #50	; 0x32
+21001a88:	e15b20b8 	ldrh	r2, [fp, #-8]
+21001a8c:	e1c320b0 	strh	r2, [r3]
+21001a90:	e51b3010 	ldr	r3, [fp, #-16]
+21001a94:	e5933000 	ldr	r3, [r3]
+21001a98:	e2833030 	add	r3, r3, #48	; 0x30
+21001a9c:	e1d330b0 	ldrh	r3, [r3]
+21001aa0:	e14b30b6 	strh	r3, [fp, #-6]
+21001aa4:	e15b30b6 	ldrh	r3, [fp, #-6]
+21001aa8:	e6bf3073 	sxth	r3, r3
+21001aac:	e3530000 	cmp	r3, #0
+21001ab0:	baffffec 	blt	21001a68 <SDHC_ClearErrInterruptStatus+0x28>
+21001ab4:	e28bd000 	add	sp, fp, #0
+21001ab8:	e8bd0800 	pop	{fp}
+21001abc:	e12fff1e 	bx	lr
+
+21001ac0 <SDHC_IssueCommand>:
+21001ac0:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21001ac4:	e28db000 	add	fp, sp, #0
+21001ac8:	e24dd01c 	sub	sp, sp, #28
+21001acc:	e50b0010 	str	r0, [fp, #-16]
+21001ad0:	e50b2018 	str	r2, [fp, #-24]
+21001ad4:	e50b301c 	str	r3, [fp, #-28]
+21001ad8:	e14b11b2 	strh	r1, [fp, #-18]	; 0xffffffee
+21001adc:	e1a00000 	nop			; (mov r0, r0)
+21001ae0:	e51b3010 	ldr	r3, [fp, #-16]
+21001ae4:	e5933000 	ldr	r3, [r3]
+21001ae8:	e2833024 	add	r3, r3, #36	; 0x24
+21001aec:	e5933000 	ldr	r3, [r3]
+21001af0:	e2033001 	and	r3, r3, #1
+21001af4:	e6ef3073 	uxtb	r3, r3
+21001af8:	e3530000 	cmp	r3, #0
+21001afc:	1afffff7 	bne	21001ae0 <SDHC_IssueCommand+0x20>
+21001b00:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21001b04:	e1a03403 	lsl	r3, r3, #8
+21001b08:	e6ff2073 	uxth	r2, r3
+21001b0c:	e59f119c 	ldr	r1, [pc, #412]	; 21001cb0 <SDHC_IssueCommand+0x1f0>
+21001b10:	e59b3004 	ldr	r3, [fp, #4]
+21001b14:	e0813003 	add	r3, r1, r3
+21001b18:	e5d33000 	ldrb	r3, [r3]
+21001b1c:	e1823003 	orr	r3, r2, r3
+21001b20:	e6ff3073 	uxth	r3, r3
+21001b24:	e14b30b6 	strh	r3, [fp, #-6]
+21001b28:	e51b301c 	ldr	r3, [fp, #-28]
+21001b2c:	e3530003 	cmp	r3, #3
+21001b30:	1a000002 	bne	21001b40 <SDHC_IssueCommand+0x80>
+21001b34:	e15b30b6 	ldrh	r3, [fp, #-6]
+21001b38:	e3833020 	orr	r3, r3, #32
+21001b3c:	e14b30b6 	strh	r3, [fp, #-6]
+21001b40:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21001b44:	e353000c 	cmp	r3, #12
+21001b48:	1a000002 	bne	21001b58 <SDHC_IssueCommand+0x98>
+21001b4c:	e15b30b6 	ldrh	r3, [fp, #-6]
+21001b50:	e38330c0 	orr	r3, r3, #192	; 0xc0
+21001b54:	e14b30b6 	strh	r3, [fp, #-6]
+21001b58:	e51b3010 	ldr	r3, [fp, #-16]
+21001b5c:	e5933000 	ldr	r3, [r3]
+21001b60:	e2833008 	add	r3, r3, #8
+21001b64:	e51b2018 	ldr	r2, [fp, #-24]
+21001b68:	e5832000 	str	r2, [r3]
+21001b6c:	e51b3010 	ldr	r3, [fp, #-16]
+21001b70:	e5933000 	ldr	r3, [r3]
+21001b74:	e283300e 	add	r3, r3, #14
+21001b78:	e15b20b6 	ldrh	r2, [fp, #-6]
+21001b7c:	e1c320b0 	strh	r2, [r3]
+21001b80:	e3a0347f 	mov	r3, #2130706432	; 0x7f000000
+21001b84:	e50b300c 	str	r3, [fp, #-12]
+21001b88:	ea000005 	b	21001ba4 <SDHC_IssueCommand+0xe4>
+21001b8c:	e51b300c 	ldr	r3, [fp, #-12]
+21001b90:	e2433001 	sub	r3, r3, #1
+21001b94:	e50b300c 	str	r3, [fp, #-12]
+21001b98:	e51b300c 	ldr	r3, [fp, #-12]
+21001b9c:	e3530000 	cmp	r3, #0
+21001ba0:	0a000007 	beq	21001bc4 <SDHC_IssueCommand+0x104>
+21001ba4:	e51b3010 	ldr	r3, [fp, #-16]
+21001ba8:	e5933000 	ldr	r3, [r3]
+21001bac:	e2833030 	add	r3, r3, #48	; 0x30
+21001bb0:	e1d330b0 	ldrh	r3, [r3]
+21001bb4:	e6ff3073 	uxth	r3, r3
+21001bb8:	e2033001 	and	r3, r3, #1
+21001bbc:	e3530000 	cmp	r3, #0
+21001bc0:	0afffff1 	beq	21001b8c <SDHC_IssueCommand+0xcc>
+21001bc4:	e51b3010 	ldr	r3, [fp, #-16]
+21001bc8:	e5933000 	ldr	r3, [r3]
+21001bcc:	e2833030 	add	r3, r3, #48	; 0x30
+21001bd0:	e3a02001 	mov	r2, #1
+21001bd4:	e1c320b0 	strh	r2, [r3]
+21001bd8:	e51b3010 	ldr	r3, [fp, #-16]
+21001bdc:	e5933000 	ldr	r3, [r3]
+21001be0:	e2833030 	add	r3, r3, #48	; 0x30
+21001be4:	e1d330b0 	ldrh	r3, [r3]
+21001be8:	e6ff3073 	uxth	r3, r3
+21001bec:	e2033001 	and	r3, r3, #1
+21001bf0:	e6ef3073 	uxtb	r3, r3
+21001bf4:	e3530000 	cmp	r3, #0
+21001bf8:	1afffff1 	bne	21001bc4 <SDHC_IssueCommand+0x104>
+21001bfc:	e51b3010 	ldr	r3, [fp, #-16]
+21001c00:	e5933000 	ldr	r3, [r3]
+21001c04:	e2833030 	add	r3, r3, #48	; 0x30
+21001c08:	e1d330b0 	ldrh	r3, [r3]
+21001c0c:	e6ff3073 	uxth	r3, r3
+21001c10:	e6ff3073 	uxth	r3, r3
+21001c14:	e6bf3073 	sxth	r3, r3
+21001c18:	e3530000 	cmp	r3, #0
+21001c1c:	aa000013 	bge	21001c70 <SDHC_IssueCommand+0x1b0>
+21001c20:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21001c24:	e3530001 	cmp	r3, #1
+21001c28:	0a000010 	beq	21001c70 <SDHC_IssueCommand+0x1b0>
+21001c2c:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21001c30:	e3530037 	cmp	r3, #55	; 0x37
+21001c34:	0a00000d 	beq	21001c70 <SDHC_IssueCommand+0x1b0>
+21001c38:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21001c3c:	e3530029 	cmp	r3, #41	; 0x29
+21001c40:	0a00000a 	beq	21001c70 <SDHC_IssueCommand+0x1b0>
+21001c44:	e51b3010 	ldr	r3, [fp, #-16]
+21001c48:	e5933000 	ldr	r3, [r3]
+21001c4c:	e2833032 	add	r3, r3, #50	; 0x32
+21001c50:	e51b2010 	ldr	r2, [fp, #-16]
+21001c54:	e5922000 	ldr	r2, [r2]
+21001c58:	e2822032 	add	r2, r2, #50	; 0x32
+21001c5c:	e1d220b0 	ldrh	r2, [r2]
+21001c60:	e6ff2072 	uxth	r2, r2
+21001c64:	e1c320b0 	strh	r2, [r3]
+21001c68:	e3a03000 	mov	r3, #0
+21001c6c:	ea00000b 	b	21001ca0 <SDHC_IssueCommand+0x1e0>
+21001c70:	e59b3004 	ldr	r3, [fp, #4]
+21001c74:	e3530002 	cmp	r3, #2
+21001c78:	1a000007 	bne	21001c9c <SDHC_IssueCommand+0x1dc>
+21001c7c:	e1a00000 	nop			; (mov r0, r0)
+21001c80:	e51b3010 	ldr	r3, [fp, #-16]
+21001c84:	e5933000 	ldr	r3, [r3]
+21001c88:	e2833024 	add	r3, r3, #36	; 0x24
+21001c8c:	e5933000 	ldr	r3, [r3]
+21001c90:	e2033002 	and	r3, r3, #2
+21001c94:	e3530000 	cmp	r3, #0
+21001c98:	1afffff8 	bne	21001c80 <SDHC_IssueCommand+0x1c0>
+21001c9c:	e3a03001 	mov	r3, #1
+21001ca0:	e1a00003 	mov	r0, r3
+21001ca4:	e28bd000 	add	sp, fp, #0
+21001ca8:	e8bd0800 	pop	{fp}
+21001cac:	e12fff1e 	bx	lr
+21001cb0:	210033f0 	.word	0x210033f0
+
+21001cb4 <SDHC_WriteOneBlock>:
+21001cb4:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21001cb8:	e28db000 	add	fp, sp, #0
+21001cbc:	e24dd01c 	sub	sp, sp, #28
+21001cc0:	e50b0018 	str	r0, [fp, #-24]
+21001cc4:	e59f3128 	ldr	r3, [pc, #296]	; 21001df4 <SDHC_WriteOneBlock+0x140>
+21001cc8:	e50b3010 	str	r3, [fp, #-16]
+21001ccc:	e51b3018 	ldr	r3, [fp, #-24]
+21001cd0:	e50b3008 	str	r3, [fp, #-8]
+21001cd4:	e51b3010 	ldr	r3, [fp, #-16]
+21001cd8:	e5933000 	ldr	r3, [r3]
+21001cdc:	e2833004 	add	r3, r3, #4
+21001ce0:	e1d330b0 	ldrh	r3, [r3]
+21001ce4:	e6ff3073 	uxth	r3, r3
+21001ce8:	e1a03a03 	lsl	r3, r3, #20
+21001cec:	e1a03a23 	lsr	r3, r3, #20
+21001cf0:	e50b3014 	str	r3, [fp, #-20]
+21001cf4:	e3a0347f 	mov	r3, #2130706432	; 0x7f000000
+21001cf8:	e50b300c 	str	r3, [fp, #-12]
+21001cfc:	ea000005 	b	21001d18 <SDHC_WriteOneBlock+0x64>
+21001d00:	e51b300c 	ldr	r3, [fp, #-12]
+21001d04:	e2433001 	sub	r3, r3, #1
+21001d08:	e50b300c 	str	r3, [fp, #-12]
+21001d0c:	e51b300c 	ldr	r3, [fp, #-12]
+21001d10:	e3530000 	cmp	r3, #0
+21001d14:	0a000007 	beq	21001d38 <SDHC_WriteOneBlock+0x84>
+21001d18:	e51b3010 	ldr	r3, [fp, #-16]
+21001d1c:	e5933000 	ldr	r3, [r3]
+21001d20:	e2833030 	add	r3, r3, #48	; 0x30
+21001d24:	e1d330b0 	ldrh	r3, [r3]
+21001d28:	e6ff3073 	uxth	r3, r3
+21001d2c:	e2033010 	and	r3, r3, #16
+21001d30:	e3530000 	cmp	r3, #0
+21001d34:	0afffff1 	beq	21001d00 <SDHC_WriteOneBlock+0x4c>
+21001d38:	e51b3010 	ldr	r3, [fp, #-16]
+21001d3c:	e5933000 	ldr	r3, [r3]
+21001d40:	e2833030 	add	r3, r3, #48	; 0x30
+21001d44:	e3a02010 	mov	r2, #16
+21001d48:	e1c320b0 	strh	r2, [r3]
+21001d4c:	e51b3010 	ldr	r3, [fp, #-16]
+21001d50:	e5933000 	ldr	r3, [r3]
+21001d54:	e2833030 	add	r3, r3, #48	; 0x30
+21001d58:	e1d330b0 	ldrh	r3, [r3]
+21001d5c:	e6ff3073 	uxth	r3, r3
+21001d60:	e2033010 	and	r3, r3, #16
+21001d64:	e3530000 	cmp	r3, #0
+21001d68:	1afffff2 	bne	21001d38 <SDHC_WriteOneBlock+0x84>
+21001d6c:	e51b3014 	ldr	r3, [fp, #-20]
+21001d70:	e2833003 	add	r3, r3, #3
+21001d74:	e1a03143 	asr	r3, r3, #2
+21001d78:	e50b3014 	str	r3, [fp, #-20]
+21001d7c:	e51b3014 	ldr	r3, [fp, #-20]
+21001d80:	e50b300c 	str	r3, [fp, #-12]
+21001d84:	ea00000b 	b	21001db8 <SDHC_WriteOneBlock+0x104>
+21001d88:	e51b3010 	ldr	r3, [fp, #-16]
+21001d8c:	e5933000 	ldr	r3, [r3]
+21001d90:	e2833020 	add	r3, r3, #32
+21001d94:	e51b2008 	ldr	r2, [fp, #-8]
+21001d98:	e5922000 	ldr	r2, [r2]
+21001d9c:	e5832000 	str	r2, [r3]
+21001da0:	e51b3008 	ldr	r3, [fp, #-8]
+21001da4:	e2833004 	add	r3, r3, #4
+21001da8:	e50b3008 	str	r3, [fp, #-8]
+21001dac:	e51b300c 	ldr	r3, [fp, #-12]
+21001db0:	e2433001 	sub	r3, r3, #1
+21001db4:	e50b300c 	str	r3, [fp, #-12]
+21001db8:	e51b300c 	ldr	r3, [fp, #-12]
+21001dbc:	e3530000 	cmp	r3, #0
+21001dc0:	cafffff0 	bgt	21001d88 <SDHC_WriteOneBlock+0xd4>
+21001dc4:	e51b3010 	ldr	r3, [fp, #-16]
+21001dc8:	e1d332b2 	ldrh	r3, [r3, #34]	; 0x22
+21001dcc:	e2433001 	sub	r3, r3, #1
+21001dd0:	e6ff2073 	uxth	r2, r3
+21001dd4:	e51b3010 	ldr	r3, [fp, #-16]
+21001dd8:	e1c322b2 	strh	r2, [r3, #34]	; 0x22
+21001ddc:	e51b3010 	ldr	r3, [fp, #-16]
+21001de0:	e51b2008 	ldr	r2, [fp, #-8]
+21001de4:	e5832028 	str	r2, [r3, #40]	; 0x28
+21001de8:	e28bd000 	add	sp, fp, #0
+21001dec:	e8bd0800 	pop	{fp}
+21001df0:	e12fff1e 	bx	lr
+21001df4:	2100b620 	.word	0x2100b620
+
+21001df8 <SDHC_ReadBlocks>:
+21001df8:	e92d4800 	push	{fp, lr}
+21001dfc:	e28db004 	add	fp, sp, #4
+21001e00:	e24dd020 	sub	sp, sp, #32
+21001e04:	e50b0010 	str	r0, [fp, #-16]
+21001e08:	e1a03001 	mov	r3, r1
+21001e0c:	e50b2018 	str	r2, [fp, #-24]
+21001e10:	e14b31b2 	strh	r3, [fp, #-18]	; 0xffffffee
+21001e14:	e59f32bc 	ldr	r3, [pc, #700]	; 210020d8 <SDHC_ReadBlocks+0x2e0>
+21001e18:	e50b300c 	str	r3, [fp, #-12]
+21001e1c:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21001e20:	e59f02b4 	ldr	r0, [pc, #692]	; 210020dc <SDHC_ReadBlocks+0x2e4>
+21001e24:	e51b1010 	ldr	r1, [fp, #-16]
+21001e28:	e1a02003 	mov	r2, r3
+21001e2c:	ebfffa88 	bl	21000854 <printf>
+21001e30:	e51b300c 	ldr	r3, [fp, #-12]
+21001e34:	e593300c 	ldr	r3, [r3, #12]
+21001e38:	e3530000 	cmp	r3, #0
+21001e3c:	1a000002 	bne	21001e4c <SDHC_ReadBlocks+0x54>
+21001e40:	e51b3010 	ldr	r3, [fp, #-16]
+21001e44:	e1a03483 	lsl	r3, r3, #9
+21001e48:	e50b3010 	str	r3, [fp, #-16]
+21001e4c:	e51b300c 	ldr	r3, [fp, #-12]
+21001e50:	e15b21b2 	ldrh	r2, [fp, #-18]	; 0xffffffee
+21001e54:	e1c322b2 	strh	r2, [r3, #34]	; 0x22
+21001e58:	e51b2018 	ldr	r2, [fp, #-24]
+21001e5c:	e51b300c 	ldr	r3, [fp, #-12]
+21001e60:	e5832028 	str	r2, [r3, #40]	; 0x28
+21001e64:	e51b000c 	ldr	r0, [fp, #-12]
+21001e68:	eb00038b 	bl	21002c9c <SDHC_WaitForCard2TransferState>
+21001e6c:	e1a03000 	mov	r3, r0
+21001e70:	e3530000 	cmp	r3, #0
+21001e74:	1a000001 	bne	21001e80 <SDHC_ReadBlocks+0x88>
+21001e78:	e3a03003 	mov	r3, #3
+21001e7c:	ea000092 	b	210020cc <SDHC_ReadBlocks+0x2d4>
+21001e80:	e51b300c 	ldr	r3, [fp, #-12]
+21001e84:	e5933000 	ldr	r3, [r3]
+21001e88:	e2833004 	add	r3, r3, #4
+21001e8c:	e3a02c72 	mov	r2, #29184	; 0x7200
+21001e90:	e1c320b0 	strh	r2, [r3]
+21001e94:	e51b300c 	ldr	r3, [fp, #-12]
+21001e98:	e5933000 	ldr	r3, [r3]
+21001e9c:	e2833006 	add	r3, r3, #6
+21001ea0:	e15b21b2 	ldrh	r2, [fp, #-18]	; 0xffffffee
+21001ea4:	e1c320b0 	strh	r2, [r3]
+21001ea8:	e51b300c 	ldr	r3, [fp, #-12]
+21001eac:	e5933004 	ldr	r3, [r3, #4]
+21001eb0:	e3530002 	cmp	r3, #2
+21001eb4:	1a000015 	bne	21001f10 <SDHC_ReadBlocks+0x118>
+21001eb8:	e51b300c 	ldr	r3, [fp, #-12]
+21001ebc:	e5933000 	ldr	r3, [r3]
+21001ec0:	e51b2018 	ldr	r2, [fp, #-24]
+21001ec4:	e5832000 	str	r2, [r3]
+21001ec8:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21001ecc:	e3530001 	cmp	r3, #1
+21001ed0:	03a02000 	moveq	r2, #0
+21001ed4:	13a02001 	movne	r2, #1
+21001ed8:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21001edc:	e3530001 	cmp	r3, #1
+21001ee0:	03a03000 	moveq	r3, #0
+21001ee4:	13a03001 	movne	r3, #1
+21001ee8:	e3a01001 	mov	r1, #1
+21001eec:	e58d1000 	str	r1, [sp]
+21001ef0:	e51b100c 	ldr	r1, [fp, #-12]
+21001ef4:	e58d1004 	str	r1, [sp, #4]
+21001ef8:	e1a00002 	mov	r0, r2
+21001efc:	e3a01001 	mov	r1, #1
+21001f00:	e1a02003 	mov	r2, r3
+21001f04:	e3a03001 	mov	r3, #1
+21001f08:	eb000246 	bl	21002828 <SDHC_SetTransferModeReg>
+21001f0c:	ea000010 	b	21001f54 <SDHC_ReadBlocks+0x15c>
+21001f10:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21001f14:	e3530001 	cmp	r3, #1
+21001f18:	03a02000 	moveq	r2, #0
+21001f1c:	13a02001 	movne	r2, #1
+21001f20:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21001f24:	e3530001 	cmp	r3, #1
+21001f28:	03a03000 	moveq	r3, #0
+21001f2c:	13a03001 	movne	r3, #1
+21001f30:	e3a01000 	mov	r1, #0
+21001f34:	e58d1000 	str	r1, [sp]
+21001f38:	e51b100c 	ldr	r1, [fp, #-12]
+21001f3c:	e58d1004 	str	r1, [sp, #4]
+21001f40:	e1a00002 	mov	r0, r2
+21001f44:	e3a01001 	mov	r1, #1
+21001f48:	e1a02003 	mov	r2, r3
+21001f4c:	e3a03001 	mov	r3, #1
+21001f50:	eb000234 	bl	21002828 <SDHC_SetTransferModeReg>
+21001f54:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21001f58:	e3530001 	cmp	r3, #1
+21001f5c:	1a00000b 	bne	21001f90 <SDHC_ReadBlocks+0x198>
+21001f60:	e3a03001 	mov	r3, #1
+21001f64:	e58d3000 	str	r3, [sp]
+21001f68:	e51b000c 	ldr	r0, [fp, #-12]
+21001f6c:	e3a01011 	mov	r1, #17
+21001f70:	e51b2010 	ldr	r2, [fp, #-16]
+21001f74:	e3a03003 	mov	r3, #3
+21001f78:	ebfffed0 	bl	21001ac0 <SDHC_IssueCommand>
+21001f7c:	e1a03000 	mov	r3, r0
+21001f80:	e3530000 	cmp	r3, #0
+21001f84:	1a00000d 	bne	21001fc0 <SDHC_ReadBlocks+0x1c8>
+21001f88:	e3a03004 	mov	r3, #4
+21001f8c:	ea00004e 	b	210020cc <SDHC_ReadBlocks+0x2d4>
+21001f90:	e3a03001 	mov	r3, #1
+21001f94:	e58d3000 	str	r3, [sp]
+21001f98:	e51b000c 	ldr	r0, [fp, #-12]
+21001f9c:	e3a01012 	mov	r1, #18
+21001fa0:	e51b2010 	ldr	r2, [fp, #-16]
+21001fa4:	e3a03003 	mov	r3, #3
+21001fa8:	ebfffec4 	bl	21001ac0 <SDHC_IssueCommand>
+21001fac:	e1a03000 	mov	r3, r0
+21001fb0:	e3530000 	cmp	r3, #0
+21001fb4:	1a000001 	bne	21001fc0 <SDHC_ReadBlocks+0x1c8>
+21001fb8:	e3a03005 	mov	r3, #5
+21001fbc:	ea000042 	b	210020cc <SDHC_ReadBlocks+0x2d4>
+21001fc0:	e51b300c 	ldr	r3, [fp, #-12]
+21001fc4:	e5933004 	ldr	r3, [r3, #4]
+21001fc8:	e3530002 	cmp	r3, #2
+21001fcc:	0a00001a 	beq	2100203c <SDHC_ReadBlocks+0x244>
+21001fd0:	e51b300c 	ldr	r3, [fp, #-12]
+21001fd4:	e5933004 	ldr	r3, [r3, #4]
+21001fd8:	e3530003 	cmp	r3, #3
+21001fdc:	0a000016 	beq	2100203c <SDHC_ReadBlocks+0x244>
+21001fe0:	e51b300c 	ldr	r3, [fp, #-12]
+21001fe4:	e5933004 	ldr	r3, [r3, #4]
+21001fe8:	e3530000 	cmp	r3, #0
+21001fec:	1a000009 	bne	21002018 <SDHC_ReadBlocks+0x220>
+21001ff0:	ea000003 	b	21002004 <SDHC_ReadBlocks+0x20c>
+21001ff4:	e51b300c 	ldr	r3, [fp, #-12]
+21001ff8:	e5933028 	ldr	r3, [r3, #40]	; 0x28
+21001ffc:	e1a00003 	mov	r0, r3
+21002000:	eb00037a 	bl	21002df0 <SDHC_ReadOneBlock>
+21002004:	e51b300c 	ldr	r3, [fp, #-12]
+21002008:	e1d332b2 	ldrh	r3, [r3, #34]	; 0x22
+2100200c:	e3530000 	cmp	r3, #0
+21002010:	1afffff7 	bne	21001ff4 <SDHC_ReadBlocks+0x1fc>
+21002014:	ea000008 	b	2100203c <SDHC_ReadBlocks+0x244>
+21002018:	e51b300c 	ldr	r3, [fp, #-12]
+2100201c:	e5933004 	ldr	r3, [r3, #4]
+21002020:	e3530001 	cmp	r3, #1
+21002024:	1a000004 	bne	2100203c <SDHC_ReadBlocks+0x244>
+21002028:	e1a00000 	nop			; (mov r0, r0)
+2100202c:	e51b300c 	ldr	r3, [fp, #-12]
+21002030:	e1d332b2 	ldrh	r3, [r3, #34]	; 0x22
+21002034:	e3530000 	cmp	r3, #0
+21002038:	1afffffb 	bne	2100202c <SDHC_ReadBlocks+0x234>
+2100203c:	e3a0347f 	mov	r3, #2130706432	; 0x7f000000
+21002040:	e50b3008 	str	r3, [fp, #-8]
+21002044:	ea000005 	b	21002060 <SDHC_ReadBlocks+0x268>
+21002048:	e51b3008 	ldr	r3, [fp, #-8]
+2100204c:	e2433001 	sub	r3, r3, #1
+21002050:	e50b3008 	str	r3, [fp, #-8]
+21002054:	e51b3008 	ldr	r3, [fp, #-8]
+21002058:	e3530000 	cmp	r3, #0
+2100205c:	0a000007 	beq	21002080 <SDHC_ReadBlocks+0x288>
+21002060:	e51b300c 	ldr	r3, [fp, #-12]
+21002064:	e5933000 	ldr	r3, [r3]
+21002068:	e2833030 	add	r3, r3, #48	; 0x30
+2100206c:	e1d330b0 	ldrh	r3, [r3]
+21002070:	e6ff3073 	uxth	r3, r3
+21002074:	e2033002 	and	r3, r3, #2
+21002078:	e3530000 	cmp	r3, #0
+2100207c:	0afffff1 	beq	21002048 <SDHC_ReadBlocks+0x250>
+21002080:	e51b300c 	ldr	r3, [fp, #-12]
+21002084:	e5933000 	ldr	r3, [r3]
+21002088:	e2833030 	add	r3, r3, #48	; 0x30
+2100208c:	e3a02002 	mov	r2, #2
+21002090:	e1c320b0 	strh	r2, [r3]
+21002094:	e51b300c 	ldr	r3, [fp, #-12]
+21002098:	e5933000 	ldr	r3, [r3]
+2100209c:	e2833030 	add	r3, r3, #48	; 0x30
+210020a0:	e1d330b0 	ldrh	r3, [r3]
+210020a4:	e6ff3073 	uxth	r3, r3
+210020a8:	e2033002 	and	r3, r3, #2
+210020ac:	e3530000 	cmp	r3, #0
+210020b0:	1afffff2 	bne	21002080 <SDHC_ReadBlocks+0x288>
+210020b4:	e51b300c 	ldr	r3, [fp, #-12]
+210020b8:	e3a02000 	mov	r2, #0
+210020bc:	e1c322b2 	strh	r2, [r3, #34]	; 0x22
+210020c0:	e59f0018 	ldr	r0, [pc, #24]	; 210020e0 <SDHC_ReadBlocks+0x2e8>
+210020c4:	eb00045b 	bl	21003238 <puts>
+210020c8:	e3a03001 	mov	r3, #1
+210020cc:	e1a00003 	mov	r0, r3
+210020d0:	e24bd004 	sub	sp, fp, #4
+210020d4:	e8bd8800 	pop	{fp, pc}
+210020d8:	2100b620 	.word	0x2100b620
+210020dc:	2100346c 	.word	0x2100346c
+210020e0:	21003494 	.word	0x21003494
+
+210020e4 <SDHC_WriteBlocks>:
+210020e4:	e92d4800 	push	{fp, lr}
+210020e8:	e28db004 	add	fp, sp, #4
+210020ec:	e24dd020 	sub	sp, sp, #32
+210020f0:	e50b0010 	str	r0, [fp, #-16]
+210020f4:	e1a03001 	mov	r3, r1
+210020f8:	e50b2018 	str	r2, [fp, #-24]
+210020fc:	e14b31b2 	strh	r3, [fp, #-18]	; 0xffffffee
+21002100:	e59f32a0 	ldr	r3, [pc, #672]	; 210023a8 <SDHC_WriteBlocks+0x2c4>
+21002104:	e50b300c 	str	r3, [fp, #-12]
+21002108:	e51b300c 	ldr	r3, [fp, #-12]
+2100210c:	e593300c 	ldr	r3, [r3, #12]
+21002110:	e3530000 	cmp	r3, #0
+21002114:	1a000002 	bne	21002124 <SDHC_WriteBlocks+0x40>
+21002118:	e51b3010 	ldr	r3, [fp, #-16]
+2100211c:	e1a03483 	lsl	r3, r3, #9
+21002120:	e50b3010 	str	r3, [fp, #-16]
+21002124:	e51b300c 	ldr	r3, [fp, #-12]
+21002128:	e15b21b2 	ldrh	r2, [fp, #-18]	; 0xffffffee
+2100212c:	e1c322b2 	strh	r2, [r3, #34]	; 0x22
+21002130:	e51b2018 	ldr	r2, [fp, #-24]
+21002134:	e51b300c 	ldr	r3, [fp, #-12]
+21002138:	e5832028 	str	r2, [r3, #40]	; 0x28
+2100213c:	e51b000c 	ldr	r0, [fp, #-12]
+21002140:	eb0002d5 	bl	21002c9c <SDHC_WaitForCard2TransferState>
+21002144:	e1a03000 	mov	r3, r0
+21002148:	e3530000 	cmp	r3, #0
+2100214c:	1a000001 	bne	21002158 <SDHC_WriteBlocks+0x74>
+21002150:	e3a03003 	mov	r3, #3
+21002154:	ea000090 	b	2100239c <SDHC_WriteBlocks+0x2b8>
+21002158:	e51b300c 	ldr	r3, [fp, #-12]
+2100215c:	e5933000 	ldr	r3, [r3]
+21002160:	e2833004 	add	r3, r3, #4
+21002164:	e3a02c72 	mov	r2, #29184	; 0x7200
+21002168:	e1c320b0 	strh	r2, [r3]
+2100216c:	e51b300c 	ldr	r3, [fp, #-12]
+21002170:	e5933000 	ldr	r3, [r3]
+21002174:	e2833006 	add	r3, r3, #6
+21002178:	e15b21b2 	ldrh	r2, [fp, #-18]	; 0xffffffee
+2100217c:	e1c320b0 	strh	r2, [r3]
+21002180:	e51b300c 	ldr	r3, [fp, #-12]
+21002184:	e5933004 	ldr	r3, [r3, #4]
+21002188:	e3530002 	cmp	r3, #2
+2100218c:	1a000015 	bne	210021e8 <SDHC_WriteBlocks+0x104>
+21002190:	e51b300c 	ldr	r3, [fp, #-12]
+21002194:	e5933000 	ldr	r3, [r3]
+21002198:	e51b2018 	ldr	r2, [fp, #-24]
+2100219c:	e5832000 	str	r2, [r3]
+210021a0:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+210021a4:	e3530001 	cmp	r3, #1
+210021a8:	03a02000 	moveq	r2, #0
+210021ac:	13a02001 	movne	r2, #1
+210021b0:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+210021b4:	e3530001 	cmp	r3, #1
+210021b8:	03a03000 	moveq	r3, #0
+210021bc:	13a03001 	movne	r3, #1
+210021c0:	e3a01001 	mov	r1, #1
+210021c4:	e58d1000 	str	r1, [sp]
+210021c8:	e51b100c 	ldr	r1, [fp, #-12]
+210021cc:	e58d1004 	str	r1, [sp, #4]
+210021d0:	e1a00002 	mov	r0, r2
+210021d4:	e3a01000 	mov	r1, #0
+210021d8:	e1a02003 	mov	r2, r3
+210021dc:	e3a03001 	mov	r3, #1
+210021e0:	eb000190 	bl	21002828 <SDHC_SetTransferModeReg>
+210021e4:	ea000010 	b	2100222c <SDHC_WriteBlocks+0x148>
+210021e8:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+210021ec:	e3530001 	cmp	r3, #1
+210021f0:	03a02000 	moveq	r2, #0
+210021f4:	13a02001 	movne	r2, #1
+210021f8:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+210021fc:	e3530001 	cmp	r3, #1
+21002200:	03a03000 	moveq	r3, #0
+21002204:	13a03001 	movne	r3, #1
+21002208:	e3a01000 	mov	r1, #0
+2100220c:	e58d1000 	str	r1, [sp]
+21002210:	e51b100c 	ldr	r1, [fp, #-12]
+21002214:	e58d1004 	str	r1, [sp, #4]
+21002218:	e1a00002 	mov	r0, r2
+2100221c:	e3a01000 	mov	r1, #0
+21002220:	e1a02003 	mov	r2, r3
+21002224:	e3a03001 	mov	r3, #1
+21002228:	eb00017e 	bl	21002828 <SDHC_SetTransferModeReg>
+2100222c:	e15b31b2 	ldrh	r3, [fp, #-18]	; 0xffffffee
+21002230:	e3530001 	cmp	r3, #1
+21002234:	1a00000b 	bne	21002268 <SDHC_WriteBlocks+0x184>
+21002238:	e3a03001 	mov	r3, #1
+2100223c:	e58d3000 	str	r3, [sp]
+21002240:	e51b000c 	ldr	r0, [fp, #-12]
+21002244:	e3a01018 	mov	r1, #24
+21002248:	e51b2010 	ldr	r2, [fp, #-16]
+2100224c:	e3a03003 	mov	r3, #3
+21002250:	ebfffe1a 	bl	21001ac0 <SDHC_IssueCommand>
+21002254:	e1a03000 	mov	r3, r0
+21002258:	e3530000 	cmp	r3, #0
+2100225c:	1a00000d 	bne	21002298 <SDHC_WriteBlocks+0x1b4>
+21002260:	e3a03004 	mov	r3, #4
+21002264:	ea00004c 	b	2100239c <SDHC_WriteBlocks+0x2b8>
+21002268:	e3a03001 	mov	r3, #1
+2100226c:	e58d3000 	str	r3, [sp]
+21002270:	e51b000c 	ldr	r0, [fp, #-12]
+21002274:	e3a01019 	mov	r1, #25
+21002278:	e51b2010 	ldr	r2, [fp, #-16]
+2100227c:	e3a03003 	mov	r3, #3
+21002280:	ebfffe0e 	bl	21001ac0 <SDHC_IssueCommand>
+21002284:	e1a03000 	mov	r3, r0
+21002288:	e3530000 	cmp	r3, #0
+2100228c:	1a000001 	bne	21002298 <SDHC_WriteBlocks+0x1b4>
+21002290:	e3a03005 	mov	r3, #5
+21002294:	ea000040 	b	2100239c <SDHC_WriteBlocks+0x2b8>
+21002298:	e51b300c 	ldr	r3, [fp, #-12]
+2100229c:	e5933004 	ldr	r3, [r3, #4]
+210022a0:	e3530002 	cmp	r3, #2
+210022a4:	0a00001a 	beq	21002314 <SDHC_WriteBlocks+0x230>
+210022a8:	e51b300c 	ldr	r3, [fp, #-12]
+210022ac:	e5933004 	ldr	r3, [r3, #4]
+210022b0:	e3530003 	cmp	r3, #3
+210022b4:	0a000016 	beq	21002314 <SDHC_WriteBlocks+0x230>
+210022b8:	e51b300c 	ldr	r3, [fp, #-12]
+210022bc:	e5933004 	ldr	r3, [r3, #4]
+210022c0:	e3530000 	cmp	r3, #0
+210022c4:	1a000009 	bne	210022f0 <SDHC_WriteBlocks+0x20c>
+210022c8:	ea000003 	b	210022dc <SDHC_WriteBlocks+0x1f8>
+210022cc:	e51b300c 	ldr	r3, [fp, #-12]
+210022d0:	e5933028 	ldr	r3, [r3, #40]	; 0x28
+210022d4:	e1a00003 	mov	r0, r3
+210022d8:	ebfffe75 	bl	21001cb4 <SDHC_WriteOneBlock>
+210022dc:	e51b300c 	ldr	r3, [fp, #-12]
+210022e0:	e1d332b2 	ldrh	r3, [r3, #34]	; 0x22
+210022e4:	e3530000 	cmp	r3, #0
+210022e8:	1afffff7 	bne	210022cc <SDHC_WriteBlocks+0x1e8>
+210022ec:	ea000008 	b	21002314 <SDHC_WriteBlocks+0x230>
+210022f0:	e51b300c 	ldr	r3, [fp, #-12]
+210022f4:	e5933004 	ldr	r3, [r3, #4]
+210022f8:	e3530001 	cmp	r3, #1
+210022fc:	1a000004 	bne	21002314 <SDHC_WriteBlocks+0x230>
+21002300:	e1a00000 	nop			; (mov r0, r0)
+21002304:	e51b300c 	ldr	r3, [fp, #-12]
+21002308:	e1d332b2 	ldrh	r3, [r3, #34]	; 0x22
+2100230c:	e3530000 	cmp	r3, #0
+21002310:	1afffffb 	bne	21002304 <SDHC_WriteBlocks+0x220>
+21002314:	e3a0347f 	mov	r3, #2130706432	; 0x7f000000
+21002318:	e50b3008 	str	r3, [fp, #-8]
+2100231c:	ea000005 	b	21002338 <SDHC_WriteBlocks+0x254>
+21002320:	e51b3008 	ldr	r3, [fp, #-8]
+21002324:	e2433001 	sub	r3, r3, #1
+21002328:	e50b3008 	str	r3, [fp, #-8]
+2100232c:	e51b3008 	ldr	r3, [fp, #-8]
+21002330:	e3530000 	cmp	r3, #0
+21002334:	0a000007 	beq	21002358 <SDHC_WriteBlocks+0x274>
+21002338:	e51b300c 	ldr	r3, [fp, #-12]
+2100233c:	e5933000 	ldr	r3, [r3]
+21002340:	e2833030 	add	r3, r3, #48	; 0x30
+21002344:	e1d330b0 	ldrh	r3, [r3]
+21002348:	e6ff3073 	uxth	r3, r3
+2100234c:	e2033002 	and	r3, r3, #2
+21002350:	e3530000 	cmp	r3, #0
+21002354:	0afffff1 	beq	21002320 <SDHC_WriteBlocks+0x23c>
+21002358:	e51b300c 	ldr	r3, [fp, #-12]
+2100235c:	e5933000 	ldr	r3, [r3]
+21002360:	e2833030 	add	r3, r3, #48	; 0x30
+21002364:	e3a02002 	mov	r2, #2
+21002368:	e1c320b0 	strh	r2, [r3]
+2100236c:	e51b300c 	ldr	r3, [fp, #-12]
+21002370:	e5933000 	ldr	r3, [r3]
+21002374:	e2833030 	add	r3, r3, #48	; 0x30
+21002378:	e1d330b0 	ldrh	r3, [r3]
+2100237c:	e6ff3073 	uxth	r3, r3
+21002380:	e2033002 	and	r3, r3, #2
+21002384:	e3530000 	cmp	r3, #0
+21002388:	1afffff2 	bne	21002358 <SDHC_WriteBlocks+0x274>
+2100238c:	e51b300c 	ldr	r3, [fp, #-12]
+21002390:	e3a02000 	mov	r2, #0
+21002394:	e1c322b2 	strh	r2, [r3, #34]	; 0x22
+21002398:	e3a03000 	mov	r3, #0
+2100239c:	e1a00003 	mov	r0, r3
+210023a0:	e24bd004 	sub	sp, fp, #4
+210023a4:	e8bd8800 	pop	{fp, pc}
+210023a8:	2100b620 	.word	0x2100b620
+
+210023ac <SDHC_CloseMedia>:
+210023ac:	e92d4800 	push	{fp, lr}
+210023b0:	e28db004 	add	fp, sp, #4
+210023b4:	e24dd008 	sub	sp, sp, #8
+210023b8:	e59f3014 	ldr	r3, [pc, #20]	; 210023d4 <SDHC_CloseMedia+0x28>
+210023bc:	e50b3008 	str	r3, [fp, #-8]
+210023c0:	e3a00000 	mov	r0, #0
+210023c4:	e51b1008 	ldr	r1, [fp, #-8]
+210023c8:	eb000142 	bl	210028d8 <SDHC_SetSdClockOnOff>
+210023cc:	e24bd004 	sub	sp, fp, #4
+210023d0:	e8bd8800 	pop	{fp, pc}
+210023d4:	2100b620 	.word	0x2100b620
+
+210023d8 <SDHC_IdentifyCard>:
+210023d8:	e92d4800 	push	{fp, lr}
+210023dc:	e28db004 	add	fp, sp, #4
+210023e0:	e24dd018 	sub	sp, sp, #24
+210023e4:	e50b0008 	str	r0, [fp, #-8]
+210023e8:	e51b0008 	ldr	r0, [fp, #-8]
+210023ec:	eb000252 	bl	21002d3c <SDHC_Set_InitClock>
+210023f0:	e51b3008 	ldr	r3, [fp, #-8]
+210023f4:	e5933000 	ldr	r3, [r3]
+210023f8:	e283302e 	add	r3, r3, #46	; 0x2e
+210023fc:	e51b2008 	ldr	r2, [fp, #-8]
+21002400:	e5922000 	ldr	r2, [r2]
+21002404:	e282202e 	add	r2, r2, #46	; 0x2e
+21002408:	e5d22000 	ldrb	r2, [r2]
+2100240c:	e6ef2072 	uxtb	r2, r2
+21002410:	e6ef2072 	uxtb	r2, r2
+21002414:	e3c2200f 	bic	r2, r2, #15
+21002418:	e6ef2072 	uxtb	r2, r2
+2100241c:	e382200e 	orr	r2, r2, #14
+21002420:	e6ef2072 	uxtb	r2, r2
+21002424:	e6ef2072 	uxtb	r2, r2
+21002428:	e5c32000 	strb	r2, [r3]
+2100242c:	e51b3008 	ldr	r3, [fp, #-8]
+21002430:	e5933000 	ldr	r3, [r3]
+21002434:	e2833028 	add	r3, r3, #40	; 0x28
+21002438:	e3a02000 	mov	r2, #0
+2100243c:	e5c32000 	strb	r2, [r3]
+21002440:	e3a00000 	mov	r0, #0
+21002444:	e51b1008 	ldr	r1, [fp, #-8]
+21002448:	eb0000e3 	bl	210027dc <SDHC_SetHostCtrlSpeedMode>
+2100244c:	e51b3008 	ldr	r3, [fp, #-8]
+21002450:	e58d3000 	str	r3, [sp]
+21002454:	e59f01a4 	ldr	r0, [pc, #420]	; 21002600 <SDHC_IdentifyCard+0x228>
+21002458:	e3a010ff 	mov	r1, #255	; 0xff
+2100245c:	e3a02000 	mov	r2, #0
+21002460:	e3a03000 	mov	r3, #0
+21002464:	ebfffb8e 	bl	210012a4 <SDHC_SetSdhcInterruptEnable>
+21002468:	e51b0008 	ldr	r0, [fp, #-8]
+2100246c:	ebfffc75 	bl	21001648 <SDHC_SetSDOCR>
+21002470:	e1a03000 	mov	r3, r0
+21002474:	e3530000 	cmp	r3, #0
+21002478:	0a000046 	beq	21002598 <SDHC_IdentifyCard+0x1c0>
+2100247c:	e51b3008 	ldr	r3, [fp, #-8]
+21002480:	e3a02000 	mov	r2, #0
+21002484:	e5832008 	str	r2, [r3, #8]
+21002488:	e3a03003 	mov	r3, #3
+2100248c:	e58d3000 	str	r3, [sp]
+21002490:	e51b0008 	ldr	r0, [fp, #-8]
+21002494:	e3a01002 	mov	r1, #2
+21002498:	e3a02000 	mov	r2, #0
+2100249c:	e3a03001 	mov	r3, #1
+210024a0:	ebfffd86 	bl	21001ac0 <SDHC_IssueCommand>
+210024a4:	e51b3008 	ldr	r3, [fp, #-8]
+210024a8:	e5933000 	ldr	r3, [r3]
+210024ac:	e2833018 	add	r3, r3, #24
+210024b0:	e5933000 	ldr	r3, [r3]
+210024b4:	e1a01c23 	lsr	r1, r3, #24
+210024b8:	e51b3008 	ldr	r3, [fp, #-8]
+210024bc:	e5933000 	ldr	r3, [r3]
+210024c0:	e2833018 	add	r3, r3, #24
+210024c4:	e5933000 	ldr	r3, [r3]
+210024c8:	e1a03823 	lsr	r3, r3, #16
+210024cc:	e20320ff 	and	r2, r3, #255	; 0xff
+210024d0:	e51b3008 	ldr	r3, [fp, #-8]
+210024d4:	e5933000 	ldr	r3, [r3]
+210024d8:	e2833018 	add	r3, r3, #24
+210024dc:	e5933000 	ldr	r3, [r3]
+210024e0:	e1a03423 	lsr	r3, r3, #8
+210024e4:	e20330ff 	and	r3, r3, #255	; 0xff
+210024e8:	e51b0008 	ldr	r0, [fp, #-8]
+210024ec:	e5900000 	ldr	r0, [r0]
+210024f0:	e2800018 	add	r0, r0, #24
+210024f4:	e5900000 	ldr	r0, [r0]
+210024f8:	e200e0ff 	and	lr, r0, #255	; 0xff
+210024fc:	e51b0008 	ldr	r0, [fp, #-8]
+21002500:	e5900000 	ldr	r0, [r0]
+21002504:	e2800014 	add	r0, r0, #20
+21002508:	e5900000 	ldr	r0, [r0]
+2100250c:	e1a0cc20 	lsr	ip, r0, #24
+21002510:	e51b0008 	ldr	r0, [fp, #-8]
+21002514:	e5900000 	ldr	r0, [r0]
+21002518:	e2800014 	add	r0, r0, #20
+2100251c:	e5900000 	ldr	r0, [r0]
+21002520:	e1a00820 	lsr	r0, r0, #16
+21002524:	e20000ff 	and	r0, r0, #255	; 0xff
+21002528:	e58de000 	str	lr, [sp]
+2100252c:	e58dc004 	str	ip, [sp, #4]
+21002530:	e58d0008 	str	r0, [sp, #8]
+21002534:	e59f00c8 	ldr	r0, [pc, #200]	; 21002604 <SDHC_IdentifyCard+0x22c>
+21002538:	ebfff8c5 	bl	21000854 <printf>
+2100253c:	e51b3008 	ldr	r3, [fp, #-8]
+21002540:	e5933008 	ldr	r3, [r3, #8]
+21002544:	e3530001 	cmp	r3, #1
+21002548:	13a03000 	movne	r3, #0
+2100254c:	03a03001 	moveq	r3, #1
+21002550:	e6ff2073 	uxth	r2, r3
+21002554:	e51b3008 	ldr	r3, [fp, #-8]
+21002558:	e1c321bc 	strh	r2, [r3, #28]
+2100255c:	e51b3008 	ldr	r3, [fp, #-8]
+21002560:	e1d331bc 	ldrh	r3, [r3, #28]
+21002564:	e1a03803 	lsl	r3, r3, #16
+21002568:	e3a02001 	mov	r2, #1
+2100256c:	e58d2000 	str	r2, [sp]
+21002570:	e51b0008 	ldr	r0, [fp, #-8]
+21002574:	e3a01003 	mov	r1, #3
+21002578:	e1a02003 	mov	r2, r3
+2100257c:	e3a03002 	mov	r3, #2
+21002580:	ebfffd4e 	bl	21001ac0 <SDHC_IssueCommand>
+21002584:	e51b3008 	ldr	r3, [fp, #-8]
+21002588:	e5933008 	ldr	r3, [r3, #8]
+2100258c:	e3530000 	cmp	r3, #0
+21002590:	0a000002 	beq	210025a0 <SDHC_IdentifyCard+0x1c8>
+21002594:	ea000009 	b	210025c0 <SDHC_IdentifyCard+0x1e8>
+21002598:	e3a03000 	mov	r3, #0
+2100259c:	ea000014 	b	210025f4 <SDHC_IdentifyCard+0x21c>
+210025a0:	e51b3008 	ldr	r3, [fp, #-8]
+210025a4:	e5933000 	ldr	r3, [r3]
+210025a8:	e2833010 	add	r3, r3, #16
+210025ac:	e5933000 	ldr	r3, [r3]
+210025b0:	e1a03823 	lsr	r3, r3, #16
+210025b4:	e6ff2073 	uxth	r2, r3
+210025b8:	e51b3008 	ldr	r3, [fp, #-8]
+210025bc:	e1c321bc 	strh	r2, [r3, #28]
+210025c0:	e51b3008 	ldr	r3, [fp, #-8]
+210025c4:	e1d331bc 	ldrh	r3, [r3, #28]
+210025c8:	e1a03803 	lsl	r3, r3, #16
+210025cc:	e3a02003 	mov	r2, #3
+210025d0:	e58d2000 	str	r2, [sp]
+210025d4:	e51b0008 	ldr	r0, [fp, #-8]
+210025d8:	e3a01009 	mov	r1, #9
+210025dc:	e1a02003 	mov	r2, r3
+210025e0:	e3a03002 	mov	r3, #2
+210025e4:	ebfffd35 	bl	21001ac0 <SDHC_IssueCommand>
+210025e8:	e51b0008 	ldr	r0, [fp, #-8]
+210025ec:	eb000250 	bl	21002f34 <SDHC_DisplayCardInformation>
+210025f0:	e3a03001 	mov	r3, #1
+210025f4:	e1a00003 	mov	r0, r3
+210025f8:	e24bd004 	sub	sp, fp, #4
+210025fc:	e8bd8800 	pop	{fp, pc}
+21002600:	000003f7 	.word	0x000003f7
+21002604:	210034b4 	.word	0x210034b4
+
+21002608 <SDHC_SetSdCardSpeedMode>:
+21002608:	e92d4800 	push	{fp, lr}
+2100260c:	e28db004 	add	fp, sp, #4
+21002610:	e24dd058 	sub	sp, sp, #88	; 0x58
+21002614:	e50b0050 	str	r0, [fp, #-80]	; 0x50
+21002618:	e50b1054 	str	r1, [fp, #-84]	; 0x54
+2100261c:	e3a03000 	mov	r3, #0
+21002620:	e50b300c 	str	r3, [fp, #-12]
+21002624:	e59f0198 	ldr	r0, [pc, #408]	; 210027c4 <SDHC_SetSdCardSpeedMode+0x1bc>
+21002628:	eb000302 	bl	21003238 <puts>
+2100262c:	e3a03001 	mov	r3, #1
+21002630:	e58d3000 	str	r3, [sp]
+21002634:	e51b0054 	ldr	r0, [fp, #-84]	; 0x54
+21002638:	e3a01010 	mov	r1, #16
+2100263c:	e3a02040 	mov	r2, #64	; 0x40
+21002640:	e3a03002 	mov	r3, #2
+21002644:	ebfffd1d 	bl	21001ac0 <SDHC_IssueCommand>
+21002648:	e1a03000 	mov	r3, r0
+2100264c:	e3530000 	cmp	r3, #0
+21002650:	1a000001 	bne	2100265c <SDHC_SetSdCardSpeedMode+0x54>
+21002654:	e3a03000 	mov	r3, #0
+21002658:	ea000056 	b	210027b8 <SDHC_SetSdCardSpeedMode+0x1b0>
+2100265c:	e51b3054 	ldr	r3, [fp, #-84]	; 0x54
+21002660:	e5933000 	ldr	r3, [r3]
+21002664:	e2833004 	add	r3, r3, #4
+21002668:	e59f2158 	ldr	r2, [pc, #344]	; 210027c8 <SDHC_SetSdCardSpeedMode+0x1c0>
+2100266c:	e1c320b0 	strh	r2, [r3]
+21002670:	e51b3054 	ldr	r3, [fp, #-84]	; 0x54
+21002674:	e5933000 	ldr	r3, [r3]
+21002678:	e2833006 	add	r3, r3, #6
+2100267c:	e3a02001 	mov	r2, #1
+21002680:	e1c320b0 	strh	r2, [r3]
+21002684:	e3a03000 	mov	r3, #0
+21002688:	e58d3000 	str	r3, [sp]
+2100268c:	e51b3054 	ldr	r3, [fp, #-84]	; 0x54
+21002690:	e58d3004 	str	r3, [sp, #4]
+21002694:	e3a00000 	mov	r0, #0
+21002698:	e3a01001 	mov	r1, #1
+2100269c:	e3a02000 	mov	r2, #0
+210026a0:	e3a03000 	mov	r3, #0
+210026a4:	eb00005f 	bl	21002828 <SDHC_SetTransferModeReg>
+210026a8:	e51b3054 	ldr	r3, [fp, #-84]	; 0x54
+210026ac:	e3a02001 	mov	r2, #1
+210026b0:	e1c322b2 	strh	r2, [r3, #34]	; 0x22
+210026b4:	e51b3054 	ldr	r3, [fp, #-84]	; 0x54
+210026b8:	e24b204c 	sub	r2, fp, #76	; 0x4c
+210026bc:	e5832028 	str	r2, [r3, #40]	; 0x28
+210026c0:	e51b2050 	ldr	r2, [fp, #-80]	; 0x50
+210026c4:	e59f3100 	ldr	r3, [pc, #256]	; 210027cc <SDHC_SetSdCardSpeedMode+0x1c4>
+210026c8:	e1823003 	orr	r3, r2, r3
+210026cc:	e50b300c 	str	r3, [fp, #-12]
+210026d0:	e3a03001 	mov	r3, #1
+210026d4:	e58d3000 	str	r3, [sp]
+210026d8:	e51b0054 	ldr	r0, [fp, #-84]	; 0x54
+210026dc:	e3a01006 	mov	r1, #6
+210026e0:	e51b200c 	ldr	r2, [fp, #-12]
+210026e4:	e3a03003 	mov	r3, #3
+210026e8:	ebfffcf4 	bl	21001ac0 <SDHC_IssueCommand>
+210026ec:	e1a03000 	mov	r3, r0
+210026f0:	e3530000 	cmp	r3, #0
+210026f4:	1a000003 	bne	21002708 <SDHC_SetSdCardSpeedMode+0x100>
+210026f8:	e59f00d0 	ldr	r0, [pc, #208]	; 210027d0 <SDHC_SetSdCardSpeedMode+0x1c8>
+210026fc:	eb0002cd 	bl	21003238 <puts>
+21002700:	e3a03000 	mov	r3, #0
+21002704:	ea00002b 	b	210027b8 <SDHC_SetSdCardSpeedMode+0x1b0>
+21002708:	e51b3054 	ldr	r3, [fp, #-84]	; 0x54
+2100270c:	e5933028 	ldr	r3, [r3, #40]	; 0x28
+21002710:	e1a00003 	mov	r0, r3
+21002714:	eb0001b5 	bl	21002df0 <SDHC_ReadOneBlock>
+21002718:	e3a0347f 	mov	r3, #2130706432	; 0x7f000000
+2100271c:	e50b3008 	str	r3, [fp, #-8]
+21002720:	ea000005 	b	2100273c <SDHC_SetSdCardSpeedMode+0x134>
+21002724:	e51b3008 	ldr	r3, [fp, #-8]
+21002728:	e2433001 	sub	r3, r3, #1
+2100272c:	e50b3008 	str	r3, [fp, #-8]
+21002730:	e51b3008 	ldr	r3, [fp, #-8]
+21002734:	e3530000 	cmp	r3, #0
+21002738:	0a000007 	beq	2100275c <SDHC_SetSdCardSpeedMode+0x154>
+2100273c:	e51b3054 	ldr	r3, [fp, #-84]	; 0x54
+21002740:	e5933000 	ldr	r3, [r3]
+21002744:	e2833030 	add	r3, r3, #48	; 0x30
+21002748:	e1d330b0 	ldrh	r3, [r3]
+2100274c:	e6ff3073 	uxth	r3, r3
+21002750:	e2033002 	and	r3, r3, #2
+21002754:	e3530000 	cmp	r3, #0
+21002758:	0afffff1 	beq	21002724 <SDHC_SetSdCardSpeedMode+0x11c>
+2100275c:	e51b3054 	ldr	r3, [fp, #-84]	; 0x54
+21002760:	e5933000 	ldr	r3, [r3]
+21002764:	e2833030 	add	r3, r3, #48	; 0x30
+21002768:	e3a02002 	mov	r2, #2
+2100276c:	e1c320b0 	strh	r2, [r3]
+21002770:	e51b3054 	ldr	r3, [fp, #-84]	; 0x54
+21002774:	e5933000 	ldr	r3, [r3]
+21002778:	e2833030 	add	r3, r3, #48	; 0x30
+2100277c:	e1d330b0 	ldrh	r3, [r3]
+21002780:	e6ff3073 	uxth	r3, r3
+21002784:	e2033002 	and	r3, r3, #2
+21002788:	e3530000 	cmp	r3, #0
+2100278c:	1afffff2 	bne	2100275c <SDHC_SetSdCardSpeedMode+0x154>
+21002790:	e51b3040 	ldr	r3, [fp, #-64]	; 0x40
+21002794:	e2033c02 	and	r3, r3, #512	; 0x200
+21002798:	e3530000 	cmp	r3, #0
+2100279c:	0a000002 	beq	210027ac <SDHC_SetSdCardSpeedMode+0x1a4>
+210027a0:	e59f002c 	ldr	r0, [pc, #44]	; 210027d4 <SDHC_SetSdCardSpeedMode+0x1cc>
+210027a4:	eb0002a3 	bl	21003238 <puts>
+210027a8:	ea000001 	b	210027b4 <SDHC_SetSdCardSpeedMode+0x1ac>
+210027ac:	e59f0024 	ldr	r0, [pc, #36]	; 210027d8 <SDHC_SetSdCardSpeedMode+0x1d0>
+210027b0:	eb0002a0 	bl	21003238 <puts>
+210027b4:	e3a03001 	mov	r3, #1
+210027b8:	e1a00003 	mov	r0, r3
+210027bc:	e24bd004 	sub	sp, fp, #4
+210027c0:	e8bd8800 	pop	{fp, pc}
+210027c4:	210034d4 	.word	0x210034d4
+210027c8:	00007040 	.word	0x00007040
+210027cc:	80ffff00 	.word	0x80ffff00
+210027d0:	210034f0 	.word	0x210034f0
+210027d4:	210034fc 	.word	0x210034fc
+210027d8:	21003520 	.word	0x21003520
+
+210027dc <SDHC_SetHostCtrlSpeedMode>:
+210027dc:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+210027e0:	e28db000 	add	fp, sp, #0
+210027e4:	e24dd00c 	sub	sp, sp, #12
+210027e8:	e50b0008 	str	r0, [fp, #-8]
+210027ec:	e50b100c 	str	r1, [fp, #-12]
+210027f0:	e51b300c 	ldr	r3, [fp, #-12]
+210027f4:	e5933000 	ldr	r3, [r3]
+210027f8:	e2833028 	add	r3, r3, #40	; 0x28
+210027fc:	e51b200c 	ldr	r2, [fp, #-12]
+21002800:	e5922000 	ldr	r2, [r2]
+21002804:	e2822028 	add	r2, r2, #40	; 0x28
+21002808:	e5d22000 	ldrb	r2, [r2]
+2100280c:	e6ef2072 	uxtb	r2, r2
+21002810:	e3c22004 	bic	r2, r2, #4
+21002814:	e6ef2072 	uxtb	r2, r2
+21002818:	e5c32000 	strb	r2, [r3]
+2100281c:	e28bd000 	add	sp, fp, #0
+21002820:	e8bd0800 	pop	{fp}
+21002824:	e12fff1e 	bx	lr
+
+21002828 <SDHC_SetTransferModeReg>:
+21002828:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+2100282c:	e28db000 	add	fp, sp, #0
+21002830:	e24dd014 	sub	sp, sp, #20
+21002834:	e50b0008 	str	r0, [fp, #-8]
+21002838:	e50b100c 	str	r1, [fp, #-12]
+2100283c:	e50b2010 	str	r2, [fp, #-16]
+21002840:	e50b3014 	str	r3, [fp, #-20]
+21002844:	e51b3008 	ldr	r3, [fp, #-8]
+21002848:	e6ff3073 	uxth	r3, r3
+2100284c:	e1a03283 	lsl	r3, r3, #5
+21002850:	e6ff2073 	uxth	r2, r3
+21002854:	e51b300c 	ldr	r3, [fp, #-12]
+21002858:	e6ff3073 	uxth	r3, r3
+2100285c:	e1a03203 	lsl	r3, r3, #4
+21002860:	e6ff3073 	uxth	r3, r3
+21002864:	e1823003 	orr	r3, r2, r3
+21002868:	e6ff2073 	uxth	r2, r3
+2100286c:	e51b3010 	ldr	r3, [fp, #-16]
+21002870:	e6ff3073 	uxth	r3, r3
+21002874:	e1a03103 	lsl	r3, r3, #2
+21002878:	e6ff3073 	uxth	r3, r3
+2100287c:	e1823003 	orr	r3, r2, r3
+21002880:	e6ff2073 	uxth	r2, r3
+21002884:	e51b3014 	ldr	r3, [fp, #-20]
+21002888:	e6ff3073 	uxth	r3, r3
+2100288c:	e1a03083 	lsl	r3, r3, #1
+21002890:	e6ff3073 	uxth	r3, r3
+21002894:	e1823003 	orr	r3, r2, r3
+21002898:	e6ff2073 	uxth	r2, r3
+2100289c:	e59b3004 	ldr	r3, [fp, #4]
+210028a0:	e6ff3073 	uxth	r3, r3
+210028a4:	e1823003 	orr	r3, r2, r3
+210028a8:	e6ff2073 	uxth	r2, r3
+210028ac:	e59b3008 	ldr	r3, [fp, #8]
+210028b0:	e1c321be 	strh	r2, [r3, #30]
+210028b4:	e59b3008 	ldr	r3, [fp, #8]
+210028b8:	e5933000 	ldr	r3, [r3]
+210028bc:	e283300c 	add	r3, r3, #12
+210028c0:	e59b2008 	ldr	r2, [fp, #8]
+210028c4:	e1d221be 	ldrh	r2, [r2, #30]
+210028c8:	e1c320b0 	strh	r2, [r3]
+210028cc:	e28bd000 	add	sp, fp, #0
+210028d0:	e8bd0800 	pop	{fp}
+210028d4:	e12fff1e 	bx	lr
+
+210028d8 <SDHC_SetSdClockOnOff>:
+210028d8:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+210028dc:	e28db000 	add	fp, sp, #0
+210028e0:	e24dd00c 	sub	sp, sp, #12
+210028e4:	e1a03000 	mov	r3, r0
+210028e8:	e50b100c 	str	r1, [fp, #-12]
+210028ec:	e54b3005 	strb	r3, [fp, #-5]
+210028f0:	e55b3005 	ldrb	r3, [fp, #-5]
+210028f4:	e3530000 	cmp	r3, #0
+210028f8:	1a00000b 	bne	2100292c <SDHC_SetSdClockOnOff+0x54>
+210028fc:	e51b300c 	ldr	r3, [fp, #-12]
+21002900:	e5933000 	ldr	r3, [r3]
+21002904:	e283302c 	add	r3, r3, #44	; 0x2c
+21002908:	e51b200c 	ldr	r2, [fp, #-12]
+2100290c:	e5922000 	ldr	r2, [r2]
+21002910:	e282202c 	add	r2, r2, #44	; 0x2c
+21002914:	e1d220b0 	ldrh	r2, [r2]
+21002918:	e6ff2072 	uxth	r2, r2
+2100291c:	e3c22004 	bic	r2, r2, #4
+21002920:	e6ff2072 	uxth	r2, r2
+21002924:	e1c320b0 	strh	r2, [r3]
+21002928:	ea000013 	b	2100297c <SDHC_SetSdClockOnOff+0xa4>
+2100292c:	e51b300c 	ldr	r3, [fp, #-12]
+21002930:	e5933000 	ldr	r3, [r3]
+21002934:	e283302c 	add	r3, r3, #44	; 0x2c
+21002938:	e51b200c 	ldr	r2, [fp, #-12]
+2100293c:	e5922000 	ldr	r2, [r2]
+21002940:	e282202c 	add	r2, r2, #44	; 0x2c
+21002944:	e1d220b0 	ldrh	r2, [r2]
+21002948:	e6ff2072 	uxth	r2, r2
+2100294c:	e3822004 	orr	r2, r2, #4
+21002950:	e6ff2072 	uxth	r2, r2
+21002954:	e1c320b0 	strh	r2, [r3]
+21002958:	e1a00000 	nop			; (mov r0, r0)
+2100295c:	e51b300c 	ldr	r3, [fp, #-12]
+21002960:	e5933000 	ldr	r3, [r3]
+21002964:	e283302c 	add	r3, r3, #44	; 0x2c
+21002968:	e1d330b0 	ldrh	r3, [r3]
+2100296c:	e6ff3073 	uxth	r3, r3
+21002970:	e2033008 	and	r3, r3, #8
+21002974:	e3530000 	cmp	r3, #0
+21002978:	0afffff7 	beq	2100295c <SDHC_SetSdClockOnOff+0x84>
+2100297c:	e28bd000 	add	sp, fp, #0
+21002980:	e8bd0800 	pop	{fp}
+21002984:	e12fff1e 	bx	lr
+
+21002988 <SDHC_SetSdClock>:
+21002988:	e92d4800 	push	{fp, lr}
+2100298c:	e28db004 	add	fp, sp, #4
+21002990:	e24dd008 	sub	sp, sp, #8
+21002994:	e50b0008 	str	r0, [fp, #-8]
+21002998:	e50b100c 	str	r1, [fp, #-12]
+2100299c:	e51b300c 	ldr	r3, [fp, #-12]
+210029a0:	e3530000 	cmp	r3, #0
+210029a4:	1a00000e 	bne	210029e4 <SDHC_SetSdClock+0x5c>
+210029a8:	e51b3008 	ldr	r3, [fp, #-8]
+210029ac:	e5933000 	ldr	r3, [r3]
+210029b0:	e2832080 	add	r2, r3, #128	; 0x80
+210029b4:	e51b3008 	ldr	r3, [fp, #-8]
+210029b8:	e5933014 	ldr	r3, [r3, #20]
+210029bc:	e1a03203 	lsl	r3, r3, #4
+210029c0:	e3833101 	orr	r3, r3, #1073741824	; 0x40000000
+210029c4:	e3833c01 	orr	r3, r3, #256	; 0x100
+210029c8:	e5823000 	str	r3, [r2]
+210029cc:	e51b3008 	ldr	r3, [fp, #-8]
+210029d0:	e5933000 	ldr	r3, [r3]
+210029d4:	e2833084 	add	r3, r3, #132	; 0x84
+210029d8:	e3a02000 	mov	r2, #0
+210029dc:	e5832000 	str	r2, [r3]
+210029e0:	ea000015 	b	21002a3c <SDHC_SetSdClock+0xb4>
+210029e4:	e51b3008 	ldr	r3, [fp, #-8]
+210029e8:	e5933008 	ldr	r3, [r3, #8]
+210029ec:	e3530000 	cmp	r3, #0
+210029f0:	0a000003 	beq	21002a04 <SDHC_SetSdClock+0x7c>
+210029f4:	e51b3008 	ldr	r3, [fp, #-8]
+210029f8:	e5933008 	ldr	r3, [r3, #8]
+210029fc:	e3530003 	cmp	r3, #3
+21002a00:	1a00000d 	bne	21002a3c <SDHC_SetSdClock+0xb4>
+21002a04:	e51b3008 	ldr	r3, [fp, #-8]
+21002a08:	e5933000 	ldr	r3, [r3]
+21002a0c:	e2832080 	add	r2, r3, #128	; 0x80
+21002a10:	e51b3008 	ldr	r3, [fp, #-8]
+21002a14:	e5933014 	ldr	r3, [r3, #20]
+21002a18:	e1a03203 	lsl	r3, r3, #4
+21002a1c:	e3833101 	orr	r3, r3, #1073741824	; 0x40000000
+21002a20:	e3833c01 	orr	r3, r3, #256	; 0x100
+21002a24:	e5823000 	str	r3, [r2]
+21002a28:	e51b3008 	ldr	r3, [fp, #-8]
+21002a2c:	e5933000 	ldr	r3, [r3]
+21002a30:	e2833084 	add	r3, r3, #132	; 0x84
+21002a34:	e3a02000 	mov	r2, #0
+21002a38:	e5832000 	str	r2, [r3]
+21002a3c:	e51b3008 	ldr	r3, [fp, #-8]
+21002a40:	e5933000 	ldr	r3, [r3]
+21002a44:	e283302c 	add	r3, r3, #44	; 0x2c
+21002a48:	e51b2008 	ldr	r2, [fp, #-8]
+21002a4c:	e5922000 	ldr	r2, [r2]
+21002a50:	e282202c 	add	r2, r2, #44	; 0x2c
+21002a54:	e1d220b0 	ldrh	r2, [r2]
+21002a58:	e6ff2072 	uxth	r2, r2
+21002a5c:	e20220ff 	and	r2, r2, #255	; 0xff
+21002a60:	e6ff1072 	uxth	r1, r2
+21002a64:	e51b2008 	ldr	r2, [fp, #-8]
+21002a68:	e5922018 	ldr	r2, [r2, #24]
+21002a6c:	e6ff2072 	uxth	r2, r2
+21002a70:	e1a02402 	lsl	r2, r2, #8
+21002a74:	e6ff2072 	uxth	r2, r2
+21002a78:	e1812002 	orr	r2, r1, r2
+21002a7c:	e6ff2072 	uxth	r2, r2
+21002a80:	e3822001 	orr	r2, r2, #1
+21002a84:	e6ff2072 	uxth	r2, r2
+21002a88:	e1c320b0 	strh	r2, [r3]
+21002a8c:	e1a00000 	nop			; (mov r0, r0)
+21002a90:	e51b3008 	ldr	r3, [fp, #-8]
+21002a94:	e5933000 	ldr	r3, [r3]
+21002a98:	e283302c 	add	r3, r3, #44	; 0x2c
+21002a9c:	e1d330b0 	ldrh	r3, [r3]
+21002aa0:	e6ff3073 	uxth	r3, r3
+21002aa4:	e2033002 	and	r3, r3, #2
+21002aa8:	e3530000 	cmp	r3, #0
+21002aac:	0afffff7 	beq	21002a90 <SDHC_SetSdClock+0x108>
+21002ab0:	e3a00001 	mov	r0, #1
+21002ab4:	e51b1008 	ldr	r1, [fp, #-8]
+21002ab8:	ebffff86 	bl	210028d8 <SDHC_SetSdClockOnOff>
+21002abc:	e51b3008 	ldr	r3, [fp, #-8]
+21002ac0:	e5933000 	ldr	r3, [r3]
+21002ac4:	e2833080 	add	r3, r3, #128	; 0x80
+21002ac8:	e5933000 	ldr	r3, [r3]
+21002acc:	e59f002c 	ldr	r0, [pc, #44]	; 21002b00 <SDHC_SetSdClock+0x178>
+21002ad0:	e1a01003 	mov	r1, r3
+21002ad4:	ebfff75e 	bl	21000854 <printf>
+21002ad8:	e51b3008 	ldr	r3, [fp, #-8]
+21002adc:	e5933000 	ldr	r3, [r3]
+21002ae0:	e283302c 	add	r3, r3, #44	; 0x2c
+21002ae4:	e1d330b0 	ldrh	r3, [r3]
+21002ae8:	e6ff3073 	uxth	r3, r3
+21002aec:	e59f0010 	ldr	r0, [pc, #16]	; 21002b04 <SDHC_SetSdClock+0x17c>
+21002af0:	e1a01003 	mov	r1, r3
+21002af4:	ebfff756 	bl	21000854 <printf>
+21002af8:	e24bd004 	sub	sp, fp, #4
+21002afc:	e8bd8800 	pop	{fp, pc}
+21002b00:	2100354c 	.word	0x2100354c
+21002b04:	21003560 	.word	0x21003560
+
+21002b08 <SDHC_SetDataTransferWidth>:
+21002b08:	e92d4800 	push	{fp, lr}
+21002b0c:	e28db004 	add	fp, sp, #4
+21002b10:	e24dd010 	sub	sp, sp, #16
+21002b14:	e50b0008 	str	r0, [fp, #-8]
+21002b18:	e3a00000 	mov	r0, #0
+21002b1c:	e51b1008 	ldr	r1, [fp, #-8]
+21002b20:	ebfffba9 	bl	210019cc <SDHC_SetSdhcCardIntEnable>
+21002b24:	e51b3008 	ldr	r3, [fp, #-8]
+21002b28:	e5933008 	ldr	r3, [r3, #8]
+21002b2c:	e3530000 	cmp	r3, #0
+21002b30:	1a000002 	bne	21002b40 <SDHC_SetDataTransferWidth+0x38>
+21002b34:	e51b3008 	ldr	r3, [fp, #-8]
+21002b38:	e3a02004 	mov	r2, #4
+21002b3c:	e5c32027 	strb	r2, [r3, #39]	; 0x27
+21002b40:	e51b3008 	ldr	r3, [fp, #-8]
+21002b44:	e5933008 	ldr	r3, [r3, #8]
+21002b48:	e3530000 	cmp	r3, #0
+21002b4c:	1a000021 	bne	21002bd8 <SDHC_SetDataTransferWidth+0xd0>
+21002b50:	e51b3008 	ldr	r3, [fp, #-8]
+21002b54:	e1d331bc 	ldrh	r3, [r3, #28]
+21002b58:	e1a03803 	lsl	r3, r3, #16
+21002b5c:	e3a02001 	mov	r2, #1
+21002b60:	e58d2000 	str	r2, [sp]
+21002b64:	e51b0008 	ldr	r0, [fp, #-8]
+21002b68:	e3a01037 	mov	r1, #55	; 0x37
+21002b6c:	e1a02003 	mov	r2, r3
+21002b70:	e3a03002 	mov	r3, #2
+21002b74:	ebfffbd1 	bl	21001ac0 <SDHC_IssueCommand>
+21002b78:	e1a03000 	mov	r3, r0
+21002b7c:	e3530000 	cmp	r3, #0
+21002b80:	1a000001 	bne	21002b8c <SDHC_SetDataTransferWidth+0x84>
+21002b84:	e3a03000 	mov	r3, #0
+21002b88:	ea000040 	b	21002c90 <SDHC_SetDataTransferWidth+0x188>
+21002b8c:	e51b3008 	ldr	r3, [fp, #-8]
+21002b90:	e5d33027 	ldrb	r3, [r3, #39]	; 0x27
+21002b94:	e3530001 	cmp	r3, #1
+21002b98:	1a000001 	bne	21002ba4 <SDHC_SetDataTransferWidth+0x9c>
+21002b9c:	e3a03000 	mov	r3, #0
+21002ba0:	ea000000 	b	21002ba8 <SDHC_SetDataTransferWidth+0xa0>
+21002ba4:	e3a03002 	mov	r3, #2
+21002ba8:	e3a02001 	mov	r2, #1
+21002bac:	e58d2000 	str	r2, [sp]
+21002bb0:	e51b0008 	ldr	r0, [fp, #-8]
+21002bb4:	e3a01006 	mov	r1, #6
+21002bb8:	e1a02003 	mov	r2, r3
+21002bbc:	e3a03002 	mov	r3, #2
+21002bc0:	ebfffbbe 	bl	21001ac0 <SDHC_IssueCommand>
+21002bc4:	e1a03000 	mov	r3, r0
+21002bc8:	e3530000 	cmp	r3, #0
+21002bcc:	1a000001 	bne	21002bd8 <SDHC_SetDataTransferWidth+0xd0>
+21002bd0:	e3a03000 	mov	r3, #0
+21002bd4:	ea00002d 	b	21002c90 <SDHC_SetDataTransferWidth+0x188>
+21002bd8:	e51b3008 	ldr	r3, [fp, #-8]
+21002bdc:	e5933000 	ldr	r3, [r3]
+21002be0:	e2833028 	add	r3, r3, #40	; 0x28
+21002be4:	e51b2008 	ldr	r2, [fp, #-8]
+21002be8:	e5922000 	ldr	r2, [r2]
+21002bec:	e2822028 	add	r2, r2, #40	; 0x28
+21002bf0:	e5d22000 	ldrb	r2, [r2]
+21002bf4:	e6ef2072 	uxtb	r2, r2
+21002bf8:	e3c22022 	bic	r2, r2, #34	; 0x22
+21002bfc:	e6ef2072 	uxtb	r2, r2
+21002c00:	e5c32000 	strb	r2, [r3]
+21002c04:	e51b3008 	ldr	r3, [fp, #-8]
+21002c08:	e5d33027 	ldrb	r3, [r3, #39]	; 0x27
+21002c0c:	e3530008 	cmp	r3, #8
+21002c10:	1a00000b 	bne	21002c44 <SDHC_SetDataTransferWidth+0x13c>
+21002c14:	e51b3008 	ldr	r3, [fp, #-8]
+21002c18:	e5933000 	ldr	r3, [r3]
+21002c1c:	e2833028 	add	r3, r3, #40	; 0x28
+21002c20:	e51b2008 	ldr	r2, [fp, #-8]
+21002c24:	e5922000 	ldr	r2, [r2]
+21002c28:	e2822028 	add	r2, r2, #40	; 0x28
+21002c2c:	e5d22000 	ldrb	r2, [r2]
+21002c30:	e6ef2072 	uxtb	r2, r2
+21002c34:	e3822020 	orr	r2, r2, #32
+21002c38:	e6ef2072 	uxtb	r2, r2
+21002c3c:	e5c32000 	strb	r2, [r3]
+21002c40:	ea00000e 	b	21002c80 <SDHC_SetDataTransferWidth+0x178>
+21002c44:	e51b3008 	ldr	r3, [fp, #-8]
+21002c48:	e5d33027 	ldrb	r3, [r3, #39]	; 0x27
+21002c4c:	e3530004 	cmp	r3, #4
+21002c50:	1a00000a 	bne	21002c80 <SDHC_SetDataTransferWidth+0x178>
+21002c54:	e51b3008 	ldr	r3, [fp, #-8]
+21002c58:	e5933000 	ldr	r3, [r3]
+21002c5c:	e2833028 	add	r3, r3, #40	; 0x28
+21002c60:	e51b2008 	ldr	r2, [fp, #-8]
+21002c64:	e5922000 	ldr	r2, [r2]
+21002c68:	e2822028 	add	r2, r2, #40	; 0x28
+21002c6c:	e5d22000 	ldrb	r2, [r2]
+21002c70:	e6ef2072 	uxtb	r2, r2
+21002c74:	e3822002 	orr	r2, r2, #2
+21002c78:	e6ef2072 	uxtb	r2, r2
+21002c7c:	e5c32000 	strb	r2, [r3]
+21002c80:	e3a00001 	mov	r0, #1
+21002c84:	e51b1008 	ldr	r1, [fp, #-8]
+21002c88:	ebfffb4f 	bl	210019cc <SDHC_SetSdhcCardIntEnable>
+21002c8c:	e3a03001 	mov	r3, #1
+21002c90:	e1a00003 	mov	r0, r3
+21002c94:	e24bd004 	sub	sp, fp, #4
+21002c98:	e8bd8800 	pop	{fp, pc}
+
+21002c9c <SDHC_WaitForCard2TransferState>:
+21002c9c:	e92d4800 	push	{fp, lr}
+21002ca0:	e28db004 	add	fp, sp, #4
+21002ca4:	e24dd018 	sub	sp, sp, #24
+21002ca8:	e50b0010 	str	r0, [fp, #-16]
+21002cac:	e51b3010 	ldr	r3, [fp, #-16]
+21002cb0:	e1d331bc 	ldrh	r3, [r3, #28]
+21002cb4:	e1a03803 	lsl	r3, r3, #16
+21002cb8:	e3a02002 	mov	r2, #2
+21002cbc:	e58d2000 	str	r2, [sp]
+21002cc0:	e51b0010 	ldr	r0, [fp, #-16]
+21002cc4:	e3a0100d 	mov	r1, #13
+21002cc8:	e1a02003 	mov	r2, r3
+21002ccc:	e3a03002 	mov	r3, #2
+21002cd0:	ebfffb7a 	bl	21001ac0 <SDHC_IssueCommand>
+21002cd4:	e1a03000 	mov	r3, r0
+21002cd8:	e3530000 	cmp	r3, #0
+21002cdc:	1a000001 	bne	21002ce8 <SDHC_WaitForCard2TransferState+0x4c>
+21002ce0:	e3a03000 	mov	r3, #0
+21002ce4:	ea000011 	b	21002d30 <SDHC_WaitForCard2TransferState+0x94>
+21002ce8:	e51b3010 	ldr	r3, [fp, #-16]
+21002cec:	e5933000 	ldr	r3, [r3]
+21002cf0:	e2833010 	add	r3, r3, #16
+21002cf4:	e5933000 	ldr	r3, [r3]
+21002cf8:	e1a034a3 	lsr	r3, r3, #9
+21002cfc:	e203300f 	and	r3, r3, #15
+21002d00:	e50b3008 	str	r3, [fp, #-8]
+21002d04:	e51b3008 	ldr	r3, [fp, #-8]
+21002d08:	e3530007 	cmp	r3, #7
+21002d0c:	0affffe6 	beq	21002cac <SDHC_WaitForCard2TransferState+0x10>
+21002d10:	e51b3008 	ldr	r3, [fp, #-8]
+21002d14:	e3530006 	cmp	r3, #6
+21002d18:	0affffe3 	beq	21002cac <SDHC_WaitForCard2TransferState+0x10>
+21002d1c:	e51b3008 	ldr	r3, [fp, #-8]
+21002d20:	e3530004 	cmp	r3, #4
+21002d24:	13a03000 	movne	r3, #0
+21002d28:	03a03001 	moveq	r3, #1
+21002d2c:	e6ef3073 	uxtb	r3, r3
+21002d30:	e1a00003 	mov	r0, r3
+21002d34:	e24bd004 	sub	sp, fp, #4
+21002d38:	e8bd8800 	pop	{fp, pc}
+
+21002d3c <SDHC_Set_InitClock>:
+21002d3c:	e92d4800 	push	{fp, lr}
+21002d40:	e28db004 	add	fp, sp, #4
+21002d44:	e24dd008 	sub	sp, sp, #8
+21002d48:	e50b0008 	str	r0, [fp, #-8]
+21002d4c:	e51b3008 	ldr	r3, [fp, #-8]
+21002d50:	e5933000 	ldr	r3, [r3]
+21002d54:	e2833080 	add	r3, r3, #128	; 0x80
+21002d58:	e3a02e11 	mov	r2, #272	; 0x110
+21002d5c:	e5832000 	str	r2, [r3]
+21002d60:	e51b3008 	ldr	r3, [fp, #-8]
+21002d64:	e5933000 	ldr	r3, [r3]
+21002d68:	e2833084 	add	r3, r3, #132	; 0x84
+21002d6c:	e3a02000 	mov	r2, #0
+21002d70:	e5832000 	str	r2, [r3]
+21002d74:	e51b3008 	ldr	r3, [fp, #-8]
+21002d78:	e5933000 	ldr	r3, [r3]
+21002d7c:	e283202c 	add	r2, r3, #44	; 0x2c
+21002d80:	e51b3008 	ldr	r3, [fp, #-8]
+21002d84:	e5933000 	ldr	r3, [r3]
+21002d88:	e283302c 	add	r3, r3, #44	; 0x2c
+21002d8c:	e1d330b0 	ldrh	r3, [r3]
+21002d90:	e6ff3073 	uxth	r3, r3
+21002d94:	e6ff3073 	uxth	r3, r3
+21002d98:	e20330ff 	and	r3, r3, #255	; 0xff
+21002d9c:	e6ff3073 	uxth	r3, r3
+21002da0:	e383337f 	orr	r3, r3, #-67108863	; 0xfc000001
+21002da4:	e38337ff 	orr	r3, r3, #66846720	; 0x3fc0000
+21002da8:	e383390e 	orr	r3, r3, #229376	; 0x38000
+21002dac:	e6ff3073 	uxth	r3, r3
+21002db0:	e6ff3073 	uxth	r3, r3
+21002db4:	e1c230b0 	strh	r3, [r2]
+21002db8:	e1a00000 	nop			; (mov r0, r0)
+21002dbc:	e51b3008 	ldr	r3, [fp, #-8]
+21002dc0:	e5933000 	ldr	r3, [r3]
+21002dc4:	e283302c 	add	r3, r3, #44	; 0x2c
+21002dc8:	e1d330b0 	ldrh	r3, [r3]
+21002dcc:	e6ff3073 	uxth	r3, r3
+21002dd0:	e2033002 	and	r3, r3, #2
+21002dd4:	e3530000 	cmp	r3, #0
+21002dd8:	0afffff7 	beq	21002dbc <SDHC_Set_InitClock+0x80>
+21002ddc:	e3a00001 	mov	r0, #1
+21002de0:	e51b1008 	ldr	r1, [fp, #-8]
+21002de4:	ebfffebb 	bl	210028d8 <SDHC_SetSdClockOnOff>
+21002de8:	e24bd004 	sub	sp, fp, #4
+21002dec:	e8bd8800 	pop	{fp, pc}
+
+21002df0 <SDHC_ReadOneBlock>:
+21002df0:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21002df4:	e28db000 	add	fp, sp, #0
+21002df8:	e24dd01c 	sub	sp, sp, #28
+21002dfc:	e50b0018 	str	r0, [fp, #-24]
+21002e00:	e59f3128 	ldr	r3, [pc, #296]	; 21002f30 <SDHC_ReadOneBlock+0x140>
+21002e04:	e50b3010 	str	r3, [fp, #-16]
+21002e08:	e51b3018 	ldr	r3, [fp, #-24]
+21002e0c:	e50b3008 	str	r3, [fp, #-8]
+21002e10:	e51b3010 	ldr	r3, [fp, #-16]
+21002e14:	e5933000 	ldr	r3, [r3]
+21002e18:	e2833004 	add	r3, r3, #4
+21002e1c:	e1d330b0 	ldrh	r3, [r3]
+21002e20:	e6ff3073 	uxth	r3, r3
+21002e24:	e1a03a03 	lsl	r3, r3, #20
+21002e28:	e1a03a23 	lsr	r3, r3, #20
+21002e2c:	e50b3014 	str	r3, [fp, #-20]
+21002e30:	e3a0347f 	mov	r3, #2130706432	; 0x7f000000
+21002e34:	e50b300c 	str	r3, [fp, #-12]
+21002e38:	ea000005 	b	21002e54 <SDHC_ReadOneBlock+0x64>
+21002e3c:	e51b300c 	ldr	r3, [fp, #-12]
+21002e40:	e2433001 	sub	r3, r3, #1
+21002e44:	e50b300c 	str	r3, [fp, #-12]
+21002e48:	e51b300c 	ldr	r3, [fp, #-12]
+21002e4c:	e3530000 	cmp	r3, #0
+21002e50:	0a000007 	beq	21002e74 <SDHC_ReadOneBlock+0x84>
+21002e54:	e51b3010 	ldr	r3, [fp, #-16]
+21002e58:	e5933000 	ldr	r3, [r3]
+21002e5c:	e2833030 	add	r3, r3, #48	; 0x30
+21002e60:	e1d330b0 	ldrh	r3, [r3]
+21002e64:	e6ff3073 	uxth	r3, r3
+21002e68:	e2033020 	and	r3, r3, #32
+21002e6c:	e3530000 	cmp	r3, #0
+21002e70:	0afffff1 	beq	21002e3c <SDHC_ReadOneBlock+0x4c>
+21002e74:	e51b3010 	ldr	r3, [fp, #-16]
+21002e78:	e5933000 	ldr	r3, [r3]
+21002e7c:	e2833030 	add	r3, r3, #48	; 0x30
+21002e80:	e3a02020 	mov	r2, #32
+21002e84:	e1c320b0 	strh	r2, [r3]
+21002e88:	e51b3010 	ldr	r3, [fp, #-16]
+21002e8c:	e5933000 	ldr	r3, [r3]
+21002e90:	e2833030 	add	r3, r3, #48	; 0x30
+21002e94:	e1d330b0 	ldrh	r3, [r3]
+21002e98:	e6ff3073 	uxth	r3, r3
+21002e9c:	e2033020 	and	r3, r3, #32
+21002ea0:	e3530000 	cmp	r3, #0
+21002ea4:	1afffff2 	bne	21002e74 <SDHC_ReadOneBlock+0x84>
+21002ea8:	e51b3014 	ldr	r3, [fp, #-20]
+21002eac:	e2833003 	add	r3, r3, #3
+21002eb0:	e1a03143 	asr	r3, r3, #2
+21002eb4:	e50b3014 	str	r3, [fp, #-20]
+21002eb8:	e51b3014 	ldr	r3, [fp, #-20]
+21002ebc:	e50b300c 	str	r3, [fp, #-12]
+21002ec0:	ea00000b 	b	21002ef4 <SDHC_ReadOneBlock+0x104>
+21002ec4:	e51b3010 	ldr	r3, [fp, #-16]
+21002ec8:	e5933000 	ldr	r3, [r3]
+21002ecc:	e2833020 	add	r3, r3, #32
+21002ed0:	e5932000 	ldr	r2, [r3]
+21002ed4:	e51b3008 	ldr	r3, [fp, #-8]
+21002ed8:	e5832000 	str	r2, [r3]
+21002edc:	e51b3008 	ldr	r3, [fp, #-8]
+21002ee0:	e2833004 	add	r3, r3, #4
+21002ee4:	e50b3008 	str	r3, [fp, #-8]
+21002ee8:	e51b300c 	ldr	r3, [fp, #-12]
+21002eec:	e2433001 	sub	r3, r3, #1
+21002ef0:	e50b300c 	str	r3, [fp, #-12]
+21002ef4:	e51b300c 	ldr	r3, [fp, #-12]
+21002ef8:	e3530000 	cmp	r3, #0
+21002efc:	cafffff0 	bgt	21002ec4 <SDHC_ReadOneBlock+0xd4>
+21002f00:	e51b3010 	ldr	r3, [fp, #-16]
+21002f04:	e1d332b2 	ldrh	r3, [r3, #34]	; 0x22
+21002f08:	e2433001 	sub	r3, r3, #1
+21002f0c:	e6ff2073 	uxth	r2, r3
+21002f10:	e51b3010 	ldr	r3, [fp, #-16]
+21002f14:	e1c322b2 	strh	r2, [r3, #34]	; 0x22
+21002f18:	e51b3010 	ldr	r3, [fp, #-16]
+21002f1c:	e51b2008 	ldr	r2, [fp, #-8]
+21002f20:	e5832028 	str	r2, [r3, #40]	; 0x28
+21002f24:	e28bd000 	add	sp, fp, #0
+21002f28:	e8bd0800 	pop	{fp}
+21002f2c:	e12fff1e 	bx	lr
+21002f30:	2100b620 	.word	0x2100b620
+
+21002f34 <SDHC_DisplayCardInformation>:
+21002f34:	e92d4800 	push	{fp, lr}
+21002f38:	e28db004 	add	fp, sp, #4
+21002f3c:	e24dd010 	sub	sp, sp, #16
+21002f40:	e50b0010 	str	r0, [fp, #-16]
+21002f44:	e51b3010 	ldr	r3, [fp, #-16]
+21002f48:	e5933008 	ldr	r3, [r3, #8]
+21002f4c:	e3530001 	cmp	r3, #1
+21002f50:	1a00000e 	bne	21002f90 <SDHC_DisplayCardInformation+0x5c>
+21002f54:	e51b3010 	ldr	r3, [fp, #-16]
+21002f58:	e5933000 	ldr	r3, [r3]
+21002f5c:	e283301c 	add	r3, r3, #28
+21002f60:	e5933000 	ldr	r3, [r3]
+21002f64:	e1a03923 	lsr	r3, r3, #18
+21002f68:	e6ef3073 	uxtb	r3, r3
+21002f6c:	e203300f 	and	r3, r3, #15
+21002f70:	e6ef2073 	uxtb	r2, r3
+21002f74:	e51b3010 	ldr	r3, [fp, #-16]
+21002f78:	e5c32025 	strb	r2, [r3, #37]	; 0x25
+21002f7c:	e51b3010 	ldr	r3, [fp, #-16]
+21002f80:	e5d33025 	ldrb	r3, [r3, #37]	; 0x25
+21002f84:	e59f0200 	ldr	r0, [pc, #512]	; 2100318c <SDHC_DisplayCardInformation+0x258>
+21002f88:	e1a01003 	mov	r1, r3
+21002f8c:	ebfff630 	bl	21000854 <printf>
+21002f90:	e51b3010 	ldr	r3, [fp, #-16]
+21002f94:	e5933000 	ldr	r3, [r3]
+21002f98:	e2833018 	add	r3, r3, #24
+21002f9c:	e5933000 	ldr	r3, [r3]
+21002fa0:	e1a03423 	lsr	r3, r3, #8
+21002fa4:	e6ff3073 	uxth	r3, r3
+21002fa8:	e203300f 	and	r3, r3, #15
+21002fac:	e6ff2073 	uxth	r2, r3
+21002fb0:	e51b3010 	ldr	r3, [fp, #-16]
+21002fb4:	e1c323b2 	strh	r2, [r3, #50]	; 0x32
+21002fb8:	e51b3010 	ldr	r3, [fp, #-16]
+21002fbc:	e5933000 	ldr	r3, [r3]
+21002fc0:	e2833018 	add	r3, r3, #24
+21002fc4:	e5933000 	ldr	r3, [r3]
+21002fc8:	e1a033a3 	lsr	r3, r3, #7
+21002fcc:	e6ff3073 	uxth	r3, r3
+21002fd0:	e2033001 	and	r3, r3, #1
+21002fd4:	e6ff2073 	uxth	r2, r3
+21002fd8:	e51b3010 	ldr	r3, [fp, #-16]
+21002fdc:	e1c323b4 	strh	r2, [r3, #52]	; 0x34
+21002fe0:	e51b3010 	ldr	r3, [fp, #-16]
+21002fe4:	e5933000 	ldr	r3, [r3]
+21002fe8:	e2833018 	add	r3, r3, #24
+21002fec:	e5933000 	ldr	r3, [r3]
+21002ff0:	e6ff3073 	uxth	r3, r3
+21002ff4:	e2033003 	and	r3, r3, #3
+21002ff8:	e6ff3073 	uxth	r3, r3
+21002ffc:	e1a03503 	lsl	r3, r3, #10
+21003000:	e6ff2073 	uxth	r2, r3
+21003004:	e51b3010 	ldr	r3, [fp, #-16]
+21003008:	e5933000 	ldr	r3, [r3]
+2100300c:	e2833014 	add	r3, r3, #20
+21003010:	e5933000 	ldr	r3, [r3]
+21003014:	e1a03b23 	lsr	r3, r3, #22
+21003018:	e6ff3073 	uxth	r3, r3
+2100301c:	e1a03b03 	lsl	r3, r3, #22
+21003020:	e1a03b23 	lsr	r3, r3, #22
+21003024:	e6ff3073 	uxth	r3, r3
+21003028:	e1823003 	orr	r3, r2, r3
+2100302c:	e6ff2073 	uxth	r2, r3
+21003030:	e51b3010 	ldr	r3, [fp, #-16]
+21003034:	e1c323b6 	strh	r2, [r3, #54]	; 0x36
+21003038:	e51b3010 	ldr	r3, [fp, #-16]
+2100303c:	e5933000 	ldr	r3, [r3]
+21003040:	e2833014 	add	r3, r3, #20
+21003044:	e5933000 	ldr	r3, [r3]
+21003048:	e1a033a3 	lsr	r3, r3, #7
+2100304c:	e6ff3073 	uxth	r3, r3
+21003050:	e2033007 	and	r3, r3, #7
+21003054:	e6ff2073 	uxth	r2, r3
+21003058:	e51b3010 	ldr	r3, [fp, #-16]
+2100305c:	e1c323b8 	strh	r2, [r3, #56]	; 0x38
+21003060:	e51b3010 	ldr	r3, [fp, #-16]
+21003064:	e1d333b6 	ldrh	r3, [r3, #54]	; 0x36
+21003068:	e2833001 	add	r3, r3, #1
+2100306c:	e1a02003 	mov	r2, r3
+21003070:	e51b3010 	ldr	r3, [fp, #-16]
+21003074:	e1d333b2 	ldrh	r3, [r3, #50]	; 0x32
+21003078:	e1a02312 	lsl	r2, r2, r3
+2100307c:	e51b3010 	ldr	r3, [fp, #-16]
+21003080:	e1d333b8 	ldrh	r3, [r3, #56]	; 0x38
+21003084:	e2833002 	add	r3, r3, #2
+21003088:	e1a03312 	lsl	r3, r2, r3
+2100308c:	e1a03a23 	lsr	r3, r3, #20
+21003090:	e50b3008 	str	r3, [fp, #-8]
+21003094:	e51b3010 	ldr	r3, [fp, #-16]
+21003098:	e1d333b2 	ldrh	r3, [r3, #50]	; 0x32
+2100309c:	e3a02001 	mov	r2, #1
+210030a0:	e1a03312 	lsl	r3, r2, r3
+210030a4:	e50b300c 	str	r3, [fp, #-12]
+210030a8:	e51b3010 	ldr	r3, [fp, #-16]
+210030ac:	e1d333b6 	ldrh	r3, [r3, #54]	; 0x36
+210030b0:	e2833001 	add	r3, r3, #1
+210030b4:	e1a02003 	mov	r2, r3
+210030b8:	e51b3010 	ldr	r3, [fp, #-16]
+210030bc:	e1d333b2 	ldrh	r3, [r3, #50]	; 0x32
+210030c0:	e1a02312 	lsl	r2, r2, r3
+210030c4:	e51b3010 	ldr	r3, [fp, #-16]
+210030c8:	e1d333b8 	ldrh	r3, [r3, #56]	; 0x38
+210030cc:	e2833002 	add	r3, r3, #2
+210030d0:	e1a03312 	lsl	r3, r2, r3
+210030d4:	e1a024a3 	lsr	r2, r3, #9
+210030d8:	e59f30b0 	ldr	r3, [pc, #176]	; 21003190 <SDHC_DisplayCardInformation+0x25c>
+210030dc:	e5832000 	str	r2, [r3]
+210030e0:	e59f00ac 	ldr	r0, [pc, #172]	; 21003194 <SDHC_DisplayCardInformation+0x260>
+210030e4:	e51b100c 	ldr	r1, [fp, #-12]
+210030e8:	ebfff5d9 	bl	21000854 <printf>
+210030ec:	e51b3008 	ldr	r3, [fp, #-8]
+210030f0:	e2833001 	add	r3, r3, #1
+210030f4:	e59f009c 	ldr	r0, [pc, #156]	; 21003198 <SDHC_DisplayCardInformation+0x264>
+210030f8:	e1a01003 	mov	r1, r3
+210030fc:	ebfff5d4 	bl	21000854 <printf>
+21003100:	e59f3088 	ldr	r3, [pc, #136]	; 21003190 <SDHC_DisplayCardInformation+0x25c>
+21003104:	e5933000 	ldr	r3, [r3]
+21003108:	e59f008c 	ldr	r0, [pc, #140]	; 2100319c <SDHC_DisplayCardInformation+0x268>
+2100310c:	e1a01003 	mov	r1, r3
+21003110:	ebfff5cf 	bl	21000854 <printf>
+21003114:	e51b3010 	ldr	r3, [fp, #-16]
+21003118:	e5933000 	ldr	r3, [r3]
+2100311c:	e2833010 	add	r3, r3, #16
+21003120:	e5933000 	ldr	r3, [r3]
+21003124:	e59f0074 	ldr	r0, [pc, #116]	; 210031a0 <SDHC_DisplayCardInformation+0x26c>
+21003128:	e1a01003 	mov	r1, r3
+2100312c:	ebfff5c8 	bl	21000854 <printf>
+21003130:	e51b3010 	ldr	r3, [fp, #-16]
+21003134:	e5933000 	ldr	r3, [r3]
+21003138:	e2833014 	add	r3, r3, #20
+2100313c:	e5933000 	ldr	r3, [r3]
+21003140:	e59f005c 	ldr	r0, [pc, #92]	; 210031a4 <SDHC_DisplayCardInformation+0x270>
+21003144:	e1a01003 	mov	r1, r3
+21003148:	ebfff5c1 	bl	21000854 <printf>
+2100314c:	e51b3010 	ldr	r3, [fp, #-16]
+21003150:	e5933000 	ldr	r3, [r3]
+21003154:	e2833018 	add	r3, r3, #24
+21003158:	e5933000 	ldr	r3, [r3]
+2100315c:	e59f0044 	ldr	r0, [pc, #68]	; 210031a8 <SDHC_DisplayCardInformation+0x274>
+21003160:	e1a01003 	mov	r1, r3
+21003164:	ebfff5ba 	bl	21000854 <printf>
+21003168:	e51b3010 	ldr	r3, [fp, #-16]
+2100316c:	e5933000 	ldr	r3, [r3]
+21003170:	e283301c 	add	r3, r3, #28
+21003174:	e5933000 	ldr	r3, [r3]
+21003178:	e59f002c 	ldr	r0, [pc, #44]	; 210031ac <SDHC_DisplayCardInformation+0x278>
+2100317c:	e1a01003 	mov	r1, r3
+21003180:	ebfff5b3 	bl	21000854 <printf>
+21003184:	e24bd004 	sub	sp, fp, #4
+21003188:	e8bd8800 	pop	{fp, pc}
+2100318c:	21003574 	.word	0x21003574
+21003190:	2100b670 	.word	0x2100b670
+21003194:	21003588 	.word	0x21003588
+21003198:	210035a4 	.word	0x210035a4
+2100319c:	210035c0 	.word	0x210035c0
+210031a0:	210035e0 	.word	0x210035e0
+210031a4:	210035f0 	.word	0x210035f0
+210031a8:	21003600 	.word	0x21003600
+210031ac:	21003610 	.word	0x21003610
+
+210031b0 <putchar>:
+210031b0:	e92d4800 	push	{fp, lr}
+210031b4:	e28db004 	add	fp, sp, #4
+210031b8:	e24dd008 	sub	sp, sp, #8
+210031bc:	e50b0008 	str	r0, [fp, #-8]
+210031c0:	e51b3008 	ldr	r3, [fp, #-8]
+210031c4:	e353000a 	cmp	r3, #10
+210031c8:	1a000001 	bne	210031d4 <putchar+0x24>
+210031cc:	e3a0000d 	mov	r0, #13
+210031d0:	eb000050 	bl	21003318 <uart_putchar>
+210031d4:	e51b3008 	ldr	r3, [fp, #-8]
+210031d8:	e3530008 	cmp	r3, #8
+210031dc:	1a000003 	bne	210031f0 <putchar+0x40>
+210031e0:	e3a00008 	mov	r0, #8
+210031e4:	eb00004b 	bl	21003318 <uart_putchar>
+210031e8:	e3a00020 	mov	r0, #32
+210031ec:	eb000049 	bl	21003318 <uart_putchar>
+210031f0:	e51b3008 	ldr	r3, [fp, #-8]
+210031f4:	e6ef3073 	uxtb	r3, r3
+210031f8:	e1a00003 	mov	r0, r3
+210031fc:	eb000045 	bl	21003318 <uart_putchar>
+21003200:	e51b3008 	ldr	r3, [fp, #-8]
+21003204:	e1a00003 	mov	r0, r3
+21003208:	e24bd004 	sub	sp, fp, #4
+2100320c:	e8bd8800 	pop	{fp, pc}
+
+21003210 <getchar>:
+21003210:	e92d4800 	push	{fp, lr}
+21003214:	e28db004 	add	fp, sp, #4
+21003218:	e24dd008 	sub	sp, sp, #8
+2100321c:	eb000052 	bl	2100336c <uart_getchar>
+21003220:	e1a03000 	mov	r3, r0
+21003224:	e50b3008 	str	r3, [fp, #-8]
+21003228:	e51b3008 	ldr	r3, [fp, #-8]
+2100322c:	e1a00003 	mov	r0, r3
+21003230:	e24bd004 	sub	sp, fp, #4
+21003234:	e8bd8800 	pop	{fp, pc}
+
+21003238 <puts>:
+21003238:	e92d4800 	push	{fp, lr}
+2100323c:	e28db004 	add	fp, sp, #4
+21003240:	e24dd008 	sub	sp, sp, #8
+21003244:	e50b0008 	str	r0, [fp, #-8]
+21003248:	ea000006 	b	21003268 <puts+0x30>
+2100324c:	e51b3008 	ldr	r3, [fp, #-8]
+21003250:	e5d33000 	ldrb	r3, [r3]
+21003254:	e51b2008 	ldr	r2, [fp, #-8]
+21003258:	e2822001 	add	r2, r2, #1
+2100325c:	e50b2008 	str	r2, [fp, #-8]
+21003260:	e1a00003 	mov	r0, r3
+21003264:	ebffffd1 	bl	210031b0 <putchar>
+21003268:	e51b3008 	ldr	r3, [fp, #-8]
+2100326c:	e5d33000 	ldrb	r3, [r3]
+21003270:	e3530000 	cmp	r3, #0
+21003274:	1afffff4 	bne	2100324c <puts+0x14>
+21003278:	e3a0000a 	mov	r0, #10
+2100327c:	ebffffcb 	bl	210031b0 <putchar>
+21003280:	e3a03000 	mov	r3, #0
+21003284:	e1a00003 	mov	r0, r3
+21003288:	e24bd004 	sub	sp, fp, #4
+2100328c:	e8bd8800 	pop	{fp, pc}
+
+21003290 <uart_init>:
+21003290:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21003294:	e28db000 	add	fp, sp, #0
+21003298:	e59f305c 	ldr	r3, [pc, #92]	; 210032fc <uart_init+0x6c>
+2100329c:	e59f2058 	ldr	r2, [pc, #88]	; 210032fc <uart_init+0x6c>
+210032a0:	e5922000 	ldr	r2, [r2]
+210032a4:	e3c220ff 	bic	r2, r2, #255	; 0xff
+210032a8:	e5832000 	str	r2, [r3]
+210032ac:	e59f3048 	ldr	r3, [pc, #72]	; 210032fc <uart_init+0x6c>
+210032b0:	e59f2044 	ldr	r2, [pc, #68]	; 210032fc <uart_init+0x6c>
+210032b4:	e5922000 	ldr	r2, [r2]
+210032b8:	e3822022 	orr	r2, r2, #34	; 0x22
+210032bc:	e5832000 	str	r2, [r3]
+210032c0:	e59f3038 	ldr	r3, [pc, #56]	; 21003300 <uart_init+0x70>
+210032c4:	e3a02003 	mov	r2, #3
+210032c8:	e5832000 	str	r2, [r3]
+210032cc:	e59f3030 	ldr	r3, [pc, #48]	; 21003304 <uart_init+0x74>
+210032d0:	e59f2030 	ldr	r2, [pc, #48]	; 21003308 <uart_init+0x78>
+210032d4:	e5832000 	str	r2, [r3]
+210032d8:	e59f302c 	ldr	r3, [pc, #44]	; 2100330c <uart_init+0x7c>
+210032dc:	e3a02023 	mov	r2, #35	; 0x23
+210032e0:	e5832000 	str	r2, [r3]
+210032e4:	e59f3024 	ldr	r3, [pc, #36]	; 21003310 <uart_init+0x80>
+210032e8:	e59f2024 	ldr	r2, [pc, #36]	; 21003314 <uart_init+0x84>
+210032ec:	e5832000 	str	r2, [r3]
+210032f0:	e28bd000 	add	sp, fp, #0
+210032f4:	e8bd0800 	pop	{fp}
+210032f8:	e12fff1e 	bx	lr
+210032fc:	e0200000 	.word	0xe0200000
+21003300:	e2900000 	.word	0xe2900000
+21003304:	e2900004 	.word	0xe2900004
+21003308:	00000245 	.word	0x00000245
+2100330c:	e2900028 	.word	0xe2900028
+21003310:	e290002c 	.word	0xe290002c
+21003314:	00000808 	.word	0x00000808
+
+21003318 <uart_putchar>:
+21003318:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+2100331c:	e28db000 	add	fp, sp, #0
+21003320:	e24dd00c 	sub	sp, sp, #12
+21003324:	e1a03000 	mov	r3, r0
+21003328:	e54b3005 	strb	r3, [fp, #-5]
+2100332c:	e1a00000 	nop			; (mov r0, r0)
+21003330:	e59f302c 	ldr	r3, [pc, #44]	; 21003364 <uart_putchar+0x4c>
+21003334:	e5933000 	ldr	r3, [r3]
+21003338:	e2033004 	and	r3, r3, #4
+2100333c:	e3530000 	cmp	r3, #0
+21003340:	0afffffa 	beq	21003330 <uart_putchar+0x18>
+21003344:	e59f301c 	ldr	r3, [pc, #28]	; 21003368 <uart_putchar+0x50>
+21003348:	e55b2005 	ldrb	r2, [fp, #-5]
+2100334c:	e5c32000 	strb	r2, [r3]
+21003350:	e3a03000 	mov	r3, #0
+21003354:	e1a00003 	mov	r0, r3
+21003358:	e28bd000 	add	sp, fp, #0
+2100335c:	e8bd0800 	pop	{fp}
+21003360:	e12fff1e 	bx	lr
+21003364:	e2900010 	.word	0xe2900010
+21003368:	e2900020 	.word	0xe2900020
+
+2100336c <uart_getchar>:
+2100336c:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+21003370:	e28db000 	add	fp, sp, #0
+21003374:	e24dd00c 	sub	sp, sp, #12
+21003378:	e1a00000 	nop			; (mov r0, r0)
+2100337c:	e59f302c 	ldr	r3, [pc, #44]	; 210033b0 <uart_getchar+0x44>
+21003380:	e5933000 	ldr	r3, [r3]
+21003384:	e2033001 	and	r3, r3, #1
+21003388:	e3530000 	cmp	r3, #0
+2100338c:	0afffffa 	beq	2100337c <uart_getchar+0x10>
+21003390:	e59f301c 	ldr	r3, [pc, #28]	; 210033b4 <uart_getchar+0x48>
+21003394:	e5d33000 	ldrb	r3, [r3]
+21003398:	e54b3005 	strb	r3, [fp, #-5]
+2100339c:	e55b3005 	ldrb	r3, [fp, #-5]
+210033a0:	e1a00003 	mov	r0, r3
+210033a4:	e28bd000 	add	sp, fp, #0
+210033a8:	e8bd0800 	pop	{fp}
+210033ac:	e12fff1e 	bx	lr
+210033b0:	e2900010 	.word	0xe2900010
+210033b4:	e2900024 	.word	0xe2900024
+
+app5-sd-demo.elf:     file format elf32-littlearm
+
+Contents of section .rodata:
+ 210033b8 25782000 73642069 6e697420 62656769  %x .sd init begi
+ 210033c8 6e0a0000 73642069 6e697420 6f766572  n...sd init over
+ 210033d8 0a000000 30313233 34353637 38394142  ....0123456789AB
+ 210033e8 43444546 00000000 001a1b09 02021a1a  CDEF............
+ 210033f8 1a000000 53444843 5f496e74 65727275  ....SDHC_Interru
+ 21003408 70744861 6e646c65 720a0000 62656769  ptHandler...begi
+ 21003418 6e20746f 20534448 435f4964 656e7469  n to SDHC_Identi
+ 21003428 66794361 72640000 53444843 5f496465  fyCard..SDHC_Ide
+ 21003438 6e746966 79436172 64206f6b 21000000  ntifyCard ok!...
+ 21003448 696e6974 20534448 435f5365 74536443  init SDHC_SetSdC
+ 21003458 61726453 70656564 4d6f6465 20666169  ardSpeedMode fai
+ 21003468 6c0a0000 3c534448 435f5265 6164426c  l...<SDHC_ReadBl
+ 21003478 6f636b73 3e207374 6172743d 25642c20  ocks> start=%d, 
+ 21003488 73697a65 3d25640a 00000000 3c534448  size=%d.....<SDH
+ 21003498 435f5265 6164426c 6f636b73 3e206f6b  C_ReadBlocks> ok
+ 210034a8 21207265 7475726e 20310000 50726f64  ! return 1..Prod
+ 210034b8 75637420 4e616d65 203a2025 63256325  uct Name : %c%c%
+ 210034c8 63256325 6325630a 00000000 53444843  c%c%c%c.....SDHC
+ 210034d8 5f536574 53644361 72645370 6565644d  _SetSdCardSpeedM
+ 210034e8 6f64650a 00000000 434d4436 20666169  ode.....CMD6 fai
+ 210034f8 6c0a0000 54686973 204d6564 69612073  l...This Media s
+ 21003508 7570706f 72742068 69676820 73706565  upport high spee
+ 21003518 64206d6f 64652e00 54686973 204d6564  d mode..This Med
+ 21003528 69612063 616e2774 20737570 706f7274  ia can't support
+ 21003538 20686967 68207370 65656420 6d6f6465   high speed mode
+ 21003548 2e000000 72484d5f 434f4e54 524f4c32  ....rHM_CONTROL2
+ 21003558 203d2025 780a0000 72484d5f 434c4b43   = %x...rHM_CLKC
+ 21003568 4f4e203d 2025780a 00000000 3d3e2020  ON = %x.....=>  
+ 21003578 6d5f7563 53706563 5665723d 25640a00  m_ucSpecVer=%d..
+ 21003588 4f6e6520 426c6f63 6b205369 7a653a20  One Block Size: 
+ 21003598 30782578 42797465 0a000000 546f7461  0x%xByte....Tota
+ 210035a8 6c204361 72642053 697a653a 20307825  l Card Size: 0x%
+ 210035b8 784d4279 74650a00 676c6f62 616c5f63  xMByte..global_c
+ 210035c8 6172645f 73697a65 3a203078 25784d42  ard_size: 0x%xMB
+ 210035d8 7974650a 00000000 53444843 5f525350  yte.....SDHC_RSP
+ 210035e8 303a2025 780a0000 53444843 5f525350  0: %x...SDHC_RSP
+ 210035f8 313a2025 780a0000 53444843 5f525350  1: %x...SDHC_RSP
+ 21003608 323a2025 780a0000 53444843 5f525350  2: %x...SDHC_RSP
+ 21003618 333a2025 780a0000                    3: %x...        
+
+Disassembly of section .rodata:
+
+210033b8 <SDHC_cmd_sfr_data-0x38>:
+210033b8:	00207825 	.word	0x00207825
+210033bc:	69206473 	.word	0x69206473
+210033c0:	2074696e 	.word	0x2074696e
+210033c4:	69676562 	.word	0x69676562
+210033c8:	00000a6e 	.word	0x00000a6e
+210033cc:	69206473 	.word	0x69206473
+210033d0:	2074696e 	.word	0x2074696e
+210033d4:	7265766f 	.word	0x7265766f
+210033d8:	0000000a 	.word	0x0000000a
+210033dc:	33323130 	.word	0x33323130
+210033e0:	37363534 	.word	0x37363534
+210033e4:	42413938 	.word	0x42413938
+210033e8:	46454443 	.word	0x46454443
+210033ec:	00000000 	.word	0x00000000
+
+210033f0 <SDHC_cmd_sfr_data>:
+210033f0:	091b1a00 1a1a0202 0000001a 43484453     ............SDHC
+21003400:	746e495f 75727265 61487470 656c646e     _InterruptHandle
+21003410:	00000a72 69676562 6f74206e 48445320     r...begin to SDH
+21003420:	64495f43 69746e65 61437966 00006472     C_IdentifyCard..
+21003430:	43484453 6564495f 6669746e 72614379     SDHC_IdentifyCar
+21003440:	6b6f2064 00000021 74696e69 48445320     d ok!...init SDH
+21003450:	65535f43 43645374 53647261 64656570     C_SetSdCardSpeed
+21003460:	65646f4d 69616620 00000a6c 4844533c     Mode fail...<SDH
+21003470:	65525f43 6c426461 736b636f 7473203e     C_ReadBlocks> st
+21003480:	3d747261 202c6425 657a6973 0a64253d     art=%d, size=%d.
+21003490:	00000000 4844533c 65525f43 6c426461     ....<SDHC_ReadBl
+210034a0:	736b636f 6b6f203e 65722021 6e727574     ocks> ok! return
+210034b0:	00003120 646f7250 20746375 656d614e      1..Product Name
+210034c0:	25203a20 25632563 25632563 0a632563      : %c%c%c%c%c%c.
+210034d0:	00000000 43484453 7465535f 61436453     ....SDHC_SetSdCa
+210034e0:	70536472 4d646565 0a65646f 00000000     rdSpeedMode.....
+210034f0:	36444d43 69616620 00000a6c 73696854     CMD6 fail...This
+21003500:	64654d20 73206169 6f707075 68207472      Media support h
+21003510:	20686769 65657073 6f6d2064 002e6564     igh speed mode..
+21003520:	73696854 64654d20 63206169 74276e61     This Media can't
+21003530:	70757320 74726f70 67696820 70732068      support high sp
+21003540:	20646565 65646f6d 0000002e 5f4d4872     eed mode....rHM_
+21003550:	544e4f43 324c4f52 25203d20 00000a78     CONTROL2 = %x...
+21003560:	5f4d4872 434b4c43 3d204e4f 0a782520     rHM_CLKCON = %x.
+21003570:	00000000 20203e3d 63755f6d 63657053     ....=>  m_ucSpec
+21003580:	3d726556 000a6425 20656e4f 636f6c42     Ver=%d..One Bloc
+21003590:	6953206b 203a657a 78257830 65747942     k Size: 0x%xByte
+210035a0:	0000000a 61746f54 6143206c 53206472     ....Total Card S
+210035b0:	3a657a69 25783020 79424d78 000a6574     ize: 0x%xMByte..
+210035c0:	626f6c67 635f6c61 5f647261 657a6973     global_card_size
+210035d0:	7830203a 424d7825 0a657479 00000000     : 0x%xMByte.....
+210035e0:	43484453 5053525f 25203a30 00000a78     SDHC_RSP0: %x...
+210035f0:	43484453 5053525f 25203a31 00000a78     SDHC_RSP1: %x...
+21003600:	43484453 5053525f 25203a32 00000a78     SDHC_RSP2: %x...
+21003610:	43484453 5053525f 25203a33 00000a78     SDHC_RSP3: %x...
