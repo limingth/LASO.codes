@@ -1,0 +1,1 @@
+cmd_/home/akaedu/teacher_li/myhands/f-uart-int-drv/driver/uart.ko := arm-linux-ld -EL -r  -T /home/akaedu/teacher_li/linux-2.6.35.7/scripts/module-common.lds --build-id -o /home/akaedu/teacher_li/myhands/f-uart-int-drv/driver/uart.ko /home/akaedu/teacher_li/myhands/f-uart-int-drv/driver/uart.o /home/akaedu/teacher_li/myhands/f-uart-int-drv/driver/uart.mod.o

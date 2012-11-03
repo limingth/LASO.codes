@@ -1,0 +1,2 @@
+0x00000000	myinit	/home/akaedu/teacher_li/myhands/4-my-kmod/hello	EXPORT_SYMBOL
+0x00000000	mytest	/home/akaedu/teacher_li/myhands/4-my-kmod/hello	EXPORT_SYMBOL

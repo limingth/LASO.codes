@@ -1,0 +1,1 @@
+cmd_/home/akaedu/teacher_li/myhands/d-int-tasklet/interrupt.ko := arm-linux-ld -EL -r  -T /home/akaedu/teacher_li/linux-2.6.35.7/scripts/module-common.lds --build-id -o /home/akaedu/teacher_li/myhands/d-int-tasklet/interrupt.ko /home/akaedu/teacher_li/myhands/d-int-tasklet/interrupt.o /home/akaedu/teacher_li/myhands/d-int-tasklet/interrupt.mod.o

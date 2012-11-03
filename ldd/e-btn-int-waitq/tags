@@ -1,0 +1,30 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CC	Makefile	/^CC = arm-linux-gcc$/;"	m
+DF_BTN	mygpio_test.c	11;"	d	file:
+DF_BUZZER	mygpio_test.c	10;"	d	file:
+DF_LED	mygpio_test.c	9;"	d	file:
+KDIR	Makefile	/^KDIR := \/home\/akaedu\/teacher_li\/linux-2.6.35.7\/$/;"	m
+SUBDIRS	Makefile	/^	make -C $(KDIR)	SUBDIRS=$(PWD) 	modules$/;"	m
+__this_module	mygpio_drv.mod.c	/^struct module __this_module$/;"	v	typeref:struct:module
+__used	mygpio_drv.mod.c	/^__used$/;"	v	file:
+delay	mygpio_drv.c	/^int delay(void)$/;"	f
+main	mygpio_test.c	/^int main(int argc, char * argv[])$/;"	f
+mychar_exit	mygpio_drv.c	/^module_exit(mychar_exit);$/;"	v
+mychar_exit	mygpio_drv.c	/^static __exit void mychar_exit(void)$/;"	f	file:
+mychar_flush	mygpio_drv.c	/^int mychar_flush(struct file * filp, fl_owner_t id)$/;"	f
+mychar_fops	mygpio_drv.c	/^struct file_operations mychar_fops =$/;"	v	typeref:struct:file_operations
+mychar_init	mygpio_drv.c	/^module_init(mychar_init);$/;"	v
+mychar_init	mygpio_drv.c	/^static __init int mychar_init(void)$/;"	f	file:
+mychar_open	mygpio_drv.c	/^int mychar_open(struct inode * inode, struct file * filp)$/;"	f
+mychar_read	mygpio_drv.c	/^ssize_t mychar_read(struct file * filp, char __user * buf, size_t count, loff_t * pos)$/;"	f
+mychar_release	mygpio_drv.c	/^int mychar_release(struct inode * inode, struct file * filp)$/;"	f
+mychar_write	mygpio_drv.c	/^ssize_t mychar_write(struct file * filp, const char __user * buf, size_t count, loff_t * pos)$/;"	f
+obj-m	Makefile	/^obj-m := mygpio_drv.o$/;"	m
+testbuf	mygpio_test.c	/^char testbuf[500000];$/;"	v
+vmem_pbuzzer	mygpio_drv.c	/^static int * vmem_pbuzzer;$/;"	v	file:
+vmem_pled	mygpio_drv.c	/^static int * vmem_pled;$/;"	v	file:
