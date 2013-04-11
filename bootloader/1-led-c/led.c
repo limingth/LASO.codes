@@ -1,3 +1,8 @@
+/*
+ * led.c - led demo of arm code
+ * author: li ming <limingth@gmail.com>
+ */
+
 #define GPJ2CON		(*(volatile unsigned int *)0xe0200280)
 #define GPJ2DAT		(*(volatile unsigned int *)0xe0200284)
 
@@ -24,6 +29,7 @@ int mymain(void)
 	GPH2CON = 0x0;
 
 #if 0
+	/* led blink demo code */
 	while (1)
 	{		
 		GPJ2DAT = 0x5;	
@@ -34,6 +40,7 @@ int mymain(void)
 	}
 #endif
 
+	/* get user input from button 0, then light the led */
 	while (1)
 	{		
 		if ((GPH2DAT & 0x1) == 0)	
